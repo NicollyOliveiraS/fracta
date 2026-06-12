@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Definition of gradients and shadows -->
+  <defs>
+    <radialGradient id="gold" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" stop-color="#FFE066" />
+      <stop offset="70%" stop-color="#F5B000" />
+      <stop offset="100%" stop-color="#C77A00" />
+    </radialGradient>
+    <linearGradient id="ribbonBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2B6CB0" />
+      <stop offset="50%" stop-color="#4299E1" />
+      <stop offset="100%" stop-color="#2B6CB0" />
+    </linearGradient>
+    <linearGradient id="ribbonOrange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DD6B20" />
+      <stop offset="50%" stop-color="#ED8936" />
+      <stop offset="100%" stop-color="#DD6B20" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Ribbons behind the medal -->
+  <g filter="url(#shadow)">
+    <!-- Blue Ribbon Left -->
+    <path d="M 38 40 L 25 85 L 38 80 L 50 85 Z" fill="url(#ribbonBlue)" />
+    <!-- Orange Ribbon Right -->
+    <path d="M 62 40 L 75 85 L 62 80 L 50 85 Z" fill="url(#ribbonOrange)" />
+  </g>
+
+  <!-- Medal Base Circle -->
+  <circle cx="50" cy="45" r="30" fill="url(#gold)" filter="url(#shadow)" stroke="#8A5A00" stroke-width="2" />
+  
+  <!-- Outer Ring Detail -->
+  <circle cx="50" cy="45" r="26" fill="none" stroke="#FFF" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.6" />
+  
+  <!-- Inner Ring -->
+  <circle cx="50" cy="45" r="22" fill="none" stroke="#8A5A00" stroke-width="1" opacity="0.5" />
+
+  <!-- Star in Center -->
+  <polygon points="50,23 56,36 70,36 59,45 63,59 50,50 37,59 41,45 30,36 44,36" fill="#FFF" filter="url(#shadow)" />
+  
+  <!-- Ribbon Holder Link -->
+  <rect x="44" y="10" width="12" height="6" rx="2" fill="#8A5A00" />
+</svg>

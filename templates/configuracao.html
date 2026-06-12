@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FRACTA - Configurações</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body class="bg-[#F7F4E7] min-h-screen">
+
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gradient-to-b from-[#7A2D00] to-[#431400] text-white">
+
+        <div class="h-24"></div>
+
+        <nav class="px-4">
+
+            <a href="../index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 mb-2">
+                 <span>Início</span>
+            </a>
+
+            <a href="progresso.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 mb-2">
+                 <span>Progresso</span>
+            </a>
+
+            <a href="conquistas.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 mb-2">
+                 <span>Conquistas</span>
+            </a>
+
+            <a href="configuracao.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#C55A11] mb-2">
+                 <span>Configuração</span>
+            </a>
+
+            <a href="ajuda.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 mb-6">
+                 <span>Ajuda</span>
+            </a>
+
+            <hr class="border-white/10 mb-4">
+
+            <a href="login.html" class="btnSair flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
+                ↩ <span>Sair</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Conteúdo -->
+    <main class="flex-1 px-8 py-4">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+
+            <div class="flex items-center gap-4">
+
+                <img
+                    src="../img/image (1).png"
+                    alt="Logo FRACTA"
+                    class="w-16 h-16 object-contain">
+
+                <h1 class="text-5xl font-bold tracking-widest text-[#5A2D16]">
+                    FRACTA
+                </h1>
+
+            </div>
+
+            <div class="flex items-center gap-6">
+
+                <button class="text-3xl">
+                    🔔
+                </button>
+
+                <a href="conta.html"><div id="avatarUsuario" class="w-14 h-14 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold shadow">U</div></a>
+
+            </div>
+
+        </div>
+
+        <!-- Opções -->
+        <div class="space-y-6">
+
+            <!-- Notificações -->
+            <button class="w-full bg-transparent border border-[#8A816F] rounded-3xl p-6 flex items-center gap-6 hover:shadow-md transition">
+
+                <div class="w-16 h-16 rounded-full bg-[#F3BB84] flex items-center justify-center text-3xl">
+                    🔔
+                </div>
+
+                <div class="text-left">
+                    <h2 class="text-3xl font-semibold text-[#1F1F1F]">
+                        Notificações
+                    </h2>
+
+                    <p class="text-gray-600">
+                        Gerencie como você deseja receber suas notificações.
+                    </p>
+                </div>
+
+            </button>
+
+            <!-- Método de estudo -->
+            <button class="w-full bg-transparent border-2 border-blue-500 rounded-3xl p-6 flex items-center gap-6 shadow-sm">
+
+                <div class="w-16 h-16 rounded-full bg-[#F3BB84] flex items-center justify-center text-3xl">
+                    📖
+                </div>
+
+                <div class="text-left">
+                    <h2 class="text-3xl font-semibold text-[#1F1F1F]">
+                        Método de estudo
+                    </h2>
+
+                    <p class="text-gray-600">
+                        Personalize sua experiência de aprendizado.
+                    </p>
+                </div>
+
+            </button>
+
+            <!-- Privacidade -->
+            <button class="w-full bg-transparent border border-[#8A816F] rounded-3xl p-6 flex items-center gap-6 hover:shadow-md transition">
+
+                <div class="w-16 h-16 rounded-full bg-[#F3BB84] flex items-center justify-center text-3xl">
+                    🔒
+                </div>
+
+                <div class="text-left">
+                    <h2 class="text-3xl font-semibold text-[#1F1F1F]">
+                        Privacidade e segurança
+                    </h2>
+
+                    <p class="text-gray-600">
+                        Gerencie suas informações e segurança da conta.
+                    </p>
+                </div>
+
+            </button>
+
+            <!-- Sobre -->
+            <button class="w-full bg-transparent border border-[#8A816F] rounded-3xl p-6 flex items-center gap-6 hover:shadow-md transition">
+
+                <div class="w-16 h-16 rounded-full bg-[#F3BB84] flex items-center justify-center text-3xl">
+                    ℹ
+                </div>
+
+                <div class="text-left">
+                    <h2 class="text-3xl font-semibold text-[#1F1F1F]">
+                        Sobre o Fracta
+                    </h2>
+
+                    <p class="text-gray-600">
+                        Informações sobre o aplicativo.
+                    </p>
+                </div>
+
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+<script src="../scripts/script.js"></script>
+</body>
+</html>

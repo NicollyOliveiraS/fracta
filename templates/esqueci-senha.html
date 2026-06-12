@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FRACTA - Recuperar Senha</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-b from-orange-500 to-orange-800 p-4">
+
+  <div class="w-full max-w-5xl min-h-[520px] rounded-[35px] overflow-hidden shadow-2xl flex flex-col md:flex-row">
+
+    <!-- Lado esquerdo (Logo) -->
+    <div class="w-full md:w-1/2 bg-[#f4f4f4] flex items-center justify-center p-8">
+      <img src="../img/image.png" alt="Logo FRACTA" class="w-48 md:w-auto mx-auto object-contain">
+    </div>
+
+    <!-- Lado direito (Formulário) -->
+    <div class="w-full md:w-1/2 bg-gradient-to-b from-orange-500 to-orange-700 flex items-center justify-center p-8 relative">
+      <div class="w-full max-w-md">
+        
+        <h1 class="text-white text-4xl font-bold mb-4">Recuperar Senha</h1>
+        <p class="text-orange-100 text-sm mb-8">
+          Digite seu nome de usuário cadastrado para redefinir sua senha de acesso.
+        </p>
+
+        <form id="recuperarForm" class="space-y-6">
+          <!-- Usuário -->
+          <div>
+            <label class="block text-white text-sm mb-2 font-medium">Nome de Usuário</label>
+            <input id="recuperarUser" type="text" required class="w-full bg-transparent border-b-2 border-white/60 outline-none text-white pb-2 focus:border-white transition">
+          </div>
+
+          <!-- Nova Senha -->
+          <div>
+            <label class="block text-white text-sm mb-2 font-medium">Nova Senha</label>
+            <input id="novaSenha" type="password" required class="w-full bg-transparent border-b-2 border-white/60 outline-none text-white pb-2 focus:border-white transition">
+          </div>
+
+          <!-- Botões de Ação -->
+          <div class="space-y-3 pt-2">
+            <button type="submit" class="w-full bg-black text-white py-3 rounded-xl text-lg font-semibold hover:bg-neutral-900 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg">
+              Redefinir Senha
+            </button>
+            
+            <a href="login.html" class="block w-full bg-white/20 text-center text-white py-2.5 rounded-xl text-sm font-medium hover:bg-white/30 transition">
+              Voltar para o Login
+            </a>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../scripts/script.js"></script>
+</body>
+</html>

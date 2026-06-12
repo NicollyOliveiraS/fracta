@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FRACTA - Progresso</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body class="bg-[#F5F0DF]">
+
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gradient-to-b from-[#7C2F00] to-[#4A1800] text-white">
+
+        <div class="h-24"></div>
+
+        <nav class="px-4 space-y-2">
+
+            <a href="../index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
+                 Início
+            </a>
+
+            <a href="progresso.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#D96C1A]">
+                 Progresso
+            </a>
+
+            <a href="conquistas.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
+                 Conquistas
+            </a>
+
+            <a href="configuracao.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
+                 Configuração
+            </a>
+
+            <a href="ajuda.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
+                 Ajuda
+            </a>
+
+            <div class="pt-8">
+                <a href="login.html" class="btnSair flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
+                    ↩ Sair
+                </a>
+            </div>
+
+        </nav>
+
+    </aside>
+
+    <!-- Conteúdo -->
+    <main class="flex-1 p-8">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+
+            <div class="flex items-center gap-4">
+                <img src="../img/image (1).png" class="w-14 h-14" alt="Logo">
+
+                <h1 class="text-5xl font-bold text-[#5B2D18]">
+                    FRACTA
+                </h1>
+            </div>
+
+            <div class="flex items-center gap-5">
+
+                <button class="text-2xl">
+                    🔔
+                </button>
+
+                <a href="conta.html"><div id="avatarUsuario" class="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold shadow">U</div></a>
+
+            </div>
+
+        </div>
+
+        <!-- Cards superiores -->
+        <div class="grid grid-cols-3 gap-6 mb-6">
+
+            <!-- Progresso -->
+            <div class="border border-gray-400 rounded-2xl p-5">
+
+                <h3 class="text-lg mb-4">
+                    Progresso geral
+                </h3>
+
+                <div class="flex justify-center">
+                    <div class="w-28 h-28 rounded-full border-4 border-gray-400 flex items-center justify-center text-4xl font-bold">
+                        80%
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Atividades -->
+            <div class="border border-gray-400 rounded-2xl p-5 flex items-center gap-4">
+
+                <div class="w-14 h-14 rounded-full bg-[#F3BB84] flex items-center justify-center text-2xl">
+                    📋
+                </div>
+
+                <div>
+                    <p class="text-sm italic">Atividades concluídas</p>
+                    <h3 class="text-4xl font-bold">25</h3>
+                    <p class="text-sm text-gray-600">de 30 atividades</p>
+                </div>
+
+            </div>
+
+            <!-- Sequência -->
+            <div class="border border-gray-400 rounded-2xl p-5 flex items-center gap-4">
+
+                <div class="w-14 h-14 rounded-full bg-[#F3BB84] flex items-center justify-center text-2xl">
+                    🔥
+                </div>
+
+                <div>
+                    <p class="text-sm italic">Sequência atual</p>
+                    <h3 class="text-4xl font-bold">7</h3>
+                    <p class="text-sm text-gray-600">dias seguidos</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Meio -->
+        <div class="grid grid-cols-3 gap-6 mb-8">
+
+            <!-- Espaço para medalhas -->
+            <div class="bg-[#F3BB84] rounded-2xl h-72 p-6 flex flex-col justify-between">
+                <h4 class="font-bold text-lg text-[#5B2D18] mb-2">Medalhas Recentes</h4>
+                <div class="flex gap-6 justify-center items-center flex-1">
+                    <div class="w-24 h-24 bg-white/20 rounded-xl p-2 flex items-center justify-center shadow-inner">
+                        <img src="../img/medalha1.svg" class="w-20 h-20 object-contain" alt="Medalha 1">
+                    </div>
+                    <div class="w-24 h-24 bg-white/20 rounded-xl p-2 flex items-center justify-center shadow-inner">
+                        <img src="../img/medalha2.svg" class="w-20 h-20 object-contain" alt="Medalha 2">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico -->
+            <div class="col-span-2 border border-gray-400 rounded-2xl p-6">
+
+                <h3 class="text-sm mb-4">
+                    Desempenho ao longo da semana
+                </h3>
+
+                <div class="relative h-56">
+
+                    <div class="absolute left-0 top-0 text-xs">100%</div>
+                    <div class="absolute left-0 top-14 text-xs">75%</div>
+                    <div class="absolute left-0 top-28 text-xs">50%</div>
+                    <div class="absolute left-0 top-42 text-xs">25%</div>
+                    <div class="absolute left-0 bottom-0 text-xs">0%</div>
+
+                    <svg
+                        class="absolute left-10 top-4 w-[85%] h-48"
+                        viewBox="0 0 500 180">
+
+                        <polygon
+                            points="0,120 80,100 160,100 240,60 320,40 400,40 480,20 480,180 0,180"
+                            fill="#E8D3B3"
+                            stroke="#6B5A48"
+                            stroke-width="2"/>
+                    </svg>
+
+                    <div class="absolute bottom-0 left-10 right-0 flex justify-between text-xs">
+                        <span>Seg</span>
+                        <span>Ter</span>
+                        <span>Qua</span>
+                        <span>Qui</span>
+                        <span>Sex</span>
+                        <span>Sáb</span>
+                        <span>Dom</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Objetivos -->
+        <div class="border border-gray-400 p-6">
+
+            <div class="grid grid-cols-2 gap-10">
+
+                <div>
+
+                    <p class="text-sm mb-2">
+                        Próximos objetivos
+                    </p>
+
+                    <p class="text-sm mb-3">
+                        Concluir mais 5 atividades de multiplicação de frações
+                    </p>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-full h-2 bg-[#E9DFC5] rounded-full">
+                            <div class="w-2/5 h-2 bg-orange-500 rounded-full"></div>
+                        </div>
+
+                        <span class="text-sm">
+                            2/5
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <p class="text-sm mb-7">
+                        Manter sequência de 10 dias
+                    </p>
+
+                    <div class="flex items-center gap-4">
+
+                        <div class="w-full h-2 bg-[#E9DFC5] rounded-full">
+                            <div class="w-[70%] h-2 bg-orange-500 rounded-full"></div>
+                        </div>
+
+                        <span class="text-sm">
+                            7/10
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+<script src="../scripts/script.js"></script>
+
+</body>
+</html>

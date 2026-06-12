@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FRACTA - Conquistas</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="bg-[#F7F4E7] min-h-screen">
+
+<div class="flex min-h-screen">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gradient-to-b from-[#7A2D00] to-[#431400] text-white">
+
+        <div class="h-24"></div>
+
+        <nav class="px-4">
+
+            <a href="../index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 mb-2">
+                 Início
+            </a>
+
+            <a href="progresso.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 mb-2">
+                 Progresso
+            </a>
+
+            <a href="conquistas.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#C55A11] mb-2">
+                 Conquistas
+            </a>
+
+            <a href="configuracao.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 mb-2">
+                 Configuração
+            </a>
+
+            <a href="ajuda.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 mb-6">
+                Ajuda
+            </a>
+
+            <hr class="border-white/10 mb-4">
+
+            <a href="login.html" class="btnSair flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
+                ↩ Sair
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Conteúdo -->
+    <main class="flex-1 px-8 py-4">
+
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8">
+
+            <div class="flex items-center gap-4">
+
+                <img src="../img/image (1).png" alt="Logo" class="w-16 h-16">
+
+                <h1 class="text-5xl font-bold tracking-widest text-[#5A2D16]">
+                    FRACTA
+                </h1>
+
+            </div>
+
+            <div class="flex items-center gap-6">
+                <button class="text-2xl">🔔</button>
+                <a href="conta.html"><div id="avatarUsuario" class="w-14 h-14 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold shadow">U</div></a>
+            </div>
+
+        </div>
+
+        <!-- Banner -->
+        <section class="bg-[#F2B882] rounded-2xl p-6 mb-5">
+
+            <h2 class="text-4xl font-bold text-[#24150f]">
+                Conquistas
+            </h2>
+
+            <p class="text-[#5a3a2a] mt-1">
+                A cada conquista, você fica mais perto de dominar frações!
+            </p>
+
+        </section>
+
+        <!-- Cards Resumo -->
+        <div class="grid grid-cols-3 gap-6 mb-6">
+
+            <!-- Total -->
+            <div class="col-span-2 border border-[#B6A893] rounded-2xl p-5 bg-[#F5ECD8]">
+
+                <div class="flex items-center justify-between">
+
+                    <div class="flex items-center gap-5">
+
+                        <div class="w-20 h-20 rounded-full bg-[#D98B09] flex items-center justify-center text-4xl">
+                            ⭐
+                        </div>
+
+                        <div>
+                            <p class="italic text-gray-600">
+                                Total de conquistas
+                            </p>
+
+                            <h3 class="text-4xl font-bold">
+                                12
+                            </h3>
+
+                            <span class="text-sm text-gray-500">
+                                de 24 conquistas
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="w-64">
+
+                        <p class="italic text-gray-600 mb-2">
+                            Seu progresso geral
+                        </p>
+
+                        <div class="flex items-center gap-3">
+
+                            <div class="flex-1 h-3 bg-gray-200 rounded-full">
+                                <div class="w-1/2 h-3 bg-[#B65111] rounded-full"></div>
+                            </div>
+
+                            <span class="font-bold">
+                                50%
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Próxima -->
+            <div class="border border-[#B6A893] rounded-2xl p-4 bg-[#F5ECD8]">
+
+                <p class="text-xs text-gray-500 mb-2">
+                    Próxima conquista
+                </p>
+
+                <div class="flex gap-3">
+
+                    <div class="w-16 h-16 rounded-full bg-gray-300"></div>
+
+                    <div class="flex-1">
+
+                        <h4 class="font-semibold">
+                            Estudioso das frações
+                        </h4>
+
+                        <p class="text-xs text-gray-500">
+                            Conclua 15 atividades
+                        </p>
+
+                        <div class="flex items-center gap-2 mt-2">
+
+                            <div class="flex-1 h-2 bg-gray-200 rounded-full">
+                                <div class="w-[80%] h-2 bg-[#B65111] rounded-full"></div>
+                            </div>
+
+                            <span class="text-xs text-[#B65111] font-bold">
+                                12/15
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Grid de conquistas -->
+        <section>
+
+            <h3 class="text-xl mb-5">
+                Suas conquistas
+            </h3>
+
+            <div class="grid grid-cols-5 gap-5">
+
+                <!-- Medalha 1 -->
+                <div class="aspect-square bg-[#F5ECD8] rounded-xl overflow-hidden p-2 flex items-center justify-center">
+                    <img
+                        src="../img/medalha1.svg"
+                        alt="Primeira atividade"
+                        class="w-full h-full object-contain">
+                </div>
+
+                <!-- Medalha 2 -->
+                <div class="aspect-square bg-[#F5ECD8] rounded-xl overflow-hidden p-2 flex items-center justify-center">
+                    <img
+                        src="../img/medalha2.svg"
+                        alt="Numerador e denominador"
+                        class="w-full h-full object-contain">
+                </div>
+
+                <!-- Selecionada -->
+                <div class="aspect-square border-4 border-blue-500 rounded-2xl bg-[#F7F4E7]"></div>
+
+                <!-- Bloqueadas -->
+                <div class="aspect-square border border-[#C8BCA7] rounded-2xl bg-[#F7F4E7]"></div>
+
+                <div class="aspect-square border border-[#C8BCA7] rounded-2xl bg-[#F7F4E7]"></div>
+
+                <div class="aspect-square border border-[#C8BCA7] rounded-2xl bg-[#F7F4E7]"></div>
+
+                <div class="aspect-square border border-[#C8BCA7] rounded-2xl bg-[#F7F4E7]"></div>
+
+                <div class="aspect-square border border-[#C8BCA7] rounded-2xl bg-[#F7F4E7]"></div>
+
+                <div class="aspect-square border border-[#C8BCA7] rounded-2xl bg-[#F7F4E7]"></div>
+
+                <div class="aspect-square border border-[#C8BCA7] rounded-2xl bg-[#F7F4E7]"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<script src="../scripts/script.js"></script>
+</body>
+</html>
