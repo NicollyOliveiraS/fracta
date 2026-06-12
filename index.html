@@ -1,108 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FRACTA Dashboard</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRACTA Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
-<body class="bg-[#f5f0df] min-h-screen">
-
+<body class="bg-[#FAF9F6] text-[#2B1B12] min-h-screen">
 <div class="flex h-screen overflow-hidden">
-
-    <aside class="w-64 bg-gradient-to-b from-[#7c2f00] to-[#3d1300] text-white flex flex-col justify-between">
-        <nav class="mt-10 px-4 space-y-2">
-            <a href="index.html" class="flex items-center gap-3 bg-[#d2691e] px-4 py-3 rounded-lg font-medium">
-                 <span>Início</span>
-            </a>
-            <a href="templates/progresso.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition">
-                <span>Progresso</span>
-            </a>
-            <a href="templates/conquistas.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition">
-                 <span>Conquistas</span>
-            </a>
-            <a href="templates/configuracao.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition">
-                <span>Configuração</span>
-            </a>
-            <a href="templates/ajuda.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/10 transition">
-                 <span>Ajuda</span>
-            </a>
+    <!-- Sidebar estruturada -->
+    <aside class="w-64 bg-[#3D1300] text-white flex flex-col shadow-xl">
+        <div class="p-8 flex items-center gap-3">
+            <div class="w-8 h-8 bg-[#D2691E] rounded-md"></div>
+            <span class="text-xl font-bold tracking-tight">FRACTA</span>
+        </div>
+        <nav class="flex-1 px-4 space-y-1">
+            <a href="index.html" class="flex items-center gap-3 bg-[#D2691E] px-4 py-3 rounded-lg font-medium transition">Início</a>
+            <a href="templates/progresso.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition text-gray-300 hover:text-white">Progresso</a>
+            <a href="templates/conquistas.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition text-gray-300 hover:text-white">Conquistas</a>
+            <a href="templates/configuracao.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition text-gray-300 hover:text-white">Configuração</a>
+            <a href="templates/ajuda.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition text-gray-300 hover:text-white">Ajuda</a>
         </nav>
-        
-        <div class="p-4">
-            <a href="templates/login.html" class="btnSair w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-red-900/40 hover:bg-red-700 transition text-left">
-                ↩ <span>Sair</span>
-            </a>
+        <div class="p-6 border-t border-white/10">
+            <a href="templates/login.html" class="btnSair flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-red-400 transition text-sm">Sair da conta</a>
         </div>
     </aside>
 
     <main class="flex-1 overflow-y-auto">
-        <header class="flex items-center justify-between px-8 py-4 bg-white/40 backdrop-blur-sm sticky top-0 z-10">
-            <div class="flex items-center gap-3">
-             <img src="img/image (1).png" alt="Logo" class="w-14 h-14 object-contain">
-            </div>
+        <header class="flex items-center justify-between px-10 py-5 bg-white border-b border-gray-200 sticky top-0 z-10">
+            <span class="font-medium text-gray-500">Dashboard de Aprendizado</span>
             <div class="flex items-center gap-6">
-                <button class="text-2xl hover:scale-110 transition">🔔</button>
-              <a href="templates/conta.html">  <div id="avatarUsuario" class="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold shadow">U</div></a>
+                <button class="text-gray-400 hover:text-gray-600">🔔</button>
+                <a href="templates/conta.html" class="flex items-center gap-3 border-l pl-6">
+                    <div id="avatarUsuario" class="w-9 h-9 rounded-full bg-[#D2691E] flex items-center justify-center text-white font-bold text-sm">U</div>
+                    <span id="nomeUsuarioHeader" class="text-sm font-semibold text-gray-700">Usuário</span>
+                </a>
             </div>
         </header>
 
-        <div class="px-6 py-6 space-y-6">
-            <section class="bg-[#efb883] rounded-2xl p-8 shadow-sm">
-                <h2 class="text-4xl italic font-bold text-[#2b1b12] mb-1">
-                    Olá, <span id="nomeUsuario">Usuário</span>!
-                </h2>
-                <p class="text-xl text-[#4a2c1c] mb-5">
-                    Vamos continuar aprendendo sobre frações?
-                </p>
-                <a href="templates/atividade.html" class="w-fit bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-xl flex items-center gap-3 font-medium shadow transition-all transform hover:-translate-y-0.5">
-                    ▶ Continuar atividade
-                </a>
+        <div class="p-10 max-w-6xl mx-auto space-y-8">
+            <!-- Hero Section mais sóbria -->
+            <section class="bg-white border border-gray-200 rounded-2xl p-10 flex justify-between items-center shadow-sm">
+                <div class="max-w-lg">
+                    <h2 class="text-3xl font-bold text-[#2B1B12] mb-3">Bem-vindo, <span id="nomeUsuario" class="text-[#D2691E]">Usuário</span>!</h2>
+                    <p class="text-gray-500 leading-relaxed mb-6">Seu progresso na trilha de frações está em 75%. Continue de onde parou para manter sua sequência diária.</p>
+                    <a href="templates/atividade.html" class="inline-flex items-center px-6 py-3 bg-[#3D1300] hover:bg-[#5D1D00] text-white font-semibold rounded-xl transition shadow-sm">Continuar Atividade</a>
+                </div>
+                <img src="img/image (1).png" class="w-32 h-32 object-contain opacity-80" alt="Logo">
             </section>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="bg-[#efb883] rounded-2xl p-6 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-3xl font-bold italic text-[#2b1b12] mb-4">Atividades</h3>
-                        <div class="space-y-3">
-                            <a href="templates/atividade.html" class="block w-full bg-[#f7e6cf] hover:bg-[#faeedd] p-4 text-left rounded-xl font-medium transition">
-                                ▶ Atividade Diagnóstica
-                            </a>
-                            <button disabled class="w-full bg-[#e7d4bf] p-4 text-left rounded-xl opacity-60 flex justify-between items-center cursor-not-allowed">
-                                <span>Soma de frações</span> 🔒
-                            </button>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Atividades -->
+                <div class="bg-white border border-gray-200 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold mb-5 flex items-center gap-2">Módulos de Estudo</h3>
+                    <div class="space-y-3">
+                        <a href="templates/atividade.html" class="flex items-center justify-between p-4 bg-[#FAF9F6] border border-gray-100 rounded-xl hover:border-[#D2691E] transition group">
+                            <span class="font-medium text-gray-700">Atividade Diagnóstica</span>
+                            <span class="text-[#D2691E]">→</span>
+                        </a>
+                        <div class="flex items-center justify-between p-4 bg-gray-50 border border-gray-100 rounded-xl opacity-60">
+                            <span class="font-medium text-gray-400">Soma de Frações</span>
+                            <span>🔒</span>
                         </div>
                     </div>
-                    <button class="mt-5 bg-orange-600 text-white text-sm px-4 py-2 rounded-lg font-medium hover:bg-orange-700 transition">
-                        Ver todas as atividades
-                    </button>
                 </div>
 
-                <div class="bg-[#efb883] rounded-2xl p-6 lg:col-span-2 shadow-sm">
-                    <h3 class="text-4xl font-bold italic text-[#2b1b12] mb-2">Desafio do dia</h3>
-                    <p class="text-2xl text-[#4a2c1c] mb-6">Qual é a fração equivalente a 2/4?</p>
-
-                    <div class="flex flex-wrap gap-4">
-                        <button data-valor="1/2" class="opcao-fracao bg-[#f7f0e4] hover:bg-white w-20 h-20 rounded-xl text-2xl font-bold shadow-sm transition-all border-4 border-transparent">1/2</button>
-                        <button data-valor="3/6" class="opcao-fracao bg-[#f7f0e4] hover:bg-white w-20 h-20 rounded-xl text-2xl font-bold shadow-sm transition-all border-4 border-transparent">3/6</button>
-                        <button data-valor="2/3" class="opcao-fracao bg-[#f7f0e4] hover:bg-white w-20 h-20 rounded-xl text-2xl font-bold shadow-sm transition-all border-4 border-transparent">2/3</button>
-                        <button data-valor="4/8" class="opcao-fracao bg-[#f7f0e4] hover:bg-white w-20 h-20 rounded-xl text-2xl font-bold shadow-sm transition-all border-4 border-transparent">4/8</button>
+                <!-- Desafio -->
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 lg:col-span-2">
+                    <h3 class="text-lg font-bold mb-2">Desafio do dia</h3>
+                    <p class="text-gray-500 text-sm mb-6">Qual é a fração equivalente a 2/4?</p>
+                    <div class="flex gap-4">
+                        <button class="opcao-fracao w-16 h-16 rounded-xl border border-gray-200 text-lg font-bold text-gray-600 hover:border-[#D2691E] hover:bg-orange-50 transition">1/2</button>
+                        <button class="opcao-fracao w-16 h-16 rounded-xl border border-gray-200 text-lg font-bold text-gray-600 hover:border-[#D2691E] hover:bg-orange-50 transition">3/6</button>
+                        <button class="opcao-fracao w-16 h-16 rounded-xl border border-gray-200 text-lg font-bold text-gray-600 hover:border-[#D2691E] hover:bg-orange-50 transition">4/8</button>
                     </div>
-
-                    <button id="btnResponder" class="mt-6 bg-black text-white px-10 py-3 rounded-xl font-semibold shadow hover:bg-neutral-900 transition-all active:scale-95">
-                        Responder
-                    </button>
+                    <button id="btnResponder" class="mt-8 bg-[#D2691E] text-white px-10 py-2.5 rounded-xl font-bold hover:bg-[#B15617] transition shadow-md">Confirmar Resposta</button>
                 </div>
             </div>
-            
-            <section class="bg-[#efb883]/50 border-2 border-dashed border-[#efb883] rounded-3xl h-32 flex items-center justify-center text-stone-600 italic">
-                Espaço para novidades e atualizações futuras
-            </section>
         </div>
     </main>
-
 </div>
 <script src="scripts/script.js"></script>
 </body>
