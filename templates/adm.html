@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRACTA - Painel do Administrador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#FBFBFA] text-[#2C1A11] min-h-screen flex flex-col md:flex-row antialiased">
+
+    <aside class="w-full md:w-64 bg-[#2C1A11] text-white flex flex-col justify-between p-6 flex-shrink-0">
+        <div>
+            <div class="flex items-center gap-3 border-b border-white/10 pb-6 mb-6">
+                <div class="w-8 h-8 bg-[#C56E33] rounded-md flex items-center justify-center font-bold text-white shadow-sm">F</div>
+                <span class="text-lg font-bold tracking-wider">FRACTA ADM</span>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 bg-[#C56E33] text-white rounded-xl font-medium transition shadow-sm">
+                    <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                    <span>Visão Geral</span>
+                </a>
+                <a href="../index.html" class="flex items-center gap-3 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-white rounded-xl font-medium transition">
+                    <i data-lucide="home" class="w-5 h-5"></i>
+                    <span>Ir para o Aplicativo</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="border-t border-white/10 pt-6 mt-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div id="avatarUsuario" class="w-10 h-10 rounded-xl bg-[#C56E33] text-white flex items-center justify-center font-bold text-sm shadow-sm">A</div>
+                <div>
+                    <p id="nomeUsuario" class="text-sm font-bold truncate max-w-[120px]">Administrador</p>
+                    <span class="text-xs text-gray-400 font-medium">Gestor Geral</span>
+                </div>
+            </div>
+            <button class="btnSair text-gray-400 hover:text-red-400 p-2 rounded-lg transition" title="Sair">
+                <i data-lucide="log-out" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+        <header class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-gray-100 pb-6 mb-8">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight text-[#2C1A11]">Painel de Controle</h1>
+                <p class="text-gray-400 text-sm mt-1">Gerencie usuários e acompanhe as métricas do banco de dados em tempo real.</p>
+            </div>
+            <div>
+                <span class="bg-red-50 text-red-700 border border-red-100 text-xs px-3 py-1.5 rounded-full font-bold uppercase tracking-wider">Acesso Restrito</span>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                <div>
+                    <span class="text-xs uppercase font-bold text-gray-400">Total de Alunos</span>
+                    <h2 id="qtdUsuarios" class="text-3xl font-black text-[#2C1A11] mt-1">--</h2>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-[#C56E33]/10 text-[#C56E33] flex items-center justify-center">
+                    <i data-lucide="users" class="w-6 h-6"></i>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                <div>
+                    <span class="text-xs uppercase font-bold text-gray-400">Status do Servidor</span>
+                    <h2 class="text-sm font-bold text-emerald-600 mt-3 flex items-center gap-1.5">
+                        <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full inline-block animate-pulse"></span>
+                        Conectado ao Vercel
+                    </h2>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                    <i data-lucide="server" class="w-6 h-6"></i>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between">
+                <div>
+                    <span class="text-xs uppercase font-bold text-gray-400">Módulos Ativos</span>
+                    <h2 class="text-3xl font-black text-[#2C1A11] mt-1">4 Módulos</h2>
+                </div>
+                <div class="w-12 h-12 rounded-xl bg-[#2C1A11]/5 text-[#2C1A11] flex items-center justify-center">
+                    <i data-lucide="book-open" class="w-6 h-6"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            <div class="p-6 border-b border-gray-50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                    <h3 class="font-bold text-lg text-[#2C1A11]">Usuários Cadastrados</h3>
+                    <p class="text-xs text-gray-400 mt-0.5">Lista atualizada diretamente da API.</p>
+                </div>
+                <button id="btnAtualizarLista" class="flex items-center gap-2 bg-[#2C1A11] hover:bg-[#3d2518] text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition shadow-sm">
+                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                    <span>Atualizar Lista</span>
+                </button>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 border-b border-gray-100 text-gray-400 text-xs font-bold uppercase tracking-wider">
+                            <th class="px-6 py-4">Nome de Usuário</th>
+                            <th class="px-6 py-4">Tipo de Permissão</th>
+                            <th class="px-6 py-4 text-right">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaUsuariosCorpo" class="divide-y divide-gray-50 text-sm text-[#2C1A11]">
+                        <tr>
+                            <td colspan="3" class="px-6 py-12 text-center text-gray-400">
+                                <div class="flex flex-col items-center gap-2">
+                                    <i data-lucide="loader-2" class="w-6 h-6 animate-spin text-[#C56E33]"></i>
+                                    <span>Carregando dados da API...</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>lucide.createIcons();</script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const URL_BACKEND = "https://backend-tcc-tv2u.vercel.app";
+            const tabelaCorpo = document.querySelector("#tabelaUsuariosCorpo");
+            const txtQtd = document.querySelector("#qtdUsuarios");
+            const btnAtualizar = document.querySelector("#btnAtualizarLista");
+
+            async function buscarUsuariosDoBanco() {
+                if (!tabelaCorpo) return;
+                try {
+                    const token = localStorage.getItem("token");
+                    const response = await fetch(`${URL_BACKEND}/usuarios`, {
+                        method: "GET",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": token ? `Bearer ${token}` : ""
+                        }
+                    });
+
+                    if (!response.ok) throw new Error("Erro na requisição.");
+
+                    const usuarios = await response.json();
+                    
+                    if (txtQtd) txtQtd.innerText = usuarios.length;
+                    tabelaCorpo.innerHTML = "";
+
+                    if (usuarios.length === 0) {
+                        tabelaCorpo.innerHTML = `<tr><td colspan="3" class="px-6 py-8 text-center text-gray-400">Nenhum usuário cadastrado.</td></tr>`;
+                        return;
+                    }
+
+                    usuarios.forEach(user => {
+                        const tr = document.createElement("tr");
+                        tr.className = "hover:bg-gray-50/50 transition";
+                        tr.innerHTML = `
+                            <td class="px-6 py-4 font-semibold text-[#2C1A11]">${user.usuario || user.nome || 'Sem nome'}</td>
+                            <td class="px-6 py-4">
+                                <span class="px-2.5 py-1 rounded-lg text-xs font-bold ${
+                                    user.tipo === 'adm' || user.role === 'adm' 
+                                    ? 'bg-purple-50 text-purple-700 border border-purple-100' 
+                                    : 'bg-orange-50 text-[#C56E33] border border-orange-100'
+                                }">
+                                    ${user.tipo === 'adm' || user.role === 'adm' ? 'Administrador' : 'Aluno'}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button class="text-red-500 hover:text-red-700 font-bold text-xs transition" onclick="removerUsuario('${user._id || user.id}')">
+                                    Excluir
+                                </button>
+                            </td>
+                        `;
+                        tabelaCorpo.appendChild(tr);
+                    });
+                } catch (err) {
+                    tabelaCorpo.innerHTML = `
+                        <tr>
+                            <td colspan="3" class="px-6 py-8 text-center text-red-500 font-semibold">
+                                Não foi possível conectar ao banco de dados local ou remoto (/usuarios).
+                            </td>
+                        </tr>`;
+                }
+            }
+
+            buscarUsuariosDoBanco();
+            if (btnAtualizar) btnAtualizar.addEventListener("click", buscarUsuariosDoBanco);
+        });
+
+        async function removerUsuario(id) {
+            if (confirm("Deseja realmente remover este usuário da plataforma Fracta?")) {
+                try {
+                    const response = await fetch(`https://backend-tcc-tv2u.vercel.app/usuarios/${id}`, {
+                        method: "DELETE",
+                        headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
+                    });
+                    if (response.ok) {
+                        alert("Usuário removido!");
+                        window.location.reload();
+                    } else {
+                        alert("Erro ao remover usuário.");
+                    }
+                } catch(e) {
+                    alert("Erro ao conectar com o servidor.");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
