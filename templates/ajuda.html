@@ -1,194 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FRACTA - Ajuda</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRACTA - Ajuda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
+<body class="bg-[#FBFBFA] text-[#2C1A11] min-h-screen antialiased">
 
-<body class="bg-[#F8F5E8] min-h-screen">
-
-<div class="flex min-h-screen">
-
-    <!-- Sidebar -->
-    <aside class="w-64 bg-gradient-to-b from-[#7A2E00] to-[#4A1800] text-white">
-
-        <div class="h-24"></div>
-
-        <nav class="px-4 space-y-2">
- 
-            <a href="../index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
-                 Início
-            </a>
- 
-            <a href="progresso.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
-                 Progresso
-            </a>
-            <a href="conquistas.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
-                 Conquistas
-            </a>
-            <a href="configuracao.html" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
-                 Configuração
-            </a>
- 
-            <a href="ajuda.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#C75B10]">
-                 Ajuda
-            </a>
- 
-            <hr class="border-white/20 my-4">
- 
-            <a href="login.html" class="btnSair flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10">
-                 ↩ Sair
-            </a>
- 
-        </nav>
-
-    </aside>
-
-    <!-- Conteúdo -->
-    <main class="flex-1 p-8">
-
-        <!-- Header -->
-        <div class="flex justify-between items-center mb-8">
-
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-10">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <div class="w-7 h-7 bg-[#C56E33] rounded-md"></div>
+                    <span class="text-lg font-bold tracking-wider text-[#2C1A11]">FRACTA</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-1.5 text-sm font-medium">
+                    <a href="../index.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Início</a>
+                    <a href="progresso.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Progresso</a>
+                    <a href="conquistas.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Conquistas</a>
+                    <a href="configuracao.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Configuração</a>
+                    <a href="ajuda.html" class="px-4 py-2 text-[#C56E33] bg-[#C56E33]/5 rounded-lg transition">Ajuda</a>
+                </nav>
+            </div>
             <div class="flex items-center gap-4">
- 
-                <img
-                    src="../img/image (1).png"
-                    alt="Logo FRACTA"
-                    class="w-14 h-14">
- 
-                <h1 class="text-5xl font-bold tracking-widest text-[#5A2D16]">
-                    FRACTA
-                </h1>
- 
+                <a href="conta.html" class="flex items-center gap-3 group">
+                    <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-[#2C1A11] flex items-center justify-center text-white font-semibold text-sm">U</div>
+                </a>
             </div>
- 
-            <div class="flex items-center gap-6">
- 
-                <button class="text-2xl">
-                    🔔
-                </button>
- 
-                <a href="conta.html"><div id="avatarUsuario" class="w-12 h-12 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold shadow">U</div></a>
- 
-            </div>
+        </div>
+    </header>
 
+    <main class="max-w-3xl mx-auto px-6 py-10 space-y-8">
+        <div>
+            <h1 class="text-3xl font-bold tracking-tight text-[#2C1A11] mb-2">Central de Suporte</h1>
+            <p class="text-gray-500">Esclareça as suas dúvidas frequentes sobre a plataforma.</p>
         </div>
 
-        <!-- Card Superior -->
-        <section class="bg-[#EFE7D8] rounded-2xl p-6 flex justify-between items-center mb-10">
+        <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm space-y-4">
+            <details class="group border-b border-gray-100 pb-4 outline-none">
+                <summary class="cursor-pointer font-semibold text-sm text-[#2C1A11] list-none flex justify-between items-center">
+                    Como posso acompanhar o meu progresso?
+                    <span class="text-gray-400 group-open:rotate-180 transition-transform">↓</span>
+                </summary>
+                <p class="mt-3 text-sm text-gray-500 leading-relaxed">Aceda à aba "Progresso" no menu principal para validar os seus dados analíticos de desempenho.</p>
+            </details>
 
-            <div class="max-w-md">
+            <details class="group pb-2 outline-none">
+                <summary class="cursor-pointer font-semibold text-sm text-[#2C1A11] list-none flex justify-between items-center">
+                    Como melhorar a minha média diária?
+                    <span class="text-gray-400 group-open:rotate-180 transition-transform">↓</span>
+                </summary>
+                <p class="mt-3 text-sm text-gray-500 leading-relaxed">Responda aos desafios diários propostos na página inicial de forma consistente.</p>
+            </details>
+        </div>
 
-                <h2 class="text-3xl font-bold mb-2">
-                    Precisa de
-                    <span class="text-orange-500">
-                        ajuda?
-                    </span>
-                </h2>
-
-                <p class="text-gray-600 mb-6">
-                    Encontre respostas para suas dúvidas e
-                    aproveite ao máximo sua jornada.
-                </p>
-
-                <button class="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-xl shadow-md flex items-center gap-2">
-                    💬 Fale com o suporte
-                </button>
-
+        <div class="bg-[#2C1A11] text-white rounded-2xl p-8 relative overflow-hidden">
+            <h3 class="text-xl font-bold mb-2">Ainda necessita de suporte?</h3>
+            <p class="text-gray-300 text-sm mb-6">A nossa equipa técnica está totalmente disponível.</p>
+            <div class="flex flex-wrap gap-6 text-xs text-gray-300 font-medium">
+                <span>✉ fracta@gmail.com</span>
+                <span>🕒 Seg a Sex, 7h às 16h</span>
             </div>
-
-            <img
-                src="../img/image (1).png"
-                alt="Mascote FRACTA"
-                class="w-72 object-contain">
-
-        </section>
-
-        <!-- FAQ -->
-        <section class="max-w-2xl mx-auto border border-[#8D5A35] rounded-2xl p-6">
-
-            <h2 class="text-2xl font-bold mb-6">
-                Perguntas frequentes
-            </h2>
-
-            <div class="space-y-4">
-
-                <details class="border-b border-gray-400 pb-3">
-                    <summary class="cursor-pointer font-medium">
-                        Como o Fracta funciona?
-                    </summary>
-
-                    <p class="mt-3 text-gray-600">
-                        O Fracta ensina frações através de atividades,
-                        desafios e conquistas gamificadas.
-                    </p>
-                </details>
-
-                <details class="border-b border-gray-400 pb-3">
-                    <summary class="cursor-pointer font-medium">
-                        Como acompanho meu progresso?
-                    </summary>
-
-                    <p class="mt-3 text-gray-600">
-                        Acesse a área de progresso para visualizar
-                        atividades concluídas, média e sequência de estudos.
-                    </p>
-                </details>
-
-                <details class="border-b border-gray-400 pb-3">
-                    <summary class="cursor-pointer font-medium">
-                        Como melhorar minha média?
-                    </summary>
-
-                    <p class="mt-3 text-gray-600">
-                        Complete atividades regularmente e participe
-                        dos desafios diários.
-                    </p>
-                </details>
-
-            </div>
-
-        </section>
-
-        <!-- Contato -->
-        <section class="max-w-xl mx-auto mt-8 bg-[#F2A766] rounded-3xl p-6">
-
-            <h2 class="text-3xl font-bold mb-2">
-                Ainda precisa de ajuda?
-            </h2>
-
-            <p class="mb-6">
-                Nossa equipe está pronta para te ajudar!
-            </p>
-
-            <div class="flex flex-wrap gap-8 text-sm">
-
-                <div class="flex items-center gap-2">
-                    ✉️
-                    <span>fracta@gmail.com</span>
-                </div>
-
-                <div class="flex items-center gap-2">
-                    🕒
-                    <span>Seg a Sex, 7h às 16h</span>
-                </div>
-
-            </div>
-
-        </section>
-
+        </div>
     </main>
 
-</div>
-<script src="../scripts/script.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>

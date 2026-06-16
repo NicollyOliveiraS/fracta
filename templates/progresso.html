@@ -2,47 +2,71 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRACTA - Progresso</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
-<body class="bg-[#f5f0df]">
-<div class="flex min-h-screen">
-    <aside class="w-64 bg-[#3d1300] text-white p-6">
-        <h2 class="text-xl font-bold mb-8">FRACTA</h2>
-        <nav class="space-y-2">
-            <a href="../index.html" class="block p-2 hover:bg-white/10 rounded">Início</a>
-            <a href="progresso.html" class="block p-2 bg-[#d2691e] rounded">Progresso</a>
-            <a href="conquistas.html" class="block p-2 hover:bg-white/10 rounded">Conquistas</a>
-        </nav>
-    </aside>
-    <main class="flex-1 p-10">
-        <h1 class="text-3xl font-bold text-[#2b1b12] mb-8">Seu Desempenho</h1>
-        <div class="grid grid-cols-3 gap-6 mb-10">
-            <div class="bg-white p-6 rounded-xl border border-[#efb883] shadow-sm">
-                <div class="text-sm text-gray-500 uppercase font-bold">Média Geral</div>
-                <div class="text-4xl font-black text-[#d2691e]">8.5</div>
+<body class="bg-[#FBFBFA] text-[#2C1A11] min-h-screen antialiased">
+
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-10">
+                <a href="../index.html" class="flex items-center gap-3 group">
+                    <div class="w-7 h-7 bg-[#C56E33] rounded-md"></div>
+                    <span class="text-lg font-bold tracking-wider text-[#2C1A11]">FRACTA</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-1.5 text-sm font-medium">
+                    <a href="../index.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Início</a>
+                    <a href="progresso.html" class="px-4 py-2 text-[#C56E33] bg-[#C56E33]/5 rounded-lg transition">Progresso</a>
+                    <a href="conquistas.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Conquistas</a>
+                    <a href="configuracao.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Configuração</a>
+                    <a href="ajuda.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+                </nav>
             </div>
-            <div class="bg-white p-6 rounded-xl border border-[#efb883] shadow-sm">
-                <div class="text-sm text-gray-500 uppercase font-bold">Atividades</div>
-                <div class="text-4xl font-black text-[#d2691e]">25/30</div>
-            </div>
-            <div class="bg-white p-6 rounded-xl border border-[#efb883] shadow-sm">
-                <div class="text-sm text-gray-500 uppercase font-bold">Sequência</div>
-                <div class="text-4xl font-black text-[#d2691e]">7 Dias</div>
+            <div class="flex items-center gap-4">
+                <a href="conta.html" class="flex items-center gap-3 group">
+                    <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-[#2C1A11] flex items-center justify-center text-white font-semibold text-sm">U</div>
+                </a>
             </div>
         </div>
-        <!-- Gráfico simplificado mantendo a lógica de SVG do original -->
-        <div class="bg-white p-8 rounded-xl border border-[#efb883]">
-            <h3 class="font-bold mb-6">Atividade Semanal</h3>
-            <div class="h-40 w-full bg-slate-50 relative border-l border-b border-gray-300">
-                <svg class="w-full h-full" viewBox="0 0 500 100">
-                    <polyline fill="none" stroke="#d2691e" stroke-width="3" points="0,80 80,60 160,70 240,30 320,40 400,20 500,10" />
-                </svg>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        <div class="mb-6 text-xs font-semibold uppercase tracking-wider text-gray-400">
+            <span>Área do Aluno</span> • <span class="text-[#C56E33]">Seu Desempenho</span>
+        </div>
+
+        <h1 class="text-3xl font-bold tracking-tight text-[#2C1A11] mb-8">Estatísticas de Estudo</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                <div class="text-xs uppercase font-bold text-gray-400 mb-1">Média Geral</div>
+                <div class="text-4xl font-extrabold text-[#C56E33]">8.5</div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                <div class="text-xs uppercase font-bold text-gray-400 mb-1">Atividades Concluídas</div>
+                <div class="text-4xl font-extrabold text-[#2C1A11]">25/30</div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                <div class="text-xs uppercase font-bold text-gray-400 mb-1">Sequência Ativa</div>
+                <div class="text-4xl font-extrabold text-amber-600">7 Dias 🔥</div>
+            </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm">
+            <h3 class="font-bold text-[#2C1A11] mb-6">Atividade Semanal</h3>
+            <div class="h-48 w-full bg-[#FBFBFA] rounded-xl relative border-l border-b border-gray-100 flex items-end p-4 gap-4 justify-around">
+                <div class="w-12 bg-gray-200 rounded-t-lg h-[40%] hover:bg-[#C56E33] transition-all"></div>
+                <div class="w-12 bg-[#C56E33] rounded-t-lg h-[85%]"></div>
+                <div class="w-12 bg-gray-200 rounded-t-lg h-[60%] hover:bg-[#C56E33] transition-all"></div>
+                <div class="w-12 bg-gray-200 rounded-t-lg h-[30%] hover:bg-[#C56E33] transition-all"></div>
+                <div class="w-12 bg-gray-200 rounded-t-lg h-[70%] hover:bg-[#C56E33] transition-all"></div>
             </div>
         </div>
     </main>
-</div>
+
+    <script src="../scripts/script.js"></script>
 </body>
 </html>

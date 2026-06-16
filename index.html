@@ -6,82 +6,196 @@
     <title>FRACTA Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Inter', sans-serif; }</style>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Remove a barra de rolagem visual do carrossel */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
 </head>
-<body class="bg-[#FAF9F6] text-[#2B1B12] min-h-screen">
-<div class="flex h-screen overflow-hidden">
-    <!-- Sidebar estruturada -->
-    <aside class="w-64 bg-[#3D1300] text-white flex flex-col shadow-xl">
-        <div class="p-8 flex items-center gap-3">
-            <div class="w-8 h-8 bg-[#D2691E] rounded-md"></div>
-            <span class="text-xl font-bold tracking-tight">FRACTA</span>
-        </div>
-        <nav class="flex-1 px-4 space-y-1">
-            <a href="index.html" class="flex items-center gap-3 bg-[#D2691E] px-4 py-3 rounded-lg font-medium transition">Início</a>
-            <a href="templates/progresso.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition text-gray-300 hover:text-white">Progresso</a>
-            <a href="templates/conquistas.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition text-gray-300 hover:text-white">Conquistas</a>
-            <a href="templates/configuracao.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition text-gray-300 hover:text-white">Configuração</a>
-            <a href="templates/ajuda.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-white/5 transition text-gray-300 hover:text-white">Ajuda</a>
-        </nav>
-        <div class="p-6 border-t border-white/10">
-            <a href="templates/login.html" class="btnSair flex items-center gap-3 px-4 py-2 text-gray-400 hover:text-red-400 transition text-sm">Sair da conta</a>
-        </div>
-    </aside>
+<body class="bg-[#FBFBFA] text-[#2C1A11] min-h-screen antialiased">
 
-    <main class="flex-1 overflow-y-auto">
-        <header class="flex items-center justify-between px-10 py-5 bg-white border-b border-gray-200 sticky top-0 z-10">
-            <span class="font-medium text-gray-500">Dashboard de Aprendizado</span>
-            <div class="flex items-center gap-6">
-                <button class="text-gray-400 hover:text-gray-600">🔔</button>
-                <a href="templates/conta.html" class="flex items-center gap-3 border-l pl-6">
-                    <div id="avatarUsuario" class="w-9 h-9 rounded-full bg-[#D2691E] flex items-center justify-center text-white font-bold text-sm">U</div>
-                    <span id="nomeUsuarioHeader" class="text-sm font-semibold text-gray-700">Usuário</span>
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <div class="flex items-center gap-10">
+                <a href="index.html" class="flex items-center gap-3 group">
+                    <div class="w-7 h-7 bg-[#C56E33] rounded-md transition-transform group-hover:scale-105"></div>
+                    <span class="text-lg font-bold tracking-wider text-[#2C1A11]">FRACTA</span>
                 </a>
-            </div>
-        </header>
 
-        <div class="p-10 max-w-6xl mx-auto space-y-8">
-            <!-- Hero Section mais sóbria -->
-            <section class="bg-white border border-gray-200 rounded-2xl p-10 flex justify-between items-center shadow-sm">
-                <div class="max-w-lg">
-                    <h2 class="text-3xl font-bold text-[#2B1B12] mb-3">Bem-vindo, <span id="nomeUsuario" class="text-[#D2691E]">Usuário</span>!</h2>
-                    <p class="text-gray-500 leading-relaxed mb-6">Seu progresso na trilha de frações está em 75%. Continue de onde parou para manter sua sequência diária.</p>
-                    <a href="templates/atividade.html" class="inline-flex items-center px-6 py-3 bg-[#3D1300] hover:bg-[#5D1D00] text-white font-semibold rounded-xl transition shadow-sm">Continuar Atividade</a>
+                <nav class="hidden md:flex items-center gap-1.5 text-sm font-medium">
+                    <a href="index.html" class="px-4 py-2 text-[#C56E33] bg-[#C56E33]/5 rounded-lg transition">Início</a>
+                    <a href="templates/progresso.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Progresso</a>
+                    <a href="templates/conquistas.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Conquistas</a>
+                    <a href="templates/configuracao.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Configuração</a>
+                    <a href="templates/ajuda.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+                </nav>
+            </div>
+
+            <div class="flex items-center gap-5">
+                <button class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-[#2C1A11] hover:bg-gray-50 rounded-xl transition relative">
+                    <span>🔔</span>
+                    <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-[#C56E33] rounded-full"></span>
+                </button>
+                
+                <div class="h-6 w-[1px] bg-gray-200"></div>
+
+                <div class="flex items-center gap-4">
+                    <a href="templates/conta.html" class="flex items-center gap-3 group">
+                        <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-[#2C1A11] flex items-center justify-center text-white font-semibold text-sm transition-transform group-hover:scale-105">
+                            U
+                        </div>
+                        <div class="hidden sm:block text-left">
+                            <p id="nomeUsuarioHeader" class="text-sm font-semibold text-gray-800 leading-none mb-0.5">Usuário</p>
+                            <p class="text-xs text-gray-400 leading-none">Estudante</p>
+                        </div>
+                    </a>
+                    
+                   <a href="templates/login.html"> <button class="btnSair ml-2 p-2 text-gray-400 hover:text-red-500 rounded-lg hover:bg-red-50/50 transition" title="Sair da conta">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                        </svg>
+                    </button></a>
                 </div>
-                <img src="img/image (1).png" class="w-32 h-32 object-contain opacity-80" alt="Logo">
-            </section>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        
+        <div class="mb-6 flex items-center justify-between">
+            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
+                <span>Área do Aluno</span>
+                <span>•</span>
+                <span class="text-[#C56E33]">Dashboard de Aprendizado</span>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <button id="prevSlide" class="w-8 h-8 rounded-lg border border-gray-200 bg-white flex items-center justify-center text-sm font-bold hover:border-[#C56E33] hover:text-[#C56E33] transition shadow-sm">←</button>
+                <button id="nextSlide" class="w-8 h-8 rounded-lg border border-gray-200 bg-white flex items-center justify-center text-sm font-bold hover:border-[#C56E33] hover:text-[#C56E33] transition shadow-sm">→</button>
+            </div>
+        </div>
+
+        <div class="space-y-8">
+            
+            <div class="relative overflow-hidden rounded-2xl">
+                <div id="carouselContainer" class="flex p-0.5 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar gap-6">
+                    
+                    <section class="min-w-full snap-start bg-white border border-gray-100 rounded-2xl p-8 lg:p-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#C56E33]/5 to-transparent rounded-full pointer-events-none"></div>
+                        <div class="max-w-xl z-10">
+                            <span class="inline-block bg-[#C56E33]/10 text-[#C56E33] text-xs font-bold px-2.5 py-1 rounded-md mb-4">Trilha Ativa</span>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-[#2C1A11] tracking-tight mb-3">
+                                Bem-vindo de volta, <span id="nomeUsuario" class="text-[#C56E33]">Usuário</span>!
+                            </h2>
+                            <p class="text-gray-500 text-sm lg:text-base leading-relaxed mb-6">
+                                Seu progresso na trilha de frações está em <strong class="text-[#2C1A11] font-semibold">75%</strong>. Continue de onde parou para manter sua sequência diária ativa.
+                            </p>
+                            <a href="templates/atividade.html" class="inline-flex items-center px-5 py-3 bg-[#2C1A11] hover:bg-[#45291B] text-white text-sm font-medium rounded-xl transition shadow-sm hover:shadow-md">
+                                Continuar Atividade
+                            </a>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100 z-10 hidden md:block">
+                            <img src="img/image (1).png" class="w-24 h-24 object-contain mix-blend-multiply" alt="Logo">
+                        </div>
+                    </section>
+
+                    <section class="min-w-full snap-start bg-white border border-gray-100 rounded-2xl p-8 lg:p-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-amber-500/5 to-transparent rounded-full pointer-events-none"></div>
+                        <div class="max-w-xl z-10">
+                            <span class="inline-block bg-amber-500/10 text-amber-700 text-xs font-bold px-2.5 py-1 rounded-md mb-4">Novo Evento</span>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-[#2C1A11] tracking-tight mb-3">
+                                Desafio Fracta da Semana!
+                            </h2>
+                            <p class="text-gray-500 text-sm lg:text-base leading-relaxed mb-6">
+                                Teste suas habilidades matemáticas competindo com outros alunos do ranking. Responda problemas complexos e fature <strong class="text-[#2C1A11] font-semibold">+250 pontos</strong> de experiência.
+                            </p>
+                            <a href="templates/conquistas.html" class="inline-flex items-center px-5 py-3 bg-amber-600 hover:bg-amber-700 text-white text-sm font-medium rounded-xl transition shadow-sm hover:shadow-md">
+                                Ver Ranking Geral
+                            </a>
+                        </div>
+                        <div class="bg-amber-50/50 p-4 rounded-2xl border border-amber-100/50 z-10 hidden md:block text-4xl">
+                            🏆
+                        </div>
+                    </section>
+
+                    <section class="min-w-full snap-start bg-white border border-gray-100 rounded-2xl p-8 lg:p-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-500/5 to-transparent rounded-full pointer-events-none"></div>
+                        <div class="max-w-xl z-10">
+                            <span class="inline-block bg-blue-50/70 text-blue-600 text-xs font-bold px-2.5 py-1 rounded-md mb-4">Dica de Estudo</span>
+                            <h2 class="text-2xl lg:text-3xl font-bold text-[#2C1A11] tracking-tight mb-3">
+                                Simplificação sem mistérios
+                            </h2>
+                            <p class="text-gray-500 text-sm lg:text-base leading-relaxed mb-6">
+                                Sabia que encontrar o Máximo Divisor Comum (MDC) reduz qualquer fração ao seu menor termo possível? Acesse nossa central de ajuda e guias rápidos.
+                            </p>
+                            <a href="templates/ajuda.html" class="inline-flex items-center px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-xl transition shadow-sm hover:shadow-md">
+                                Explorar Tutoriais
+                            </a>
+                        </div>
+                        <div class="bg-blue-50/50 p-4 rounded-2xl border border-blue-100/50 z-10 hidden md:block text-4xl">
+                            💡
+                        </div>
+                    </section>
+
+                </div>
+
+                <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-1.5 z-20">
+                    <button class="indicator-dot w-2 h-2 rounded-full bg-[#C56E33] transition-all duration-300" data-slide="0"></button>
+                    <button class="indicator-dot w-2 h-2 rounded-full bg-gray-200 transition-all duration-300" data-slide="1"></button>
+                    <button class="indicator-dot w-2 h-2 rounded-full bg-gray-200 transition-all duration-300" data-slide="2"></button>
+                </div>
+            </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Atividades -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6">
-                    <h3 class="text-lg font-bold mb-5 flex items-center gap-2">Módulos de Estudo</h3>
+                
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+                    <div class="flex items-center justify-between mb-5">
+                        <h3 class="text-base font-bold text-[#2C1A11]">Módulos de Estudo</h3>
+                        <span class="text-xs font-medium text-gray-400 bg-gray-50 px-2.5 py-1 rounded-md">1/2 Concluídos</span>
+                    </div>
+                    
                     <div class="space-y-3">
-                        <a href="templates/atividade.html" class="flex items-center justify-between p-4 bg-[#FAF9F6] border border-gray-100 rounded-xl hover:border-[#D2691E] transition group">
-                            <span class="font-medium text-gray-700">Atividade Diagnóstica</span>
-                            <span class="text-[#D2691E]">→</span>
+                        <a href="templates/atividade.html" class="flex items-center justify-between p-4 bg-[#FBFBFA] border border-gray-100 rounded-xl hover:border-[#C56E33] hover:bg-white transition group">
+                            <span class="text-sm font-medium text-gray-700 group-hover:text-[#C56E33] transition">Atividade Diagnóstica</span>
+                            <span class="text-[#C56E33] font-bold transform group-hover:translate-x-1 transition-transform">→</span>
                         </a>
-                        <div class="flex items-center justify-between p-4 bg-gray-50 border border-gray-100 rounded-xl opacity-60">
-                            <span class="font-medium text-gray-400">Soma de Frações</span>
-                            <span>🔒</span>
+                        <div class="flex items-center justify-between p-4 bg-gray-50/50 border border-gray-100 rounded-xl opacity-60 cursor-not-allowed">
+                            <span class="text-sm font-medium text-gray-400">Soma de Frações</span>
+                            <span class="text-xs">🔒</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Desafio -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-6 lg:col-span-2">
-                    <h3 class="text-lg font-bold mb-2">Desafio do dia</h3>
-                    <p class="text-gray-500 text-sm mb-6">Qual é a fração equivalente a 2/4?</p>
-                    <div class="flex gap-4">
-                        <button class="opcao-fracao w-16 h-16 rounded-xl border border-gray-200 text-lg font-bold text-gray-600 hover:border-[#D2691E] hover:bg-orange-50 transition">1/2</button>
-                        <button class="opcao-fracao w-16 h-16 rounded-xl border border-gray-200 text-lg font-bold text-gray-600 hover:border-[#D2691E] hover:bg-orange-50 transition">3/6</button>
-                        <button class="opcao-fracao w-16 h-16 rounded-xl border border-gray-200 text-lg font-bold text-gray-600 hover:border-[#D2691E] hover:bg-orange-50 transition">4/8</button>
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 lg:col-span-2 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                            <h3 class="text-base font-bold text-[#2C1A11]">Desafio do dia</h3>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6">Qual é a fração equivalente a <code class="bg-gray-100 px-1.5 py-0.5 rounded text-[#2C1A11] font-mono">2/4</code>?</p>
+                        
+                        <div class="flex flex-wrap gap-3">
+                            <button class="opcao-fracao min-w-[70px] h-14 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:border-[#C56E33] hover:text-[#C56E33] hover:bg-[#C56E33]/5 transition">1/2</button>
+                            <button class="opcao-fracao min-w-[70px] h-14 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:border-[#C56E33] hover:text-[#C56E33] hover:bg-[#C56E33]/5 transition">3/6</button>
+                            <button class="opcao-fracao min-w-[70px] h-14 rounded-xl border border-gray-200 text-sm font-semibold text-gray-600 hover:border-[#C56E33] hover:text-[#C56E33] hover:bg-[#C56E33]/5 transition">4/8</button>
+                        </div>
                     </div>
-                    <button id="btnResponder" class="mt-8 bg-[#D2691E] text-white px-10 py-2.5 rounded-xl font-bold hover:bg-[#B15617] transition shadow-md">Confirmar Resposta</button>
+                    
+                    <div class="mt-8 pt-4 border-t border-gray-50 flex justify-end">
+                        <button id="btnResponder" class="bg-[#C56E33] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#A95A26] transition shadow-sm hover:shadow-md">
+                            Confirmar Resposta
+                        </button>
+                    </div>
                 </div>
+
             </div>
         </div>
     </main>
-</div>
-<script src="scripts/script.js"></script>
+
+    <script src="scripts/script.js"></script>
+    <script src="scripts/carousel.js"></script>
 </body>
 </html>

@@ -1,160 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FRACTA - Perfil do Aluno</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRACTA - Perfil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
 </head>
-<body class="min-h-screen bg-gradient-to-b from-[#F8F5E9] via-[#F8F5E9] to-[#FFB485]">
+<body class="bg-[#FBFBFA] text-[#2C1A11] min-h-screen antialiased">
 
-<!-- Header -->
-<header class="flex justify-between items-center px-14 py-4">
+    <header class="bg-white border-b border-gray-100 h-20 flex items-center justify-between px-6">
+        <div class="flex items-center gap-3">
+            <div class="w-7 h-7 bg-[#C56E33] rounded-md"></div>
+            <span class="text-lg font-bold tracking-wider text-[#2C1A11]">FRACTA</span>
+        </div>
+        <a href="../index.html" class="px-4 py-2 border border-gray-200 text-sm font-medium rounded-xl hover:border-[#2C1A11] transition">Voltar ao Dashboard</a>
+    </header>
 
-    <div class="flex items-center gap-4">
-
-        <img
-            src="../img/image (1).png"
-            alt="Logo FRACTA"
-            class="w-14 h-14 object-contain">
-
-        <h1 class="text-5xl font-bold tracking-widest text-[#5A2D16]">
-            FRACTA
-        </h1>
-
-    </div>
-
-    <a href="../index.html" class="bg-[#B65111] text-white px-5 py-3 rounded-xl shadow-md hover:bg-[#9c440a] transition">
-    Voltar ao início
-    </a>
-
-</header>
-
-<!-- Conteúdo -->
-<main class="max-w-6xl mx-auto px-6 py-8">
-
-    <!-- Perfil -->
-    <section class="bg-[#F3BB84] rounded-3xl p-8 flex items-center gap-10 shadow-sm">
-
-        <!-- Avatar -->
-        <div id="avatarUsuario" class="w-28 h-28 rounded-full bg-[#F0A35E] flex items-center justify-center text-white text-5xl font-bold">
-            U
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm flex flex-col items-center text-center mb-8">
+            <div class="w-24 h-24 rounded-2xl bg-[#2C1A11] text-white flex items-center justify-center text-3xl font-bold mb-4" id="avatarUsuario">U</div>
+            <h2 class="text-2xl font-bold text-[#2C1A11]" id="nomeUsuario">Nome do Usuário</h2>
+            <p class="text-xs text-gray-400 mt-1 uppercase font-semibold tracking-wider">Estudante Oficial</p>
         </div>
 
-        <!-- Dados -->
-        <div>
-
-            <h2 class="font-semibold text-lg">
-                Perfil do Aluno:
-            </h2>
-
-            <p class="text-lg">
-                Nome: <span id="nomeUsuarioConta" class="font-bold">Aluno</span>
-            </p>
-
-            <div class="flex gap-10 mt-2 text-lg">
-
-                <span>
-                    Sala: 7ºB
-                </span>
-
-                <span>
-                    Média:
-                    <span class="text-green-600 font-bold">
-                        8
-                    </span>
-                </span>
-
-            </div>
-
+        <h3 class="font-bold text-sm text-[#2C1A11] mb-4">Galeria de Troféus Adquiridos</h3>
+        <div class="grid grid-cols-3 gap-4">
+            <div class="bg-gray-50 border border-gray-100 rounded-xl h-32 flex items-center justify-center text-3xl opacity-50">🔒</div>
+            <div class="bg-gray-50 border border-gray-100 rounded-xl h-32 flex items-center justify-center text-3xl opacity-50">🔒</div>
+            <div class="bg-gray-50 border border-gray-100 rounded-xl h-32 flex items-center justify-center text-3xl opacity-50">🔒</div>
         </div>
+    </main>
 
-    </section>
-
-    <!-- Conquistas -->
-    <section class="mt-10 bg-[#EBD4BC] rounded-[30px] p-8">
-
-        <h2 class="text-4xl mb-8">
-            Conquistas principais:
-        </h2>
-
-        <div class="grid grid-cols-4 gap-8">
-
-            <!-- Conquista 1 -->
-            <div class="bg-[#E6B78F] rounded-xl p-3 flex flex-col items-center">
-
-                <img
-                    src="../img/medalha1.svg"
-                    alt="Conquista"
-                    class="w-28 h-28 object-contain">
-
-                <p class="text-xs text-center mt-2">
-                    Completou a primeira atividade
-                </p>
-
-            </div>
-
-            <!-- Conquista 2 -->
-            <div class="bg-[#E6B78F] rounded-xl p-3 flex flex-col items-center">
-
-                <img
-                    src="../img/medalha2.svg"
-                    alt="Conquista"
-                    class="w-28 h-28 object-contain">
-
-                <p class="text-xs text-center mt-2">
-                    Identificou numerador e denominador
-                </p>
-
-            </div>
-
-            <!-- Bloqueada -->
-            <div class="bg-[#E2B693] rounded-xl h-44 flex items-center justify-center">
-
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-10 h-10 text-[#c08d61]"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     stroke="currentColor">
-
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="1.5"
-                          d="M16.5 10.5V7.875a4.5 4.5 0 10-9 0V10.5m-1.5 0h12a1.5 1.5 0 011.5 1.5v7.5A1.5 1.5 0 0118 21H6a1.5 1.5 0 01-1.5-1.5V12A1.5 1.5 0 016 10.5z"/>
-
-                </svg>
-
-            </div>
-
-            <!-- Bloqueada -->
-            <div class="bg-[#E2B693] rounded-xl h-44 flex items-center justify-center">
-
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     class="w-10 h-10 text-[#c08d61]"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     stroke="currentColor">
-
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="1.5"
-                          d="M16.5 10.5V7.875a4.5 4.5 0 10-9 0V10.5m-1.5 0h12a1.5 1.5 0 011.5 1.5v7.5A1.5 1.5 0 0118 21H6a1.5 1.5 0 01-1.5-1.5V12A1.5 1.5 0 016 10.5z"/>
-
-                </svg>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</main>
-<script src="../scripts/script.js"></script>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>
