@@ -3,14 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FRACTA Dashboard</title>
+    <meta name="description" content="FRACTA - Plataforma interativa de aprendizado de frações. Aprenda matemática de forma divertida e gamificada.">
+    <title>FRACTA - Dashboard de Aprendizado</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
         /* Remove a barra de rolagem visual do carrossel */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animações de entrada */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.5s ease-out both; }
+        .animate-fade-in { animation: fadeIn 0.4s ease-out both; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
     </style>
 </head>
 <body class="bg-[#FBFBFA] text-[#2C1A11] min-h-screen antialiased">
@@ -32,6 +54,13 @@
                     <a href="templates/ajuda.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
                 </nav>
             </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobileMenuBtnIndex" class="md:hidden p-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition mr-2">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                </svg>
+            </button>
 
             <div class="flex items-center gap-5">
                 <button class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-[#2C1A11] hover:bg-gray-50 rounded-xl transition relative">
@@ -61,18 +90,25 @@
             </div>
 
         </div>
+
+        <!-- Mobile nav -->
+        <nav id="mobileMenuIndex" class="hidden md:hidden border-t border-gray-100 bg-white px-6 py-4 space-y-1">
+            <a href="index.html" class="block px-4 py-2.5 text-sm font-medium text-[#C56E33] bg-[#C56E33]/5 rounded-lg">Início</a>
+            <a href="templates/progresso.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Progresso</a>
+            <a href="templates/conquistas.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Conquistas</a>
+            <a href="templates/configuracao.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Configuração</a>
+            <a href="templates/ajuda.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+        </nav>
     </header>
 
     <main class="max-w-7xl mx-auto px-6 py-10">
         
-        <div class="mb-6 flex items-center justify-between">
+        <div class="mb-6 flex items-center justify-between animate-fade-in">
             <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
                 <span>Área do Aluno</span>
                 <span>•</span>
                 <span class="text-[#C56E33]">Dashboard de Aprendizado</span>
             </div>
-            
-           
         </div>
 
         <div class="space-y-8">
@@ -192,7 +228,32 @@
         </div>
     </main>
 
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 bg-white mt-12">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="img/image__1_-removebg-preview.png" alt="Logo Fracta" class="w-16 h-auto object-contain mix-blend-multiply opacity-60">
+                <span class="text-xs text-gray-400">© 2025 FRACTA. Todos os direitos reservados.</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-gray-400">
+                <a href="templates/ajuda.html" class="hover:text-[#C56E33] transition">Suporte</a>
+                <span>•</span>
+                <a href="templates/configuracao.html" class="hover:text-[#C56E33] transition">Configurações</a>
+            </div>
+        </div>
+    </footer>
+
     <script src="scripts/script.js"></script>
     <script src="scripts/carousel.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtnIndex = document.querySelector('#mobileMenuBtnIndex');
+        const mobileMenuIndex = document.querySelector('#mobileMenuIndex');
+        if (mobileMenuBtnIndex && mobileMenuIndex) {
+            mobileMenuBtnIndex.addEventListener('click', () => {
+                mobileMenuIndex.classList.toggle('hidden');
+            });
+        }
+    </script>
 </body>
 </html>

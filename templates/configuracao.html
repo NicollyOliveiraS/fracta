@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FRACTA - Configure suas preferências de aprendizado e privacidade.">
     <title>FRACTA - Configurações</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Inter', sans-serif; }</style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.5s ease-out both; }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+    </style>
 </head>
 <body class="bg-[#FBFBFA] text-[#2C1A11] min-h-screen antialiased">
 
@@ -14,8 +24,7 @@
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-10">
                 <a href="../index.html" class="flex items-center gap-3 group">
-                    <div class="w-7 h-7 bg-[#C56E33] rounded-md"></div>
-                    <span class="text-lg font-bold tracking-wider text-[#2C1A11]">FRACTA</span>
+                    <img src="../img/image__1_-removebg-preview.png" alt="Logo Fracta" class="w-24 h-auto object-contain mix-blend-multiply">
                 </a>
                 <nav class="hidden md:flex items-center gap-1.5 text-sm font-medium">
                     <a href="../index.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Início</a>
@@ -25,19 +34,40 @@
                     <a href="ajuda.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
                 </nav>
             </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                </svg>
+            </button>
+
             <div class="flex items-center gap-4">
                 <a href="conta.html" class="flex items-center gap-3 group">
                     <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-[#2C1A11] flex items-center justify-center text-white font-semibold text-sm">U</div>
                 </a>
             </div>
         </div>
+
+        <!-- Mobile nav -->
+        <nav id="mobileMenu" class="hidden md:hidden border-t border-gray-100 bg-white px-6 py-4 space-y-1">
+            <a href="../index.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Início</a>
+            <a href="progresso.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Progresso</a>
+            <a href="conquistas.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Conquistas</a>
+            <a href="configuracao.html" class="block px-4 py-2.5 text-sm font-medium text-[#C56E33] bg-[#C56E33]/5 rounded-lg">Configuração</a>
+            <a href="ajuda.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+        </nav>
     </header>
 
     <main class="max-w-3xl mx-auto px-6 py-10">
-        <h1 class="text-3xl font-bold tracking-tight text-[#2C1A11] mb-8">Configurações do Sistema</h1>
+        <div class="mb-6 text-xs font-semibold uppercase tracking-wider text-gray-400 animate-fade-in-up">
+            <span>Área do Aluno</span> • <span class="text-[#C56E33]">Configurações</span>
+        </div>
+
+        <h1 class="text-3xl font-bold tracking-tight text-[#2C1A11] mb-8 animate-fade-in-up">Configurações do Sistema</h1>
 
         <div class="space-y-4">
-            <button class="w-full bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-5 hover:border-[#C56E33] hover:shadow-sm transition text-left">
+            <button class="w-full bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-5 hover:border-[#C56E33] hover:shadow-md transition-all duration-300 text-left animate-fade-in-up delay-100">
                 <div class="w-12 h-12 rounded-xl bg-[#C56E33]/10 flex items-center justify-center text-xl">🔒</div>
                 <div>
                     <h2 class="font-bold text-[#2C1A11]">Privacidade e Segurança</h2>
@@ -45,7 +75,7 @@
                 </div>
             </button>
 
-            <button class="w-full bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-5 hover:border-[#C56E33] hover:shadow-sm transition text-left">
+            <button class="w-full bg-white border border-gray-100 rounded-2xl p-5 flex items-center gap-5 hover:border-[#C56E33] hover:shadow-md transition-all duration-300 text-left animate-fade-in-up delay-200">
                 <div class="w-12 h-12 rounded-xl bg-[#2C1A11]/5 flex items-center justify-center text-xl">ℹ</div>
                 <div>
                     <h2 class="font-bold text-[#2C1A11]">Sobre o FRACTA</h2>
@@ -55,6 +85,28 @@
         </div>
     </main>
 
+    <!-- Footer -->
+    <footer class="border-t border-gray-100 bg-white mt-12">
+        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-5 h-5 bg-[#C56E33] rounded-md opacity-60"></div>
+                <span class="text-xs text-gray-400">© 2025 FRACTA. Todos os direitos reservados.</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-gray-400">
+                <a href="ajuda.html" class="hover:text-[#C56E33] transition">Suporte</a>
+                <span>•</span>
+                <a href="configuracao.html" class="hover:text-[#C56E33] transition">Configurações</a>
+            </div>
+        </div>
+    </footer>
+
     <script src="../scripts/script.js"></script>
+    <script>
+        const mobileMenuBtn = document.querySelector('#mobileMenuBtn');
+        const mobileMenu = document.querySelector('#mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        }
+    </script>
 </body>
 </html>
