@@ -98,68 +98,68 @@
         }
     </style>
 </head>
-<body class="bg-[#FBFBFA] text-[#2C1A11] min-h-screen antialiased">
+<body class="bg-gray-100 text-gray-800 min-h-screen antialiased" flex flex-col>
 
     <!-- Header padrão do site -->
-    <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
+    
+    
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-10">
                 <a href="../index.html" class="flex items-center gap-3 group">
                     <img src="../img/image__1_-removebg-preview.png" alt="Logo Fracta" class="w-24 h-auto object-contain mix-blend-multiply">
                 </a>
+
                 <nav class="hidden md:flex items-center gap-1.5 text-sm font-medium">
-                    <a href="../index.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Início</a>
-                    <a href="progresso.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Progresso</a>
-                    <a href="conquistas.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Conquistas</a>
-                    <a href="configuracao.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Configuração</a>
-                    <a href="ajuda.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+                    <a href="../index.html" class="px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Início</a>
+                    <a href="progresso.html" class="px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Progresso</a>
+                    <a href="conquistas.html" class="px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Conquistas</a>
+                    <a href="configuracao.html" class="px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Configuração</a>
+                    <a href="ajuda.html" class="px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Ajuda</a>
                 </nav>
             </div>
 
-            <div class="flex items-center gap-5">
-                <!-- Badge Admin -->
-                <span class="hidden sm:inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 border border-purple-100 text-xs px-3 py-1.5 rounded-full font-bold uppercase tracking-wider">
-                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                    Admin
-                </span>
-
-                <div class="h-6 w-[1px] bg-gray-200 hidden sm:block"></div>
+            <div class="flex items-center gap-3 sm:gap-5">
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                    </svg>
+                </button>
+                
+                <div class="hidden sm:block h-6 w-[1px] bg-gray-200"></div>
 
                 <div class="flex items-center gap-4">
                     <a href="conta.html" class="flex items-center gap-3 group">
-                        <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-[#2C1A11] flex items-center justify-center text-white font-semibold text-sm transition-transform group-hover:scale-105">A</div>
+                        <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center text-white font-semibold text-sm transition-transform group-hover:scale-105">U</div>
                         <div class="hidden sm:block text-left">
-                            <p id="nomeUsuarioHeader" class="text-sm font-semibold text-gray-800 leading-none mb-0.5">Administrador</p>
-                            <p class="text-xs text-gray-400 leading-none">Gestor Geral</p>
+                            <p id="nomeUsuarioHeader" class="text-sm font-semibold text-gray-800 leading-none mb-0.5 truncate max-w-[100px]">Usuário</p>
+                            <p class="text-xs text-gray-400 leading-none">Estudante</p>
                         </div>
                     </a>
                     <a href="login.html">
-                        <button class="btnSair ml-2 p-2 text-gray-400 hover:text-red-500 rounded-lg hover:bg-red-50/50 transition" title="Sair da conta">
+                        <button class="btnSair ml-2 p-2 text-gray-400 hover:text-red-500 rounded-lg hover:bg-red-50/50 transition hidden sm:block" title="Sair da conta">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
                             </svg>
                         </button>
                     </a>
                 </div>
-
-                <!-- Mobile menu button -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">
-                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-                    </svg>
-                </button>
             </div>
         </div>
 
         <!-- Mobile nav -->
-        <nav id="mobileMenu" class="hidden md:hidden border-t border-gray-100 bg-white px-6 py-4 space-y-1">
-            <a href="../index.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Início</a>
-            <a href="progresso.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Progresso</a>
-            <a href="conquistas.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Conquistas</a>
-            <a href="configuracao.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Configuração</a>
-            <a href="ajuda.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+        <nav id="mobileMenu" class="hidden md:hidden border-t border-gray-200 bg-white px-6 py-4 space-y-1">
+            <a href="../index.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Início</a>
+            <a href="progresso.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Progresso</a>
+            <a href="conquistas.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Conquistas</a>
+            <a href="configuracao.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Configuração</a>
+            <a href="ajuda.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+            <hr class="my-2 border-gray-100">
+            <a href="login.html" class="block px-4 py-2.5 text-sm font-medium text-red-500 hover:bg-red-50 rounded-lg transition">Sair</a>
         </nav>
     </header>
+
+
 
     <main class="max-w-7xl mx-auto px-6 py-10">
 
@@ -171,22 +171,22 @@
                 <span class="text-[#C56E33]">Visão Geral</span>
             </div>
             <span class="bg-red-50 text-red-700 border border-red-100 text-xs px-3 py-1.5 rounded-full font-bold uppercase tracking-wider animate-pulse-glow">
-                🔒 Acesso Restrito
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline text-gray-400"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg> Acesso Restrito
             </span>
         </div>
 
         <!-- Título -->
         <div class="mb-8 animate-fade-in-up">
-            <h1 class="text-3xl font-bold tracking-tight text-[#2C1A11]">Painel de Controle</h1>
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Painel de Controle</h1>
             <p class="text-gray-400 text-sm mt-1">Gerencie usuários e acompanhe as métricas do banco de dados em tempo real.</p>
         </div>
 
         <!-- Cards de métricas -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between hover:shadow-md hover:border-[#C56E33]/20 transition-all duration-300 animate-fade-in-up delay-100">
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between hover:shadow-md hover:border-[#C56E33]/20 transition-all duration-300 animate-fade-in-up delay-100">
                 <div>
                     <span class="text-xs uppercase font-bold text-gray-400 tracking-wider">Total de Alunos</span>
-                    <h2 id="qtdUsuarios" class="text-3xl font-extrabold text-[#2C1A11] mt-1">--</h2>
+                    <h2 id="qtdUsuarios" class="text-3xl font-extrabold text-gray-900 mt-1">--</h2>
                     <span class="text-xs text-emerald-600 font-medium mt-1 inline-block">Registrados na plataforma</span>
                 </div>
                 <div class="w-12 h-12 rounded-xl bg-[#C56E33]/10 text-[#C56E33] flex items-center justify-center flex-shrink-0">
@@ -194,7 +194,7 @@
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between hover:shadow-md hover:border-emerald-100 transition-all duration-300 animate-fade-in-up delay-200">
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between hover:shadow-md hover:border-emerald-100 transition-all duration-300 animate-fade-in-up delay-200">
                 <div>
                     <span class="text-xs uppercase font-bold text-gray-400 tracking-wider">Status do Servidor</span>
                     <h2 id="statusServidor" class="text-sm font-bold text-emerald-600 mt-3 flex items-center gap-1.5">
@@ -208,25 +208,25 @@
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex items-center justify-between hover:shadow-md hover:border-[#2C1A11]/10 transition-all duration-300 animate-fade-in-up delay-300">
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex items-center justify-between hover:shadow-md hover:border-[#2C1A11]/10 transition-all duration-300 animate-fade-in-up delay-300">
                 <div>
                     <span class="text-xs uppercase font-bold text-gray-400 tracking-wider">Módulos Ativos</span>
-                    <h2 class="text-3xl font-extrabold text-[#2C1A11] mt-1">4</h2>
+                    <h2 class="text-3xl font-extrabold text-gray-900 mt-1">4</h2>
                     <span class="text-xs text-[#C56E33] font-medium mt-1 inline-block">Conteúdos publicados</span>
                 </div>
-                <div class="w-12 h-12 rounded-xl bg-[#2C1A11]/5 text-[#2C1A11] flex items-center justify-center flex-shrink-0">
+                <div class="w-12 h-12 rounded-xl bg-slate-800/5 text-gray-900 flex items-center justify-center flex-shrink-0">
                     <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
                 </div>
             </div>
         </div>
 
         <!-- Tabela de usuários -->
-        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden animate-fade-in-up delay-400">
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden animate-fade-in-up delay-400">
             <!-- Header da tabela -->
             <div class="p-6 border-b border-gray-50">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
-                        <h3 class="font-bold text-lg text-[#2C1A11]">Usuários Cadastrados</h3>
+                        <h3 class="font-bold text-lg text-gray-900">Usuários Cadastrados</h3>
                         <p class="text-xs text-gray-400 mt-0.5">Lista atualizada diretamente da API.</p>
                     </div>
                     <div class="flex items-center gap-3">
@@ -235,7 +235,7 @@
                             <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
                             <input id="campoBusca" type="text" placeholder="Buscar usuário..." class="pl-9 pr-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:border-[#C56E33] focus:ring-1 focus:ring-[#C56E33]/20 outline-none transition w-48 sm:w-56">
                         </div>
-                        <button id="btnAtualizarLista" class="flex items-center gap-2 bg-[#2C1A11] hover:bg-[#3d2518] text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.97]">
+                        <button id="btnAtualizarLista" class="flex items-center gap-2 bg-slate-800 hover:bg-[#3d2518] text-white font-semibold text-sm px-4 py-2.5 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.97]">
                             <svg id="iconRefresh" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182M2.985 19.644l3.181-3.183"/></svg>
                             <span>Atualizar</span>
                         </button>
@@ -247,7 +247,7 @@
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="bg-gray-50/80 border-b border-gray-100 text-gray-400 text-xs font-bold uppercase tracking-wider">
+                        <tr class="bg-gray-50/80 border-b border-gray-200 text-gray-400 text-xs font-bold uppercase tracking-wider">
                             <th class="px-6 py-4">
                                 <div class="flex items-center gap-1.5">
                                     <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
@@ -263,7 +263,7 @@
                             <th class="px-6 py-4 text-right">Ações</th>
                         </tr>
                     </thead>
-                    <tbody id="tabelaUsuariosCorpo" class="divide-y divide-gray-50 text-sm text-[#2C1A11]">
+                    <tbody id="tabelaUsuariosCorpo" class="divide-y divide-gray-50 text-sm text-gray-900">
                         <tr>
                             <td colspan="3" class="px-6 py-12 text-center text-gray-400">
                                 <div class="flex flex-col items-center gap-3">
@@ -284,20 +284,40 @@
         </div>
     </main>
 
+    
+    
     <!-- Footer -->
-    <footer class="border-t border-gray-100 bg-white mt-12">
-        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <img src="../img/image__1_-removebg-preview.png" alt="Logo Fracta" class="w-16 h-auto object-contain mix-blend-multiply opacity-60">
-                <span class="text-xs text-gray-400">© 2025 FRACTA. Todos os direitos reservados.</span>
+    <footer class="border-t border-gray-200 bg-white mt-auto w-full">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="../img/image__1_-removebg-preview.png" alt="Logo Fracta" class="w-16 h-auto object-contain">
+                    <div class="h-4 w-[1px] bg-gray-200 hidden md:block"></div>
+                    <p class="text-xs text-gray-500 font-medium hidden md:block">Plataforma de Aprendizado Interativo</p>
+                </div>
+                
+                <div class="flex items-center gap-4 text-xs font-medium text-gray-500">
+                    <a href="ajuda.html" class="hover:text-amber-600 transition flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+                        Suporte
+                    </a>
+                    <a href="configuracao.html" class="hover:text-amber-600 transition flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        Configurações
+                    </a>
+                </div>
             </div>
-            <div class="flex items-center gap-4 text-xs text-gray-400">
-                <a href="ajuda.html" class="hover:text-[#C56E33] transition">Suporte</a>
-                <span>•</span>
-                <a href="configuracao.html" class="hover:text-[#C56E33] transition">Configurações</a>
+            <div class="mt-4 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p class="text-[10px] text-gray-400">© 2025 FRACTA. Todos os direitos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-[10px] text-gray-400 hover:text-amber-600 transition">Termos de Uso</a>
+                    <a href="#" class="text-[10px] text-gray-400 hover:text-amber-600 transition">Privacidade</a>
+                </div>
             </div>
         </div>
     </footer>
+
+
 
     <!-- Toast container -->
     <div id="toastContainer"></div>
@@ -308,7 +328,7 @@
             <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-5">
                 <svg class="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg>
             </div>
-            <h3 class="text-lg font-bold text-[#2C1A11] mb-2">Excluir Usuário?</h3>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Excluir Usuário?</h3>
             <p class="text-sm text-gray-500 mb-6">Esta ação é irreversível. O usuário será removido permanentemente da plataforma.</p>
             <div class="flex gap-3">
                 <button id="btnCancelarExclusao" class="flex-1 px-4 py-3 border border-gray-200 text-sm font-semibold rounded-xl hover:bg-gray-50 transition">Cancelar</button>
@@ -461,7 +481,7 @@
                         <td class="px-6 py-4">
                             <div class="flex items-center gap-3">
                                 <div class="w-9 h-9 rounded-xl ${isAdmin ? 'bg-purple-100 text-purple-700' : 'bg-[#C56E33]/10 text-[#C56E33]'} flex items-center justify-center font-bold text-sm flex-shrink-0">${inicial}</div>
-                                <span class="font-semibold text-[#2C1A11]">${nomeDisplay}</span>
+                                <span class="font-semibold text-gray-900">${nomeDisplay}</span>
                             </div>
                         </td>
                         <td class="px-6 py-4">
@@ -556,5 +576,14 @@
             if (btnAtualizar) btnAtualizar.addEventListener("click", buscarUsuariosDoBanco);
         });
     </script>
+
+    <script>
+        const _mbBtn = document.querySelector('#mobileMenuBtn');
+        const _mMenu = document.querySelector('#mobileMenu');
+        if (_mbBtn && _mMenu) {
+            _mbBtn.addEventListener('click', () => _mMenu.classList.toggle('hidden'));
+        }
+    </script>
 </body>
+
 </html>

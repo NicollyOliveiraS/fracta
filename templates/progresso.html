@@ -21,69 +21,89 @@
         ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
     </style>
 </head>
-<body class="bg-[#FBFBFA] text-[#2C1A11] min-h-screen antialiased">
+<body class="bg-gray-100 text-gray-800 min-h-screen antialiased flex flex-col">
 
-    <header class="bg-white border-b border-gray-100 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/90">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-10">
                 <a href="../index.html" class="flex items-center gap-3 group">
-                  <img src="../img/image__1_-removebg-preview.png" alt="Logo Fracta" class="w-24 h-auto object-contain mix-blend-multiply">
+                    <img src="../img/image__1_-removebg-preview.png" alt="Logo Fracta" class="w-24 h-auto object-contain mix-blend-multiply">
                 </a>
+
                 <nav class="hidden md:flex items-center gap-1.5 text-sm font-medium">
-                    <a href="../index.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Início</a>
+                    <a href="../index.html" class="px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Início</a>
                     <a href="progresso.html" class="px-4 py-2 text-[#C56E33] bg-[#C56E33]/5 rounded-lg transition">Progresso</a>
-                    <a href="conquistas.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Conquistas</a>
-                    <a href="configuracao.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Configuração</a>
-                    <a href="ajuda.html" class="px-4 py-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+                    <a href="conquistas.html" class="px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Conquistas</a>
+                    <a href="configuracao.html" class="px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Configuração</a>
+                    <a href="ajuda.html" class="px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Ajuda</a>
                 </nav>
             </div>
-            <!-- Mobile menu button -->
-            <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-                </svg>
-            </button>
-            <div class="flex items-center gap-4">
-                <a href="conta.html" class="flex items-center gap-3 group">
-                    <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-[#2C1A11] flex items-center justify-center text-white font-semibold text-sm">U</div>
-                </a>
+
+            <div class="flex items-center gap-3 sm:gap-5">
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                    </svg>
+                </button>
+                
+                <div class="hidden sm:block h-6 w-[1px] bg-gray-200"></div>
+
+                <div class="flex items-center gap-4">
+                    <a href="conta.html" class="flex items-center gap-3 group">
+                        <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-slate-800 flex items-center justify-center text-white font-semibold text-sm transition-transform group-hover:scale-105">U</div>
+                        <div class="hidden sm:block text-left">
+                            <p id="nomeUsuarioHeader" class="text-sm font-semibold text-gray-800 leading-none mb-0.5 truncate max-w-[100px]">Usuário</p>
+                            <p class="text-xs text-gray-400 leading-none">Estudante</p>
+                        </div>
+                    </a>
+                    <a href="login.html">
+                        <button class="btnSair ml-2 p-2 text-gray-400 hover:text-red-500 rounded-lg hover:bg-red-50/50 transition hidden sm:block" title="Sair da conta">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                            </svg>
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
+
         <!-- Mobile nav -->
-        <nav id="mobileMenu" class="hidden md:hidden border-t border-gray-100 bg-white px-6 py-4 space-y-1">
-            <a href="../index.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Início</a>
-            <a href="progresso.html" class="block px-4 py-2.5 text-sm font-medium text-[#C56E33] bg-[#C56E33]/5 rounded-lg">Progresso</a>
-            <a href="conquistas.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Conquistas</a>
-            <a href="configuracao.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Configuração</a>
-            <a href="ajuda.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-[#2C1A11] hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+        <nav id="mobileMenu" class="hidden md:hidden border-t border-gray-200 bg-white px-6 py-4 space-y-1">
+            <a href="../index.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg">Início</a>
+            <a href="progresso.html" class="block px-4 py-2.5 text-sm font-medium text-[#C56E33] bg-[#C56E33]/5 rounded-lg transition">Progresso</a>
+            <a href="conquistas.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Conquistas</a>
+            <a href="configuracao.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Configuração</a>
+            <a href="ajuda.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition">Ajuda</a>
+            <hr class="my-2 border-gray-100">
+            <a href="login.html" class="block px-4 py-2.5 text-sm font-medium text-red-500 hover:bg-red-50 rounded-lg transition">Sair</a>
         </nav>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 py-10">
+    <main class="max-w-7xl mx-auto px-6 py-10 flex-1">
         <div class="mb-6 text-xs font-semibold uppercase tracking-wider text-gray-400">
             <span>Área do Aluno</span> • <span class="text-[#C56E33]">Seu Desempenho</span>
         </div>
 
-        <h1 class="text-3xl font-bold tracking-tight text-[#2C1A11] mb-8 animate-fade-in-up">Estatísticas de Estudo</h1>
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 mb-8 animate-fade-in-up">Estatísticas de Estudo</h1>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 animate-fade-in-up delay-100">
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
                 <div class="text-xs uppercase font-bold text-gray-400 mb-1">Média Geral</div>
                 <div class="text-4xl font-extrabold text-[#C56E33]">8.5</div>
             </div>
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
                 <div class="text-xs uppercase font-bold text-gray-400 mb-1">Atividades Concluídas</div>
-                <div class="text-4xl font-extrabold text-[#2C1A11]">25/30</div>
+                <div class="text-4xl font-extrabold text-gray-900">25/30</div>
             </div>
-            <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+            <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
                 <div class="text-xs uppercase font-bold text-gray-400 mb-1">Sequência Ativa</div>
-                <div class="text-4xl font-extrabold text-amber-600">7 Dias 🔥</div>
+                <div class="text-4xl font-extrabold text-amber-600">7 Dias</div>
             </div>
         </div>
 
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm animate-fade-in-up delay-200">
-            <h3 class="font-bold text-[#2C1A11] mb-6">Atividade Semanal</h3>
-            <div class="h-48 w-full bg-[#FBFBFA] rounded-xl relative border-l border-b border-gray-100 flex items-end p-4 gap-4 justify-around">
+        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm animate-fade-in-up delay-200 mb-8">
+            <h3 class="font-bold text-gray-900 mb-6">Atividade Semanal</h3>
+            <div class="h-48 w-full bg-white rounded-xl relative border-l border-b border-gray-200 flex items-end p-4 gap-4 justify-around">
                 <div class="flex flex-col items-center gap-1">
                     <div class="w-12 bg-gray-200 rounded-t-lg h-[40%] hover:bg-[#C56E33] transition-all"></div>
                     <span class="text-[10px] text-gray-400 font-medium">Seg</span>
@@ -106,98 +126,51 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Ranking -->
-        <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm animate-fade-in-up" style="animation-delay: 0.3s">
+        <div class="bg-white p-4 sm:p-8 rounded-2xl border border-gray-200 shadow-sm animate-fade-in-up" style="animation-delay: 0.3s">
             <div class="flex items-center justify-between mb-6">
-                <h3 class="font-bold text-[#2C1A11]">Ranking da Turma</h3>
+                <h3 class="font-bold text-gray-900">Ranking da Turma</h3>
                 <span class="text-xs font-semibold text-[#C56E33] bg-[#C56E33]/10 px-3 py-1 rounded-full">Esta Semana</span>
             </div>
 
             <!-- Pódio -->
-            <div class="flex items-end justify-center gap-4 mb-8">
-                <!-- 2º lugar -->
-                <div class="flex flex-col items-center gap-2">
-                    <div class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-base font-bold text-gray-500">M</div>
-                    <div class="w-20 bg-gray-100 rounded-t-xl flex flex-col items-center justify-center pt-3 pb-2" style="height:80px">
-                        <span class="text-lg">🥈</span>
-                        <span class="text-[10px] font-bold text-gray-500 mt-1">Maria</span>
-                        <span class="text-[10px] text-gray-400">8.2</span>
-                    </div>
-                </div>
-                <!-- 1º lugar -->
-                <div class="flex flex-col items-center gap-2">
-                    <div class="w-10 h-10 rounded-xl bg-[#C56E33] flex items-center justify-center text-base font-bold text-white" id="rankingAvatarTopo">U</div>
-                    <div class="w-20 bg-[#C56E33]/10 border-2 border-[#C56E33] rounded-t-xl flex flex-col items-center justify-center pt-3 pb-2" style="height:110px">
-                        <span class="text-lg">🥇</span>
-                        <span class="text-[10px] font-bold text-[#C56E33] mt-1" id="rankingNomeTopo">Você</span>
-                        <span class="text-[10px] text-[#C56E33] font-semibold">8.5</span>
-                    </div>
-                </div>
-                <!-- 3º lugar -->
-                <div class="flex flex-col items-center gap-2">
-                    <div class="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center text-base font-bold text-gray-500">P</div>
-                    <div class="w-20 bg-gray-100 rounded-t-xl flex flex-col items-center justify-center pt-3 pb-2" style="height:65px">
-                        <span class="text-lg">🥉</span>
-                        <span class="text-[10px] font-bold text-gray-500 mt-1">Pedro</span>
-                        <span class="text-[10px] text-gray-400">7.9</span>
-                    </div>
-                </div>
+            <div id="podioContainer" class="flex items-end justify-center gap-2 sm:gap-4 mb-8">
+                <div class="text-sm text-gray-400">Carregando ranking da API...</div>
             </div>
 
             <!-- Lista completa -->
-            <div class="space-y-2">
-                <!-- Posição 1 - você -->
-                <div class="flex items-center gap-4 bg-[#C56E33]/5 border border-[#C56E33]/20 rounded-xl px-4 py-3">
-                    <span class="text-sm font-extrabold text-[#C56E33] w-5 text-center">1</span>
-                    <div class="w-8 h-8 rounded-lg bg-[#C56E33] flex items-center justify-center text-white font-bold text-xs" id="rankingAvatarLista">U</div>
-                    <span class="flex-1 text-sm font-semibold text-[#2C1A11]" id="rankingNomeLista">Você</span>
-                    <span class="text-sm font-extrabold text-[#C56E33]">8.5</span>
-                    <span class="text-[10px] text-[#C56E33] font-medium bg-[#C56E33]/10 px-2 py-0.5 rounded-full">Você</span>
-                </div>
-                <!-- Posição 2 -->
-                <div class="flex items-center gap-4 rounded-xl px-4 py-3 hover:bg-gray-50 transition">
-                    <span class="text-sm font-extrabold text-gray-400 w-5 text-center">2</span>
-                    <div class="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center text-gray-600 font-bold text-xs">M</div>
-                    <span class="flex-1 text-sm font-medium text-[#2C1A11]">Maria S.</span>
-                    <span class="text-sm font-bold text-gray-600">8.2</span>
-                </div>
-                <!-- Posição 3 -->
-                <div class="flex items-center gap-4 rounded-xl px-4 py-3 hover:bg-gray-50 transition">
-                    <span class="text-sm font-extrabold text-gray-400 w-5 text-center">3</span>
-                    <div class="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center text-gray-600 font-bold text-xs">P</div>
-                    <span class="flex-1 text-sm font-medium text-[#2C1A11]">Pedro A.</span>
-                    <span class="text-sm font-bold text-gray-600">7.9</span>
-                </div>
-                <!-- Posição 4 -->
-                <div class="flex items-center gap-4 rounded-xl px-4 py-3 hover:bg-gray-50 transition">
-                    <span class="text-sm font-extrabold text-gray-400 w-5 text-center">4</span>
-                    <div class="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center text-gray-600 font-bold text-xs">L</div>
-                    <span class="flex-1 text-sm font-medium text-[#2C1A11]">Lucas F.</span>
-                    <span class="text-sm font-bold text-gray-600">7.4</span>
-                </div>
-                <!-- Posição 5 -->
-                <div class="flex items-center gap-4 rounded-xl px-4 py-3 hover:bg-gray-50 transition">
-                    <span class="text-sm font-extrabold text-gray-400 w-5 text-center">5</span>
-                    <div class="w-8 h-8 rounded-lg bg-gray-200 flex items-center justify-center text-gray-600 font-bold text-xs">A</div>
-                    <span class="flex-1 text-sm font-medium text-[#2C1A11]">Ana C.</span>
-                    <span class="text-sm font-bold text-gray-600">7.1</span>
-                </div>
-            </div>
+            <div id="listaRankingContainer" class="space-y-2"></div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-100 bg-white mt-12">
-        <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <div class="w-5 h-5 bg-[#C56E33] rounded-md opacity-60"></div>
-                <span class="text-xs text-gray-400">© 2025 FRACTA. Todos os direitos reservados.</span>
+    <footer class="border-t border-gray-200 bg-white mt-auto w-full">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="../img/image__1_-removebg-preview.png" alt="Logo Fracta" class="w-16 h-auto object-contain">
+                    <div class="h-4 w-[1px] bg-gray-200 hidden md:block"></div>
+                    <p class="text-xs text-gray-500 font-medium hidden md:block">Plataforma de Aprendizado Interativo</p>
+                </div>
+                
+                <div class="flex items-center gap-4 text-xs font-medium text-gray-500">
+                    <a href="ajuda.html" class="hover:text-amber-600 transition flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+                        Suporte
+                    </a>
+                    <a href="configuracao.html" class="hover:text-amber-600 transition flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        Configurações
+                    </a>
+                </div>
             </div>
-            <div class="flex items-center gap-4 text-xs text-gray-400">
-                <a href="ajuda.html" class="hover:text-[#C56E33] transition">Suporte</a>
-                <span>•</span>
-                <a href="configuracao.html" class="hover:text-[#C56E33] transition">Configurações</a>
+            <div class="mt-4 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p class="text-[10px] text-gray-400">© 2025 FRACTA. Todos os direitos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-[10px] text-gray-400 hover:text-amber-600 transition">Termos de Uso</a>
+                    <a href="#" class="text-[10px] text-gray-400 hover:text-amber-600 transition">Privacidade</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -210,14 +183,114 @@
             mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         }
 
-        // Atualizar ranking com nome do usuário logado
+        // Atualizar perfil do usuário logado no cabeçalho
         const usuarioLogado = localStorage.getItem("usuario");
         if (usuarioLogado) {
             const inicial = usuarioLogado.charAt(0).toUpperCase();
-            const nomeExibido = usuarioLogado;
-            document.querySelectorAll('#rankingAvatarTopo, #rankingAvatarLista').forEach(el => el.innerText = inicial);
-            document.querySelectorAll('#rankingNomeTopo, #rankingNomeLista').forEach(el => el.innerText = nomeExibido);
+            const avatarEl = document.getElementById('avatarUsuario');
+            const nomeEl = document.getElementById('nomeUsuarioHeader');
+            if (avatarEl) avatarEl.innerText = inicial;
+            if (nomeEl) nomeEl.innerText = usuarioLogado;
         }
+
+        // Lógica do Ranking
+        const URL_BACKEND = "https://backend-tcc-tv2u.vercel.app";
+
+        async function carregarRanking() {
+            try {
+                const res = await fetch(URL_BACKEND + '/usuarios');
+                if (!res.ok) throw new Error('API Falhou');
+                let users = await res.json();
+                
+                // Filtra alunos
+                users = users.filter(u => u.tipo_usuario !== 'professor');
+                
+                let userSelf = users.find(u => u.email === usuarioLogado || u.nome === usuarioLogado);
+                if (!userSelf && usuarioLogado) {
+                    userSelf = { nome: usuarioLogado, email: usuarioLogado, isSelf: true };
+                    users.unshift(userSelf);
+                } else if (userSelf) {
+                    userSelf.isSelf = true;
+                }
+
+                let topUsers = users.slice(0, 5);
+                const mockNotas = [9.5, 8.8, 8.2, 7.5, 7.1];
+                
+                topUsers = topUsers.map((u, i) => {
+                    return {
+                        nome: u.nome || u.email || 'Aluno',
+                        nota: mockNotas[i] || 7.0,
+                        isSelf: !!u.isSelf
+                    };
+                });
+
+                renderizarRanking(topUsers);
+            } catch(e) {
+                console.error(e);
+                document.getElementById('podioContainer').innerHTML = '<div class="text-sm text-red-400">Erro ao carregar ranking da API</div>';
+            }
+        }
+
+        function renderizarRanking(users) {
+            const podio = document.getElementById('podioContainer');
+            const lista = document.getElementById('listaRankingContainer');
+            
+            if (users.length < 3) {
+                while(users.length < 3) users.push({nome: '...', nota: 0});
+            }
+
+            const p2 = users[1];
+            const p1 = users[0];
+            const p3 = users[2];
+
+            const renderPodioItem = (user, place, height) => {
+                const inicial = user.nome ? user.nome.charAt(0).toUpperCase() : '?';
+                const isFirst = place === 1;
+                const bgColor = isFirst ? 'bg-[#C56E33]' : 'bg-gray-100';
+                const textColor = isFirst ? 'text-white' : 'text-gray-500';
+                const boxColor = isFirst ? 'bg-[#C56E33]/10 border-2 border-[#C56E33]' : 'bg-gray-100';
+                const nameColor = isFirst ? 'text-[#C56E33]' : 'text-gray-500';
+                const medalBg = isFirst ? 'bg-amber-400' : (place === 2 ? 'bg-gray-300' : 'bg-orange-400');
+                
+                return `
+                <div class="flex flex-col items-center gap-2 max-w-[30%]">
+                    <div class="w-10 h-10 rounded-xl ${bgColor} flex items-center justify-center text-base font-bold ${textColor}">${inicial}</div>
+                    <div class="w-24 sm:w-28 ${boxColor} rounded-t-xl flex flex-col items-center justify-center pt-3 pb-2" style="height:${height}px">
+                        <div class="w-6 h-6 rounded-full ${medalBg} flex items-center justify-center text-xs font-bold text-white shadow-sm ring-2 ring-white mb-1">${place}</div>
+                        <span class="text-[10px] font-bold ${nameColor} mt-1 w-full text-center truncate px-1">${user.nome}</span>
+                        <span class="text-[10px] ${nameColor} font-semibold mt-0.5">${user.nota}</span>
+                    </div>
+                </div>`;
+            };
+
+            podio.innerHTML = 
+                renderPodioItem(p2, 2, 80) + 
+                renderPodioItem(p1, 1, 110) + 
+                renderPodioItem(p3, 3, 65);
+
+            lista.innerHTML = users.map((u, i) => {
+                const pos = i + 1;
+                const isSelf = u.isSelf;
+                const containerClass = isSelf 
+                    ? 'flex items-center gap-2 sm:gap-4 bg-[#C56E33]/5 border border-[#C56E33]/20 rounded-xl px-2 sm:px-4 py-3'
+                    : 'flex items-center gap-2 sm:gap-4 rounded-xl px-2 sm:px-4 py-3 hover:bg-gray-50 transition';
+                
+                const rankColor = isSelf ? 'text-[#C56E33]' : 'text-gray-400';
+                const avatarBg = isSelf ? 'bg-[#C56E33]' : 'bg-gray-200';
+                const avatarText = isSelf ? 'text-white' : 'text-gray-600';
+                
+                return `
+                <div class="${containerClass}">
+                    <span class="text-sm font-extrabold ${rankColor} w-4 text-center">${pos}</span>
+                    <div class="w-8 h-8 rounded-lg ${avatarBg} flex items-center justify-center ${avatarText} font-bold text-xs flex-shrink-0">${u.nome ? u.nome.charAt(0).toUpperCase() : '?'}</div>
+                    <span class="flex-1 text-xs sm:text-sm font-medium text-gray-900 truncate" title="${u.nome}">${u.nome}</span>
+                    <span class="text-sm font-bold ${isSelf ? 'text-[#C56E33]' : 'text-gray-600'}">${u.nota}</span>
+                    ${isSelf ? '<span class="text-[10px] text-[#C56E33] font-medium bg-[#C56E33]/10 px-2 py-0.5 rounded-full hidden sm:inline-block">Você</span>' : ''}
+                </div>`;
+            }).join('');
+        }
+
+        carregarRanking();
     </script>
 </body>
 </html>
