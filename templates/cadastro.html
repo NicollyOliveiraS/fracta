@@ -2,21 +2,37 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <title>FRACTA Cadastro</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    body {
+      font-family: "Fredoka", sans-serif;
+    }
+  </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center bg-[url('../img/fundo.png')] bg-cover bg-center p-4">
 
   <div class="w-full max-w-6xl min-h-[700px] flex flex-col md:flex-row">
 
-    <!-- Lado esquerdo -->
     <div class="w-full flex justify-center pt-28 md:pt-36">
       <div class="text-center">
         <h1 class="text-5xl text-black font-bold mb-4">
@@ -33,77 +49,126 @@
       </div>
     </div>
 
-    <!-- Formulário -->
     <div class="w-full flex items-center justify-center p-8">
       <div class="shadow-2xl backdrop-blur-sm rounded-2xl p-10 w-full max-w-md">
-        
-        <h1 class=" flex justify-center text-black text-5xl font-bold mb-8">
+
+        <h1 class="flex justify-center text-black text-5xl font-bold mb-8">
           Cadastro
         </h1>
 
         <form id="cadastroForm" class="space-y-5">
 
           <div>
-            <label class="block text-black text-sm mb-1 font-medium">
-              Nome Completo
+            <label
+              for="cadNome"
+              class="block text-black text-sm mb-1 font-medium"
+            >
+              Nome completo
             </label>
 
             <input
               id="cadNome"
+              name="nome"
               type="text"
+              autocomplete="name"
               required
               class="w-full bg-transparent border-b-2 border-black/60 outline-none text-black pb-2 focus:border-black transition"
             >
           </div>
 
           <div>
-            <label class="block text-black text-sm mb-1 font-medium">
-              Nome de Usuário (Login)
+            <label
+              for="cadEmail"
+              class="block text-black text-sm mb-1 font-medium"
+            >
+              E-mail
             </label>
 
             <input
-              id="cadUser"
-              type="text"
+              id="cadEmail"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="seuemail@exemplo.com"
               required
               class="w-full bg-transparent border-b-2 border-black/60 outline-none text-black pb-2 focus:border-black transition"
             >
           </div>
 
           <div>
-            <label class="block text-black text-sm mb-1 font-medium">
+            <label
+              for="tipoUsuario"
+              class="block text-black text-sm mb-1 font-medium"
+            >
+              Tipo de usuário
+            </label>
+
+            <select
+              id="tipoUsuario"
+              name="tipo_usuario"
+              required
+              class="w-full bg-transparent border-b-2 border-black/60 outline-none text-black pb-2 focus:border-black transition"
+            >
+              <option value="aluno">Aluno</option>
+              <option value="professor">Professor</option>
+            </select>
+          </div>
+
+          <div>
+            <label
+              for="cadSenha"
+              class="block text-black text-sm mb-1 font-medium"
+            >
               Senha
             </label>
 
             <input
               id="cadSenha"
+              name="senha"
               type="password"
+              minlength="6"
+              autocomplete="new-password"
               required
               class="w-full bg-transparent border-b-2 border-black/60 outline-none text-black pb-2 focus:border-black transition"
             >
           </div>
 
           <div>
-            <label class="block text-black text-sm mb-1 font-medium">
+            <label
+              for="confirmarSenha"
+              class="block text-black text-sm mb-1 font-medium"
+            >
               Confirmar senha
             </label>
 
             <input
               id="confirmarSenha"
+              name="confirmarSenha"
               type="password"
+              minlength="6"
+              autocomplete="new-password"
               required
               class="w-full bg-transparent border-b-2 border-black/60 outline-none text-black pb-2 focus:border-black transition"
             >
           </div>
 
           <button
+            id="btnCadastrar"
             type="submit"
-            class="w-full bg-black text-white py-3 rounded-xl text-lg font-semibold hover:bg-neutral-900 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg mt-6"
+            class="w-full bg-black text-white py-3 rounded-xl text-lg font-semibold hover:bg-neutral-900 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed transition-all shadow-lg mt-6"
           >
             Cadastrar
           </button>
 
+          <p
+            id="mensagemCadastro"
+            class="hidden text-sm text-center font-semibold"
+            role="alert"
+          ></p>
+
           <p class="text-black text-sm text-center pt-2">
             Já tem uma conta?
+
             <a
               href="login.html"
               class="text-orange-500 font-semibold hover:underline"
@@ -119,6 +184,5 @@
   </div>
 
   <script src="../scripts/script.js"></script>
-
 </body>
 </html>

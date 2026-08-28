@@ -120,8 +120,6 @@
         </nav>
     </header>
 
-
-
     <!-- Barra de progresso -->
     <div class="h-1 bg-gray-100">
         <div id="progressBar" class="h-full bg-[#C56E33] progress-bar" style="width: 0%"></div>
@@ -132,48 +130,42 @@
         <!-- Seletor de módulo (tela inicial) -->
         <div id="telaInicio" class="w-full max-w-2xl fade-in">
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-gray-900 mb-2">Escolha um Módulo</h1>
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Escolha um Módulo</h1>
                 <p class="text-gray-500 text-sm">A IA vai gerar questões personalizadas sobre o tema escolhido.</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <button onclick="iniciarModulo('Frações Básicas', 'fácil')" class="bg-white border border-gray-200 rounded-2xl p-6 text-left hover:border-[#C56E33] hover:shadow-md transition-all group">
-                    <div class="text-3xl mb-3">🍕</div>
                     <h2 class="font-bold text-gray-900 mb-1">Frações Básicas</h2>
                     <p class="text-xs text-gray-400">Numerador, denominador e partes do todo.</p>
                     <span class="inline-block mt-3 text-[10px] font-bold uppercase tracking-wider text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Fácil</span>
                 </button>
 
                 <button onclick="iniciarModulo('Comparação de Frações', 'médio')" class="bg-white border border-gray-200 rounded-2xl p-6 text-left hover:border-[#C56E33] hover:shadow-md transition-all group">
-                    <div class="text-3xl mb-3">⚖️</div>
                     <h2 class="font-bold text-gray-900 mb-1">Comparação de Frações</h2>
                     <p class="text-xs text-gray-400">Maior, menor ou igual? Aprenda a comparar.</p>
                     <span class="inline-block mt-3 text-[10px] font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">Médio</span>
                 </button>
 
                 <button onclick="iniciarModulo('Adição e Subtração de Frações', 'médio')" class="bg-white border border-gray-200 rounded-2xl p-6 text-left hover:border-[#C56E33] hover:shadow-md transition-all group">
-                    <div class="text-3xl mb-3">➕</div>
                     <h2 class="font-bold text-gray-900 mb-1">Adição e Subtração</h2>
                     <p class="text-xs text-gray-400">Some e subtraia frações com e sem denominador comum.</p>
                     <span class="inline-block mt-3 text-[10px] font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full">Médio</span>
                 </button>
 
                 <button onclick="iniciarModulo('Multiplicação e Divisão de Frações', 'difícil')" class="bg-white border border-gray-200 rounded-2xl p-6 text-left hover:border-[#C56E33] hover:shadow-md transition-all group">
-                    <div class="text-3xl mb-3">✖️</div>
                     <h2 class="font-bold text-gray-900 mb-1">Multiplicação e Divisão</h2>
                     <p class="text-xs text-gray-400">Resolva problemas com multiplicação e divisão de frações.</p>
                     <span class="inline-block mt-3 text-[10px] font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded-full">Difícil</span>
                 </button>
 
                 <button onclick="iniciarModulo('Frações Equivalentes', 'fácil')" class="bg-white border border-gray-200 rounded-2xl p-6 text-left hover:border-[#C56E33] hover:shadow-md transition-all group">
-                    <div class="text-3xl mb-3">🔄</div>
                     <h2 class="font-bold text-gray-900 mb-1">Frações Equivalentes</h2>
                     <p class="text-xs text-gray-400">Descubra frações diferentes que representam o mesmo valor.</p>
                     <span class="inline-block mt-3 text-[10px] font-bold uppercase tracking-wider text-green-600 bg-green-50 px-2 py-0.5 rounded-full">Fácil</span>
                 </button>
 
                 <button onclick="iniciarModulo('Frações Mistas e Impróprias', 'difícil')" class="bg-white border border-gray-200 rounded-2xl p-6 text-left hover:border-[#C56E33] hover:shadow-md transition-all group">
-                    <div class="text-3xl mb-3">🧮</div>
                     <h2 class="font-bold text-gray-900 mb-1">Frações Mistas</h2>
                     <p class="text-xs text-gray-400">Converta entre frações mistas e impróprias.</p>
                     <span class="inline-block mt-3 text-[10px] font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded-full">Difícil</span>
@@ -183,9 +175,6 @@
 
         <!-- Loading -->
         <div id="telaLoading" class="hidden w-full max-w-2xl flex flex-col items-center justify-center py-20 fade-in">
-            <div class="w-16 h-16 rounded-2xl bg-[#C56E33]/10 flex items-center justify-center mb-6">
-                <span class="text-3xl">🤖</span>
-            </div>
             <h2 class="text-lg font-bold text-gray-900 mb-2">Gerando questões com IA...</h2>
             <p class="text-sm text-gray-400 mb-8">Criando perguntas personalizadas para você</p>
             <div class="flex gap-2">
@@ -197,7 +186,6 @@
 
         <!-- Erro de geração -->
         <div id="telaErro" class="hidden w-full max-w-2xl text-center py-20 fade-in">
-            <div class="text-4xl mb-4">⚠️</div>
             <h2 class="text-lg font-bold text-gray-900 mb-2">Não foi possível gerar as questões</h2>
             <p class="text-sm text-gray-400 mb-6">Verifique sua conexão e tente novamente.</p>
             <button onclick="voltarInicio()" class="bg-slate-800 text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-[#45291B] transition">Voltar ao início</button>
@@ -258,7 +246,7 @@
                         Escolher Módulo
                     </button>
                     <button onclick="reiniciarModulo()" class="flex-1 bg-[#C56E33] text-white py-3 rounded-xl font-semibold text-sm hover:bg-[#a85a29] transition">
-                        Tentar Novamente 🔄
+                        Tentar Novamente
                     </button>
                 </div>
             </div>
@@ -298,7 +286,6 @@
         }
 
         async function iniciarModulo(modulo, nivel) {
-            moduloAtual = modulo;
             nivelAtual = nivel;
             questaoIndex = 0;
             acertos = 0;
