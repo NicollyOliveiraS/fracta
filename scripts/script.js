@@ -384,6 +384,149 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         );
+    const recuperarForm =
+        document.querySelector("#recuperarForm");
+
+    if (recuperarForm) {
+        recuperarForm.addEventListener(
+            "submit",
+            async (evento) => {
+                evento.preventDefault();
+
+                const emailInput =
+                    document.querySelector("#recuperarEmail") ||
+                    document.querySelector("#recuperarUser");
+
+                const email = emailInput
+                    ? emailInput.value.trim().toLowerCase()
+                    : "";
+
+                const botao =
+                    document.querySelector("#btnRecuperar") ||
+                    recuperarForm.querySelector('button[type="submit"]');
+
+                const msgEl =
+                    document.querySelector("#mensagemRecuperar");
+                const resultadoEl =
+                    document.querySelector("#resultadoRecuperacao");
+                const displaySenha =
+                    document.querySelector("#senhaGeradaDisplay");
+                const btnCopiar =
+                    document.querySelector("#btnCopiarSenha");
+
+                if (!email) {
+                    exibirMensagem(
+                        "#mensagemRecuperar",
+                        "Por favor, digite seu e-mail cadastrado."
+                    );
+                    return;
+                }
+
+                if (resultadoEl) resultadoEl.classList.add("hidden");
+                if (msgEl) msgEl.classList.add("hidden");
+
+                botao.disabled = true;
+                botao.textContent = "Buscando conta...";
+
+                try {
+                    const respostaUsuarios = await fetch(
+                        `${API_URL}/usuarios`
+                    );
+
+                    if (!respostaUsuarios.ok) {
+                        throw new Error(
+                            "Erro ao conectar com o servidor."
+                        );
+                    }
+
+                    const listaUsuarios = await respostaUsuarios.json();
+                    const usuarioEncontrado = Array.isArray(listaUsuarios)
+                        ? listaUsuarios.find(
+                            (u) =>
+                                (u.email && u.email.trim().toLowerCase() === email) ||
+                                (u.nome && u.nome.trim().toLowerCase() === email)
+                        )
+                        : null;
+
+                    if (!usuarioEncontrado) {
+                        throw new Error(
+                            "E-mail não encontrado. Verifique se digitou corretamente."
+                        );
+                    }
+
+                    botao.textContent = "Gerando nova senha...";
+
+                    const respostaRedefinir = await fetch(
+                        `${API_URL}/redefinir-senha`,
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+                            body: JSON.stringify({
+                                id_aluno: usuarioEncontrado.id
+                            })
+                        }
+                    );
+
+                    const dadosRedefinir =
+                        await respostaRedefinir.json();
+
+                    if (!respostaRedefinir.ok) {
+                        throw new Error(
+                            dadosRedefinir.erro ||
+                            "Não foi possível redefinir a senha."
+                        );
+                    }
+
+                    const novaSenha = dadosRedefinir.senha_temporaria;
+
+                    if (resultadoEl && displaySenha && novaSenha) {
+                        displaySenha.textContent = novaSenha;
+                        resultadoEl.classList.remove("hidden");
+                        exibirMensagem(
+                            "#mensagemRecuperar",
+                            "Senha redefinida com sucesso!",
+                            "sucesso"
+                        );
+
+                        if (btnCopiar) {
+                            btnCopiar.onclick = () => {
+                                navigator.clipboard.writeText(novaSenha).then(() => {
+                                    const textoOriginal = btnCopiar.textContent;
+                                    btnCopiar.textContent = "Copiado!";
+                                    btnCopiar.classList.add("bg-green-600");
+                                    btnCopiar.classList.remove("bg-orange-500", "hover:bg-orange-600");
+                                    setTimeout(() => {
+                                        btnCopiar.textContent = textoOriginal;
+                                        btnCopiar.classList.remove("bg-green-600");
+                                        btnCopiar.classList.add("bg-orange-500", "hover:bg-orange-600");
+                                    }, 2000);
+                                });
+                            };
+                        }
+                    } else {
+                        exibirMensagem(
+                            "#mensagemRecuperar",
+                            dadosRedefinir.mensagem ||
+                            "Senha redefinida com sucesso!",
+                            "sucesso"
+                        );
+                    }
+                } catch (erro) {
+                    exibirMensagem(
+                        "#mensagemRecuperar",
+                        erro instanceof TypeError
+                            ? "Não foi possível conectar ao servidor."
+                            : erro.message
+                    );
+                } finally {
+                    botao.disabled = false;
+                    botao.textContent = "Redefinir Senha";
+                }
+            }
+        );
     }
 
     document
