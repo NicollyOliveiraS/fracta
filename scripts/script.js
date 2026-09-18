@@ -384,6 +384,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         );
+    }
+
     const recuperarForm =
         document.querySelector("#recuperarForm");
 
