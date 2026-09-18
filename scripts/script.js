@@ -3,6 +3,14 @@ const API_URL =
 
 // Gerenciamento de Tema Escuro / Claro
 function aplicarTema() {
+    const paginaAtual = window.location.pathname.split("/").pop() || "index.html";
+    const paginasSemDark = ["login.html", "cadastro.html", "esqueci-senha.html"];
+
+    if (paginasSemDark.includes(paginaAtual)) {
+        document.documentElement.classList.remove('dark');
+        return;
+    }
+
     const temaSalvo = localStorage.getItem('tema');
     if (temaSalvo === 'dark' || (!temaSalvo && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         document.documentElement.classList.add('dark');
@@ -89,21 +97,44 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
-    function paginaInicial(tipoUsuario) {
-        const destinos = {
-            admin: "adm.html",
-            aluno: null
-        };
+    function paginaInicial(tipoUsuario, email = "") {
+        const emailLower = String(email || "").toLowerCase();
+        const tipoLower = String(tipoUsuario || "").toLowerCase();
 
-        const destino = destinos[tipoUsuario];
+        const ehProfessorOuAdmin =
+            tipoLower === "professor" ||
+            tipoLower === "admin" ||
+            emailLower.includes("prof");
 
-        if (!destino) {
-            return estaEmTemplates
-                ? "../index.html"
-                : "index.html";
+        if (ehProfessorOuAdmin) {
+            return caminho("adm.html");
         }
 
-        return caminho(destino);
+        return estaEmTemplates
+            ? "../index.html"
+            : "index.html";
+    }
+
+    if (
+        (!usuario || !token) &&
+        !paginasPublicas.includes(paginaAtual)
+    ) {
+        window.location.href =
+            caminho("login.html");
+
+        return;
+    }
+
+    // Se o usuário logado for professor/admin, vai direto para a página de adm
+    if (usuario && token) {
+        const emailLower = String(usuario.email || "").toLowerCase();
+        const tipoLower = String(usuario.tipo_usuario || "").toLowerCase();
+        const ehProf = tipoLower === "professor" || tipoLower === "admin" || emailLower.includes("prof");
+
+        if (ehProf && (paginaAtual === "index.html" || paginaAtual === "login.html" || paginaAtual === "")) {
+            window.location.href = caminho("adm.html");
+            return;
+        }
     }
 
     if (usuario && typeof usuario === "object") {
@@ -220,8 +251,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     window.location.href =
                         paginaInicial(
-                            dados.usuario
-                                .tipo_usuario
+                            dados.usuario.tipo_usuario,
+                            dados.usuario.email || email
                         );
                 } catch (erro) {
                     exibirMensagem(
