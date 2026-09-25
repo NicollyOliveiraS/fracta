@@ -35,17 +35,10 @@
             transition: background-color 0.3s ease, color 0.3s ease;
             background-color: #f7efe6;
             background-image: url('../img/trilha/fundotrilhaclaro.png');
-            background-size: 100% auto;
+            background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
             background-attachment: scroll;
-        }
-
-        @media (min-width: 768px) {
-            body {
-                background-size: cover;
-                background-position: center top;
-            }
         }
 
         /* Fundo no Modo Escuro */
@@ -249,6 +242,10 @@
                 <svg class="w-4 h-4 text-brand-500" fill="none" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
                 <span>Voltar à Trilha</span>
             </button>
+            <div id="badgeTurmaAno" class="px-3 py-1 bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/30 rounded-xl flex items-center gap-1.5 text-xs font-bold text-amber-700 dark:text-amber-300 shadow-sm">
+                <svg class="w-4 h-4 text-amber-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342"/></svg>
+                <span id="labelTurmaAno">Turma: 6º A • Nível 6º Ano</span>
+            </div>
             <div class="flex items-center gap-2 text-brand-500 dark:text-brand-400">
                 <svg class="w-5 h-5 text-brand-500 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 <span id="duoXP">0 XP</span>
@@ -312,12 +309,13 @@
 
                 <!-- BOTÕES DE NAVEGAÇÃO DA INTRODUÇÃO (PASSO A PASSO) -->
                 <div class="flex items-center justify-between gap-3 pt-2">
-                    <button id="btnIntroAnterior" onclick="anteriorSlideIntro()" class="px-5 py-3 bg-slate-100 dark:bg-darkbg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs rounded-xl transition">
-                        ← Anterior
+                    <button id="btnIntroAnterior" onclick="anteriorSlideIntro()" class="px-5 py-3 bg-slate-100 dark:bg-darkbg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs rounded-xl transition flex items-center gap-1.5">
+                        <svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+                        <span>Anterior</span>
                     </button>
                     <button id="btnIntroProximo" onclick="proximoSlideIntro()" class="flex-1 py-3.5 bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-[0_4px_0_#8c4521] active:translate-y-1 active:shadow-none transition flex items-center justify-center gap-2">
                         <span>Próximo Passo</span>
-                        <span>→</span>
+                        <svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
                     </button>
                 </div>
             </div>
@@ -329,11 +327,16 @@
             <!-- Banner de Seção Duolingo com Botão de Introdução -->
             <div class="bg-gradient-to-r from-brand-600 to-brand-800 text-white rounded-3xl p-6 shadow-lg border border-brand-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                    <span class="text-[10px] font-extrabold uppercase tracking-widest bg-black/20 px-3 py-1 rounded-full border border-white/20">
-                        SEÇÃO 1
-                    </span>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-extrabold uppercase tracking-widest bg-black/20 px-3 py-1 rounded-full border border-white/20">
+                            SEÇÃO 1
+                        </span>
+                        <span id="badgeTrilhaAno" class="text-[10px] font-extrabold uppercase tracking-wider bg-amber-400 text-slate-900 px-2.5 py-0.5 rounded-full shadow-sm">
+                            6º ANO
+                        </span>
+                    </div>
                     <h2 class="text-xl font-extrabold mt-2">Aventuras de Silas: O Mistério das Frações</h2>
-                    <p class="text-xs text-brand-100 mt-1">Siga o caminho e conclua cada etapa!</p>
+                    <p id="trilhaSubtituloAno" class="text-xs text-brand-100 mt-1">Trilha Fundamental de Frações — Desafios de 6º Ano</p>
                 </div>
                 <button onclick="abrirIntroducao()" class="bg-white/20 hover:bg-white/30 text-white text-xs font-bold px-4 py-2.5 rounded-xl border border-white/30 backdrop-blur-sm transition flex items-center gap-2 shrink-0">
                     <svg class="w-4 h-4 text-white inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25"/></svg>
@@ -371,7 +374,9 @@
         <!-- MODAL POPUP DUOLINGO PARA CONFIRMAR O CAPÍTULO -->
         <div id="modalCapitulo" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
             <div class="bg-white dark:bg-darkcard border border-slate-200 dark:border-darkborder rounded-3xl p-6 max-w-sm w-full shadow-2xl text-center fade-in relative max-h-[90vh] overflow-y-auto">
-                <button onclick="fecharModalCapitulo()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white font-bold text-lg">✕</button>
+                <button onclick="fecharModalCapitulo()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white transition p-1 rounded-lg">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
                 
                 <div id="modalEmoji" class="flex justify-center mb-2"></div>
                 <!-- ESPAÇO DEDICADO PARA IMAGEM DO MODAL -->
@@ -442,8 +447,9 @@
 
                 <!-- NAVEGAÇÃO DA HISTÓRIA EM PARTES -->
                 <div class="pt-2 flex gap-3">
-                    <button id="btnHistoriaAnterior" onclick="anteriorSlideHistoria()" class="px-5 py-3 bg-slate-100 dark:bg-darkbg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs rounded-xl transition">
-                        ← Anterior
+                    <button id="btnHistoriaAnterior" onclick="anteriorSlideHistoria()" class="px-5 py-3 bg-slate-100 dark:bg-darkbg hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs rounded-xl transition flex items-center gap-1.5">
+                        <svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+                        <span>Anterior</span>
                     </button>
                     <button id="btnHistoriaProximo" onclick="proximoSlideHistoria()" class="flex-1 py-4 bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-sm rounded-2xl shadow-[0_4px_0_#8c4521] active:translate-y-1 active:shadow-none transition flex items-center justify-center gap-2">
                         <span>Próxima Parte</span>
@@ -479,8 +485,9 @@
 
                 <div id="feedbackBox" class="hidden p-4 rounded-2xl text-sm font-medium leading-relaxed mb-6"></div>
 
-                <button id="btnProxima" onclick="proximaQuestao()" class="hidden w-full py-4 bg-slate-900 dark:bg-brand-500 text-white font-bold text-sm rounded-2xl hover:bg-slate-800 dark:hover:bg-brand-600 transition shadow-md">
-                    Continuar Aventura →
+                <button id="btnProxima" onclick="proximaQuestao()" class="hidden w-full py-4 bg-slate-900 dark:bg-brand-500 text-white font-bold text-sm rounded-2xl hover:bg-slate-800 dark:hover:bg-brand-600 transition shadow-md flex items-center justify-center gap-2">
+                    <span>Continuar Aventura</span>
+                    <svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
                 </button>
             </div>
         </div>
@@ -492,7 +499,7 @@
                 <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2" id="resultadoTitulo">Capítulo Concluído!</h2>
                 
                 <div class="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[11px] font-bold px-3 py-1 rounded-full border border-amber-500/20 mb-4">
-                    <svg class="w-3.5 h-3.5 text-amber-500 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z"/></svg>
+                    <svg class="w-3.5 h-3.5 text-amber-500 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     <span>Mínimo para avançar: 85% de acertos</span>
                 </div>
 
@@ -583,13 +590,38 @@
     </footer>
 
     <!-- SCRIPT DUOLINGO & HISTÓRIA INTERATIVA -->
+    <script src="../scripts/fracta-db.js"></script>
     <script src="../scripts/script.js"></script>
     <script>
+        // BIBLIOTECA DE ÍCONES HEROICONS (PADRÃO UNIFICADO)
+        const ICONS = {
+            compass: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689A1.125 1.125 0 003 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" /></svg>`,
+            search: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>`,
+            lightbulb: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-4.5 6 6 0 10-10.5 4.5 6 6 0 001.5 4.5m7.5 0h-7.5" /></svg>`,
+            rocket: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.499 4.499 0 00-1.757 4.306 4.438 4.438 0 002.946-2.946 4.5 4.5 0 004.306-1.758c-1.336-.363-2.583-1.018-3.64-1.89-1.05-.88-1.85-2.008-2.31-3.25z" /></svg>`,
+            globe: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" /></svg>`,
+            plusCircle: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+            gridMath: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" /></svg>`,
+            chartPie: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" /><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z" /></svg>`,
+            academicCap: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg>`,
+            star: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" /></svg>`,
+            bookOpen: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25"/></svg>`,
+            trophy: `<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 sm:w-10 sm:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.504-1.125-1.125-1.125h-6.75A1.125 1.125 0 017.5 15.375V18.75m9 0h-9M3.75 6h16.5M3.75 6a2.25 2.25 0 00-2.25 2.25v2.25a3.75 3.75 0 003.75 3.75h.75m11.25-8.25a2.25 2.25 0 012.25 2.25v2.25a3.75 3.75 0 01-3.75 3.75h-.75m-9-6h10.5v4.5a5.25 5.25 0 01-10.5 0V6z"/></svg>`,
+            trophyBadge: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>`,
+            starBadge: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>`,
+            lockBadge: `<svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>`,
+            camera: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" /></svg>`,
+            arrowRight: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>`,
+            checkBadge: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>`,
+            xBadge: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>`,
+            refresh: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 inline ml-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>`
+        };
+
         // DADOS DA INTRODUÇÃO INTERATIVA DA HISTÓRIA (SLIDER PASSO A PASSO)
         const DADOS_INTRODUCAO = [
             {
                 id: 1,
-                emoji: "🐾 🕳️",
+                icon: ICONS.compass,
                 titulo: "Silas e os Primeiros Túneis",
                 tag: "Introdução — Parte 1",
                 imagem: "../img/trilha/Introducao_p1.png",
@@ -597,76 +629,76 @@
             },
             {
                 id: 2,
-                emoji: "📐 🔍",
+                icon: ICONS.search,
                 titulo: "O Desafio da Divisão",
                 tag: "Introdução — Parte 2",
-                imagem: "", // Adicione aqui a URL/caminho da imagem (ex: "../img/silas_intro_2.png")
+                imagem: "../img/trilha/Introducao_p2.png",
                 texto: "Confuso com a organização das galerias, Silas começou a se perguntar:\n'Como posso representar essas partes? O que são frações? Como posso saber qual parte é a maior?'"
             },
             {
                 id: 3,
-                emoji: "🤔 💡",
+                icon: ICONS.lightbulb,
                 titulo: "A Decisão de Silas",
                 tag: "Introdução — Parte 3",
-                imagem: "", // Adicione aqui a URL/caminho da imagem (ex: "../img/silas_intro_3.png")
+                imagem: "../img/trilha/Introducao_p3.png",
                 texto: "Com muitas dúvidas na cabeça, Silas junta suas ferramentas e decide partir em uma grande aventura pelo mundo para descobrir todos os mistérios das frações!"
             },
             {
                 id: 4,
-                emoji: "🗺️ 🚀",
+                icon: ICONS.rocket,
                 titulo: "O Início da Trilha!",
                 tag: "Introdução — Parte 4",
-                imagem: "", // Adicione aqui a URL/caminho da imagem (ex: "../img/silas_intro_4.png")
+                imagem: "../img/trilha/Introducao_p4.png",
                 texto: "Sua primeira parada será no Egito Antigo para encontrar Clarice, a doninha sábia! Vamos acompanhar Silas nessa incrível jornada matemática?"
             }
         ];
 
-        // DADOS COMPLETOS DOS CAPÍTULOS DA TRILHA DE SILAS
-        const DADOS_TRILHA = [
+        // DADOS COMPLETOS DOS CAPÍTULOS DA TRILHA DE SILAS — 6º ANO (Fase Fundamental)
+        const DADOS_TRILHA_6ANO = [
             {
                 id: 1,
-                emoji: "🇪🇬",
+                icon: ICONS.globe,
                 titulo: "Capítulo 1 — A origem das frações",
                 amigo: "Clarice, a doninha",
                 tag: "Egito Antigo",
-                imagem: "", // Adicione o caminho da imagem do capítulo 1 (ex: "../img/capitulo1.png")
+                imagem: "../img/trilha/capitulo1.png",
                 historia: "Silas viaja até o Egito para encontrar Clarice. Clarice ensina que uma fração representa partes de um todo e como comparar e localizar frações na reta numérica.",
                 historiaSlides: [
                     {
                         titulo: "Silas e os Primeiros Túneis",
                         tag: "Capítulo 1 — Parte 1",
-                        imagem: "",
+                        imagem: "../img/trilha/capitulo1_p1.png",
                         texto: "Silas é uma toupeira curiosa que adora construir túneis para sua casa. Um dia, enquanto planeja uma nova galeria subterrânea, ele percebe que precisa dividir os espaços em partes exatamente iguais!"
                     },
                     {
                         titulo: "A Grande Dúvida",
                         tag: "Capítulo 1 — Parte 2",
-                        imagem: "",
+                        imagem: "../img/trilha/capitulo1_p2.png",
                         texto: "Confuso, Silas começa a se perguntar: \"Como posso representar essas partes? O que são frações? Como posso saber qual parte é maior?\" Com muitas dúvidas na cabeça, ele decide partir em uma aventura para descobrir os mistérios das frações."
                     },
                     {
                         titulo: "A Viagem ao Egito Antigo",
                         tag: "Capítulo 1 — Parte 3",
-                        imagem: "",
+                        imagem: "../img/trilha/capitulo1_p3.png",
                         texto: "Silas viaja até o Egito Antigo para encontrar Clarice, a doninha sábia que conhece muitas histórias sobre matemática. Clarice conta que as frações são usadas há milhares de anos e que os antigos egípcios já as utilizavam para medir terras agrícolas após as cheias do Rio Nilo!"
                     },
                     {
                         titulo: "Numerador e Denominador",
                         tag: "Capítulo 1 — Parte 4",
-                        imagem: "",
+                        imagem: "../img/trilha/capitulo1_p4.png",
                         texto: "Enquanto conversam, Silas entende que o Numerador (número de cima) indica a quantidade de partes consideradas, e o Denominador (número de baixo) representa o total de partes iguais em que o todo foi dividido."
                     },
                     {
                         titulo: "A Reta Numérica",
                         tag: "Capítulo 1 — Parte 5",
-                        imagem: "",
+                        imagem: "../img/trilha/capitulo1_p5.png",
                         texto: "Clarice explica que as frações próprias — onde o numerador é menor que o denominador — ficam sempre localizadas entre o número 0 e o número 1 na reta numérica. Silas finalmente entende o segredo das frações!"
                     }
                 ],
                 conteudos: ["Tipos de frações", "Numerador e denominador", "Comparação de frações", "Localização na reta numérica"],
                 questoes: [
                     {
-                        imagem: "", // Adicione o caminho da imagem da questão (ex: "../img/q1_1.png")
+                        imagem: "../img/trilha/quiz_egito01.png",
                         contexto: "Silas precisa cavar 3 de um total de 4 partes iguais de uma galeria egípcia.",
                         enunciado: "Qual fração representa a parte do túnel que Silas precisa cavar?",
                         opcoes: ["3/4", "1/4", "4/3", "2/4"],
@@ -674,7 +706,7 @@
                         explicacao: "3 é o numerador (partes cavadas) e 4 é o denominador (total de partes iguais)."
                     },
                     {
-                        imagem: "",
+                        imagem: "../img/trilha/quiz_egito02.png",
                         contexto: "Clarice mostra a fração 5/8 para Silas.",
                         enunciado: "Na fração 5/8, qual termo representa o total de partes em que o todo foi dividido?",
                         opcoes: ["8 (Denominador)", "5 (Numerador)", "13 (Soma)", "3 (Diferença)"],
@@ -682,7 +714,7 @@
                         explicacao: "O denominador (número de baixo) indica em quantas partes o todo foi dividido."
                     },
                     {
-                        imagem: "",
+                        imagem: "../img/trilha/quiz_egito03.png",
                         contexto: "Silas tem 2/5 de um pão egípcio e Clarice tem 4/5.",
                         enunciado: "Quem possui a maior fração de pão?",
                         opcoes: ["Clarice (4/5)", "Silas (2/5)", "Ambos têm a mesma quantidade", "Não é possível comparar"],
@@ -690,7 +722,7 @@
                         explicacao: "Com denominadores iguais, a fração com o maior numerador é a maior (4/5 > 2/5)."
                     },
                     {
-                        imagem: "",
+                        imagem: "../img/trilha/quiz_egito04.png",
                         contexto: "Silas observa uma régua numérica de 0 a 1.",
                         enunciado: "Em qual posição na reta numérica fica localizada a fração 1/2?",
                         opcoes: ["Exatamente no meio entre 0 e 1", "Muito perto do 0", "Após o número 1", "No ponto 0.8"],
@@ -698,7 +730,7 @@
                         explicacao: "1/2 é equivalente a 0,5 (metade do caminho entre 0 e 1)."
                     },
                     {
-                        imagem: "",
+                        imagem: "../img/trilha/quiz_egito05.png",
                         contexto: "Clarice ensina a classificação dos tipos de frações.",
                         enunciado: "Como é chamada uma fração cujo numerador é menor que o denominador, como 2/3?",
                         opcoes: ["Fração Própria", "Fração Imprópria", "Fração Mista", "Fração Equivalente"],
@@ -709,11 +741,11 @@
             },
             {
                 id: 2,
-                emoji: "🦫",
+                icon: ICONS.plusCircle,
                 titulo: "Capítulo 2 — A barragem de Bento",
                 amigo: "Bento, o castor",
                 tag: "Rio Nilo",
-                imagem: "", // Adicione imagem do capítulo 2
+                imagem: "",
                 historia: "Bento, o castor, precisa de ajuda na barragem. Ele ensina Silas a somar frações com denominadores iguais e usar o MMC para frações com denominadores diferentes.",
                 historiaSlides: [
                     { titulo: "Um mestre das barragens", tag: "Capítulo 2 — Parte 1", imagem: "", texto: "Seguindo sua jornada ao longo do Rio Nilo, Silas encontra Bento, um castor muito dedicado que é mestre em construir barragens de madeira e pedra." },
@@ -721,7 +753,7 @@
                     { titulo: "A regra da adição", tag: "Capítulo 2 — Parte 3", imagem: "", texto: "Bento explica: quando os denominadores são iguais, somamos apenas os numeradores e mantemos o denominador. Quando são diferentes, primeiro encontramos frações equivalentes com o mesmo denominador usando o MMC." },
                     { titulo: "Barragem protegida", tag: "Capítulo 2 — Parte 4", imagem: "", texto: "Silas aprende a calcular o MMC e a transformar frações para somá-las com precisão. Com o novo conhecimento, ele ajuda Bento a reforçar a barragem antes que a água suba!" }
                 ],
-                historiaTexto: `🦫 A Barragem de Bento
+                historiaTexto: `A Barragem de Bento
 
 Seguindo sua jornada ao longo do Rio Nilo, Silas encontra Bento, um castor muito dedicado que é mestre em construir barragens de madeira e pedra.
 
@@ -778,11 +810,11 @@ Silas aprende a calcular o MMC e a transformar frações para somá-las com prec
             },
             {
                 id: 3,
-                emoji: "🐾",
+                icon: ICONS.gridMath,
                 titulo: "Capítulo 3 — Construindo os túneis de Silas",
                 amigo: "Silas a toupeira",
                 tag: "Galerias Subterrâneas",
-                imagem: "", // Adicione imagem do capítulo 3
+                imagem: "",
                 historia: "Silas volta para casa e precisa calcular frações de terrenos. Bento ensina a multiplicar frações e calcular fração de uma quantidade sem regra de três.",
                 historiaSlides: [
                     { titulo: "De volta aos túneis", tag: "Capítulo 3 — Parte 1", imagem: "", texto: "De volta ao seu lar nas galerias subterrâneas, Silas está animado para escavar a maior rede de túneis de toda a floresta!" },
@@ -790,7 +822,7 @@ Silas aprende a calcular o MMC e a transformar frações para somá-las com prec
                     { titulo: "Multiplicando frações", tag: "Capítulo 3 — Parte 3", imagem: "", texto: "Para multiplicar duas frações, Silas aprende a multiplicar numerador por numerador e denominador por denominador. Por exemplo: 1/2 × 3/4 = 3/8." },
                     { titulo: "Fração de uma quantidade", tag: "Capítulo 3 — Parte 4", imagem: "", texto: "Para calcular a fração de uma quantidade, ele divide o valor total pelo denominador e multiplica o resultado pelo numerador. Assim, Silas calcula o material necessário para que nenhum túnel desmorone!" }
                 ],
-                historiaTexto: `🐾 Construindo os Túneis de Silas
+                historiaTexto: `Construindo os Túneis de Silas
 
 De volta ao seu lar nas galerias subterrâneas, Silas está animado para escavar a maior rede de túneis de toda a floresta!
 
@@ -847,11 +879,11 @@ Com esses conhecimentos em mãos, Silas calcula com precisão o material necess�
             },
             {
                 id: 4,
-                emoji: "🦡",
+                icon: ICONS.chartPie,
                 titulo: "Capítulo 4 — Organizando os alimentos",
                 amigo: "Martim, o texugo",
                 tag: "Estoque de Provisões",
-                imagem: "", // Adicione imagem do capítulo 4
+                imagem: "",
                 historia: "Martim, o texugo, está separando sementes e alimentos em porções. Ele ensina a dividir frações invertendo a segunda fração.",
                 historiaSlides: [
                     { titulo: "O estoque de inverno", tag: "Capítulo 4 — Parte 1", imagem: "", texto: "No outono, Silas visita seu amigo Martim, um texugo muito organizado que cuida do grande estoque de mantimentos para o inverno." },
@@ -859,7 +891,7 @@ Com esses conhecimentos em mãos, Silas calcula com precisão o material necess�
                     { titulo: "O segredo da divisão", tag: "Capítulo 4 — Parte 3", imagem: "", texto: "Martim ensina: para dividir uma fração por outra, mantemos a primeira fração como ela é e multiplicamos pelo inverso da segunda fração." },
                     { titulo: "Tudo bem dividido", tag: "Capítulo 4 — Parte 4", imagem: "", texto: "Com essa regra matemática, Silas e Martim dividem todos os alimentos rapidamente, em porções iguais e sem nenhum desperdício!" }
                 ],
-                historiaTexto: `🦡 Organizando os Alimentos
+                historiaTexto: `Organizando os Alimentos
 
 No outono, Silas visita seu amigo Martim, um texugo extremamente organizado que cuida do grande estoque de mantimentos para o inverno.
 
@@ -920,11 +952,11 @@ Com a ajuda dessa regra matemática, Silas e Martim dividem todos os alimentos r
             },
             {
                 id: 5,
-                emoji: "🐢",
+                icon: ICONS.academicCap,
                 titulo: "Capítulo 5 — Explorando novas galerias",
                 amigo: "Tadeu, o tatu",
                 tag: "Reta & Porcentagem",
-                imagem: "", // Adicione imagem do capítulo 5
+                imagem: "",
                 historia: "Tadeu, o tatu, ensina Silas que uma quantidade pode ser representada como fração, na reta numérica e como porcentagem.",
                 historiaSlides: [
                     { titulo: "A última aventura", tag: "Capítulo 5 — Parte 1", imagem: "", texto: "Na etapa final da aventura, Silas vai ao topo das montanhas rochosas encontrar Tadeu, o tatu explorador." },
@@ -932,7 +964,7 @@ Com a ajuda dessa regra matemática, Silas e Martim dividem todos os alimentos r
                     { titulo: "Frações e porcentagens", tag: "Capítulo 5 — Parte 3", imagem: "", texto: "Tadeu demonstra: 1/2 = 0,50 = 50%; 1/4 = 0,25 = 25%; e 3/4 = 0,75 = 75%. São maneiras diferentes de representar a mesma parte do todo." },
                     { titulo: "Mestre das Frações", tag: "Capítulo 5 — Parte 4", imagem: "", texto: "Agora, Silas sabe interpretar mapas de exploração, porcentagens de escavação e plantas de construção como um verdadeiro Mestre das Frações!" }
                 ],
-                historiaTexto: `🐢 Explorando Novas Galerias
+                historiaTexto: `Explorando Novas Galerias
 
 Na etapa final da aventura, Silas vai ao topo das montanhas rochosas encontrar Tadeu, o tatu explorador.
 
@@ -990,7 +1022,328 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             }
         ];
 
-        // ESTADO GLOBAL DO PROGRESSO
+        // DADOS COMPLETOS DOS CAPÍTULOS DA TRILHA DE SILAS — 7º ANO (Nível Avançado com Raciocínio Profundo)
+        const DADOS_TRILHA_7ANO = [
+            {
+                id: 1,
+                icon: ICONS.globe,
+                titulo: "Capítulo 1 — A origem das frações (Nível 7º Ano)",
+                amigo: "Clarice, a doninha",
+                tag: "Egito Antigo • 7º Ano",
+                imagem: "../img/trilha/capitulo1.png",
+                historia: "Silas viaja até o Egito para encontrar Clarice. Clarice ensina que uma fração representa partes de um todo, aprofundando em frações equivalentes, simplificação irredutível e localização na reta.",
+                historiaSlides: [
+                    {
+                        titulo: "Silas e os Primeiros Túneis",
+                        tag: "Capítulo 1 — Parte 1",
+                        imagem: "../img/trilha/capitulo1_p1.png",
+                        texto: "Silas é uma toupeira curiosa que adora construir túneis para sua casa. Um dia, enquanto planeja uma nova galeria subterrânea, ele percebe que precisa dividir os espaços em partes exatamente iguais!"
+                    },
+                    {
+                        titulo: "A Grande Dúvida",
+                        tag: "Capítulo 1 — Parte 2",
+                        imagem: "../img/trilha/capitulo1_p2.png",
+                        texto: "Confuso, Silas começa a se perguntar: \"Como posso representar essas partes? O que são frações? Como posso saber qual parte é maior?\" Com muitas dúvidas na cabeça, ele decide partir em uma aventura para descobrir os mistérios das frações."
+                    },
+                    {
+                        titulo: "A Viagem ao Egito Antigo",
+                        tag: "Capítulo 1 — Parte 3",
+                        imagem: "../img/trilha/capitulo1_p3.png",
+                        texto: "Silas viaja até o Egito Antigo para encontrar Clarice, a doninha sábia que conhece muitas histórias sobre matemática. Clarice conta que as frações são usadas há milhares de anos e que os antigos egípcios já as utilizavam para medir terras agrícolas após as cheias do Rio Nilo!"
+                    },
+                    {
+                        titulo: "Numerador e Denominador",
+                        tag: "Capítulo 1 — Parte 4",
+                        imagem: "../img/trilha/capitulo1_p4.png",
+                        texto: "Enquanto conversam, Silas entende que o Numerador (número de cima) indica a quantidade de partes consideradas, e o Denominador (número de baixo) representa o total de partes iguais em que o todo foi dividido."
+                    },
+                    {
+                        titulo: "A Reta Numérica",
+                        tag: "Capítulo 1 — Parte 5",
+                        imagem: "../img/trilha/capitulo1_p5.png",
+                        texto: "Clarice explica que as frações próprias ficam entre 0 e 1, enquanto frações impróprias e números mistos ultrapassam o número 1 na reta numérica graduada."
+                    }
+                ],
+                conteudos: ["Comparação de várias frações", "Simplificação irredutível", "Números mistos e frações impróprias", "Reta numérica avançada"],
+                questoes: [
+                    {
+                        imagem: "../img/trilha/quiz_egito01.png",
+                        contexto: "Três equipes de escribas cavaram canais de irrigação no Nilo: a equipe Alfa cavou 5/6 da sua vala, a equipe Beta cavou 7/8 e a equipe Gama cavou 3/4.",
+                        enunciado: "Reduzindo as frações ao mesmo denominador comum (MMC = 24), qual equipe concluiu a maior fração do trabalho?",
+                        opcoes: ["Equipe Beta (7/8)", "Equipe Alfa (5/6)", "Equipe Gama (3/4)", "Alfa e Beta cavaram igual"],
+                        correta: 0,
+                        explicacao: "Com MMC = 24: 7/8 = 21/24; 5/6 = 20/24; 3/4 = 18/24. Como 21/24 é o maior valor, a equipe Beta realizou a maior fração (7/8 > 5/6 > 3/4)."
+                    },
+                    {
+                        imagem: "../img/trilha/quiz_egito02.png",
+                        contexto: "Clarice precisa empilhar blocos de pedra de 1/4 de metro de altura até atingir 11/4 de metro de altura total.",
+                        enunciado: "Qual número misto representa a fração imprópria 11/4?",
+                        opcoes: ["2 inteiros e 3/4 (2 3/4)", "3 inteiros e 1/4 (3 1/4)", "2 inteiros e 1/4 (2 1/4)", "1 inteiro e 3/4 (1 3/4)"],
+                        correta: 0,
+                        explicacao: "11 ÷ 4 resulta em quociente 2 e resto 3. Portanto, 11/4 = 2 3/4 (dois inteiros e três quartos)."
+                    },
+                    {
+                        imagem: "../img/trilha/quiz_egito03.png",
+                        contexto: "Silas encontrou um papiro matemático registrando a fração 84/126 da colheita real de trigo.",
+                        enunciado: "Qual é a fração irredutível simplificada equivalente a 84/126?",
+                        opcoes: ["2/3", "4/6", "3/4", "7/9"],
+                        correta: 0,
+                        explicacao: "Dividindo o numerador e o denominador sucessivamente ou pelo MDC = 42: 84 ÷ 42 = 2 e 126 ÷ 42 = 3, obtendo 2/3."
+                    },
+                    {
+                        imagem: "../img/trilha/quiz_egito04.png",
+                        contexto: "Clarice marca a fração imprópria 7/3 em uma reta numérica graduada em números inteiros.",
+                        enunciado: "Entre quais números inteiros consecutivos da reta numérica a fração 7/3 está localizada?",
+                        opcoes: ["Entre 2 e 3", "Entre 1 e 2", "Entre 3 e 4", "Entre 0 e 1"],
+                        correta: 0,
+                        explicacao: "7 ÷ 3 = 2,333... (ou 2 inteiros e 1/3), situando-se estritamente entre os inteiros 2 e 3."
+                    },
+                    {
+                        imagem: "../img/trilha/quiz_egito05.png",
+                        contexto: "Silas precisa ordenar três marcações de terreno representadas pelas frações 2/3, 3/5 e 7/10.",
+                        enunciado: "Qual é a ordenação correta das três frações em ordem estritamente crescente (da menor para a maior)?",
+                        opcoes: ["3/5 < 2/3 < 7/10", "2/3 < 3/5 < 7/10", "7/10 < 2/3 < 3/5", "3/5 < 7/10 < 2/3"],
+                        correta: 0,
+                        explicacao: "Reduzindo ao MMC = 30: 3/5 = 18/30; 2/3 = 20/30; 7/10 = 21/30. Logo, a ordem é 3/5 < 2/3 < 7/10."
+                    }
+                ]
+            },
+            {
+                id: 2,
+                icon: ICONS.plusCircle,
+                titulo: "Capítulo 2 — A barragem de Bento (Nível 7º Ano)",
+                amigo: "Bento, o castor",
+                tag: "Rio Nilo • 7º Ano",
+                imagem: "",
+                historia: "Bento, o castor, precisa de ajuda na barragem. Ele ensina Silas a somar e subtrair frações com denominadores diferentes usando o MMC e a resolver problemas de várias etapas.",
+                historiaSlides: [
+                    { titulo: "Um mestre das barragens", tag: "Capítulo 2 — Parte 1", imagem: "", texto: "Seguindo sua jornada ao longo do Rio Nilo, Silas encontra Bento, um castor muito dedicado que é mestre em construir barragens de madeira e pedra." },
+                    { titulo: "Materiais diferentes", tag: "Capítulo 2 — Parte 2", imagem: "", texto: "Bento está organizando a montagem da barragem, mas percebe que precisa somar porções de troncos e pedras representadas por frações com denominadores diferentes." },
+                    { titulo: "A regra da adição", tag: "Capítulo 2 — Parte 3", imagem: "", texto: "Bento explica: quando os denominadores são diferentes, encontramos frações equivalentes com o mesmo denominador usando o MMC e calculamos com precisão!" },
+                    { titulo: "Barragem protegida", tag: "Capítulo 2 — Parte 4", imagem: "", texto: "Silas aprende a calcular o MMC de múltiplos termos e a subtrair partes restantes, garantindo a proteção da barragem contra cheias!" }
+                ],
+                conteudos: ["Adição e subtração com denominadores diferentes", "Uso de MMC para 3 termos", "Operações com números mistos", "Problemas de fração do restante"],
+                questoes: [
+                    {
+                        imagem: "",
+                        contexto: "Bento utilizou 1/3 de toras de acácia, 2/5 de toras de eucalipto e 1/6 de pedras para a base da barragem.",
+                        enunciado: "Qual fração do total da base da barragem foi concluída somando 1/3 + 2/5 + 1/6?",
+                        opcoes: ["9/10 (ou 27/30)", "4/14", "7/15", "5/6"],
+                        correta: 0,
+                        explicacao: "MMC(3, 5, 6) = 30. Convertendo: 10/30 + 12/30 + 5/30 = 27/30. Simplificando por 3 obtemos 9/10."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Uma comporta tem capacidade para 1 reservatório inteiro de água. Pela manhã escoou 3/8 da água e à tarde escoou mais 1/6.",
+                        enunciado: "Que fração da capacidade total ainda resta na comporta (1 - (3/8 + 1/6))?",
+                        opcoes: ["11/24", "13/24", "7/24", "1/2"],
+                        correta: 0,
+                        explicacao: "MMC(8, 6) = 24. Água escoada: 9/24 + 4/24 = 13/24. Capacidade restante: 24/24 - 13/24 = 11/24."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Silas uniu 2 1/2 metros de corda de cipó com 1 3/4 metros de corda de cânhamo, e em seguida cortou 3 1/8 metros para amarrar os pilares.",
+                        enunciado: "Quantos metros de corda restaram após o corte (2 1/2 + 1 3/4 - 3 1/8)?",
+                        opcoes: ["1 1/8 metro (ou 9/8 m)", "1 3/8 metro", "7/8 metro", "2 metros"],
+                        correta: 0,
+                        explicacao: "Convertendo ao denominador 8: 2 1/2 = 20/8; 1 3/4 = 14/8; 3 1/8 = 25/8. (20/8 + 14/8) - 25/8 = 34/8 - 25/8 = 9/8 = 1 1/8 metro."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Para calcular a estabilidade da barragem, Bento precisa resolver a expressão fracionária: (5/6 - 1/4) + (2/3 - 1/2).",
+                        enunciado: "Qual é o valor final simplificado dessa expressão com frações?",
+                        opcoes: ["3/4", "7/12", "1 inteiro", "5/12"],
+                        correta: 0,
+                        explicacao: "5/6 - 1/4 = 10/12 - 3/12 = 7/12. E 2/3 - 1/2 = 4/6 - 3/6 = 1/6 = 2/12. Somando: 7/12 + 2/12 = 9/12 = 3/4."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Em um depósito de argila impermeável, 2/5 do total foram gastos na vedação frontal. Do que SOBROU, 1/3 foi usado nas laterais.",
+                        enunciado: "Que fração do depósito total de argila ainda sobrou após essas duas etapas?",
+                        opcoes: ["2/5", "3/5", "1/5", "4/15"],
+                        correta: 0,
+                        explicacao: "Após a 1ª etapa sobraram 3/5. Na 2ª etapa gastou-se 1/3 de 3/5 = 1/5. Sobra final = 3/5 - 1/5 = 2/5."
+                    }
+                ]
+            },
+            {
+                id: 3,
+                icon: ICONS.gridMath,
+                titulo: "Capítulo 3 — Construindo os túneis de Silas (Nível 7º Ano)",
+                amigo: "Silas a toupeira",
+                tag: "Galerias Subterrâneas • 7º Ano",
+                imagem: "",
+                historia: "Silas volta para casa e precisa calcular frações de terrenos. Ele desenvolve métodos de multiplicação com simplificação prévia, produto de frações mistas e problemas em etapas.",
+                historiaSlides: [
+                    { titulo: "De volta aos túneis", tag: "Capítulo 3 — Parte 1", imagem: "", texto: "De volta ao seu lar nas galerias subterrâneas, Silas está animado para escavar a maior rede de túneis de toda a floresta!" },
+                    { titulo: "Um novo cálculo", tag: "Capítulo 3 — Parte 2", imagem: "", texto: "Silas precisa calcular a fração de um número inteiro, multiplicar frações e calcular áreas de compartimentos subterrâneos." },
+                    { titulo: "Multiplicando com simplificação", tag: "Capítulo 3 — Parte 3", imagem: "", texto: "Silas descobre o poder da simplificação cruzada antes de multiplicar numeradores e denominadores, agilizando cálculos complexos!" },
+                    { titulo: "Fração de quantidade composta", tag: "Capítulo 3 — Parte 4", imagem: "", texto: "Ele aprende a calcular frações sucessivas de quantidades totais para garantir suprimentos perfeitos para a escavação." }
+                ],
+                conteudos: ["Multiplicação com simplificação prévia", "Fração de uma quantidade composta", "Multiplicação com números mistos", "Potenciação de frações"],
+                questoes: [
+                    {
+                        imagem: "",
+                        contexto: "Silas precisa calcular a área de um compartimento retangular com 9/14 de metro de largura por 7/15 de metro de comprimento.",
+                        enunciado: "Simplificando cruzado antes de multiplicar, qual é a área do compartimento em metros quadrados (9/14 × 7/15)?",
+                        opcoes: ["3/10 m²", "63/210 m²", "2/5 m²", "7/30 m²"],
+                        correta: 0,
+                        explicacao: "Simplificando 9 e 15 por 3 (restam 3 e 5), e 7 e 14 por 7 (restam 1 e 2): (3 × 1) / (2 × 5) = 3/10 m²."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Silas encontrou 120 vigas de sustentação. Ele separou 3/8 para o túnel principal e 2/5 do RESTANTE para as câmaras laterais.",
+                        enunciado: "Quantas vigas foram destinadas às câmaras laterais?",
+                        opcoes: ["30 vigas", "45 vigas", "25 vigas", "50 vigas"],
+                        correta: 0,
+                        explicacao: "Túnel principal: 3/8 de 120 = 45 vigas. Sobram: 120 - 45 = 75 vigas. Câmaras laterais: 2/5 de 75 = 30 vigas."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Para escavar 1 metro de rocha sólida, a britadeira consome 1 1/3 horas. Silas precisa escavar um trecho de 2 1/4 metros.",
+                        enunciado: "Quantas horas completas de trabalho serão necessárias (1 1/3 × 2 1/4)?",
+                        opcoes: ["3 horas", "2 1/2 horas", "3 1/3 horas", "4 horas"],
+                        correta: 0,
+                        explicacao: "1 1/3 = 4/3 e 2 1/4 = 9/4. Multiplicando: 4/3 × 9/4 = 36/12 = 3 horas exatas."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "A resistência do solo faz com que a velocidade da escavadeira caia segundo a potência de fração (2/3)³.",
+                        enunciado: "Qual fração irredutível representa o cálculo da potência (2/3)³?",
+                        opcoes: ["8/27", "6/9", "4/9", "8/9"],
+                        correta: 0,
+                        explicacao: "(2/3)³ = (2 × 2 × 2) / (3 × 3 × 3) = 8/27."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Um túnel planejado de 480 metros terá marcações de segurança no ponto correspondente a 5/8 do comprimento total a partir da entrada.",
+                        enunciado: "A quantos metros da entrada fica essa marcação de segurança?",
+                        opcoes: ["300 metros", "320 metros", "240 metros", "360 metros"],
+                        correta: 0,
+                        explicacao: "480 ÷ 8 = 60 metros por oitavo; 60 × 5 = 300 metros da entrada."
+                    }
+                ]
+            },
+            {
+                id: 4,
+                icon: ICONS.chartPie,
+                titulo: "Capítulo 4 — Organizando os alimentos (Nível 7º Ano)",
+                amigo: "Martim, o texugo",
+                tag: "Estoque de Provisões • 7º Ano",
+                imagem: "",
+                historia: "Martim, o texugo, está organizando o grande estoque de mantimentos da floresta. Ele ensina a divisão de frações por inversão, divisão com números mistos e resolução de problemas práticos.",
+                historiaSlides: [
+                    { titulo: "O estoque de inverno", tag: "Capítulo 4 — Parte 1", imagem: "", texto: "No outono, Silas visita seu amigo Martim, um texugo muito organizado que cuida do grande estoque de mantimentos para o inverno." },
+                    { titulo: "Porções para a floresta", tag: "Capítulo 4 — Parte 2", imagem: "", texto: "Martim tem sacos de grãos, nozes e sementes e precisa dividir essas provisões em porções exatamente iguais para as famílias da floresta." },
+                    { titulo: "O segredo da divisão", tag: "Capítulo 4 — Parte 3", imagem: "", texto: "Martim ensina: para dividir uma fração por outra, mantemos a primeira fração como ela é e multiplicamos pelo inverso da segunda fração." },
+                    { titulo: "Tudo bem dividido", tag: "Capítulo 4 — Parte 4", imagem: "", texto: "Com essa regra e simplificações prévias, eles dividem qualquer quantidade rapidamente, sem erros e sem desperdício!" }
+                ],
+                conteudos: ["Divisão de frações com inversão", "Divisão de inteiro por fração", "Divisão com números mistos", "Expressões com multiplicação e divisão"],
+                questoes: [
+                    {
+                        imagem: "",
+                        contexto: "Martim tem um fardo com 15/16 kg de sementes e deseja repartir em porções de 5/8 kg cada.",
+                        enunciado: "Aplicando a regra da divisão (multiplicação pelo inverso da 2ª), quantas porções ele obterá (15/16 ÷ 5/8)?",
+                        opcoes: ["3/2 (1 e meia porções)", "75/128 porções", "2 porções", "5/6 porções"],
+                        correta: 0,
+                        explicacao: "15/16 ÷ 5/8 = 15/16 × 8/5. Simplificando cruzado: (3 × 1) / (2 × 1) = 3/2 = 1 1/2 porções."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Martim possui 18 litros de néctar silvestre e precisa encher potes com 3/4 de litro de capacidade cada.",
+                        enunciado: "Quantos potes de 3/4 de litro poderão ser completamente cheios com os 18 litros?",
+                        opcoes: ["24 potes", "14 potes", "20 potes", "27 potes"],
+                        correta: 0,
+                        explicacao: "18 ÷ 3/4 = 18 × 4/3 = 72 ÷ 3 = 24 potes completos."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Para alimentar os animais por um ciclo, Martim separou 4 1/2 kg de castanhas. Cada grupo consome uma cota diária de 3/4 kg.",
+                        enunciado: "Quantos grupos poderão receber sua cota completa com essa quantidade (4 1/2 ÷ 3/4)?",
+                        opcoes: ["6 grupos", "5 grupos", "8 grupos", "7 grupos"],
+                        correta: 0,
+                        explicacao: "4 1/2 = 9/2. Calculando: 9/2 ÷ 3/4 = 9/2 × 4/3 = 36/6 = 6 grupos."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Uma cesta contendo 7/9 kg de amoras foi dividida igualmente entre 3 jovens texugos.",
+                        enunciado: "Qual fração de quilo de amoras cada texugo recebeu (7/9 ÷ 3)?",
+                        opcoes: ["7/27 kg", "21/9 kg", "7/3 kg", "1/9 kg"],
+                        correta: 0,
+                        explicacao: "7/9 ÷ 3 = 7/9 × 1/3 = 7/27 kg para cada texugo."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Para calcular a rotação de sementes no celeiro, Martim resolve a expressão composta: (3/5 × 10/9) ÷ (2/3).",
+                        enunciado: "Qual é o valor numérico final simplificado dessa expressão?",
+                        opcoes: ["1 (um inteiro)", "4/9", "3/2", "2/5"],
+                        correta: 0,
+                        explicacao: "Multiplicação: 3/5 × 10/9 = 30/45 = 2/3. Divisão: 2/3 ÷ 2/3 = 1."
+                    }
+                ]
+            },
+            {
+                id: 5,
+                icon: ICONS.academicCap,
+                titulo: "Capítulo 5 — Explorando novas galerias (Nível 7º Ano)",
+                amigo: "Tadeu, o tatu",
+                tag: "Reta & Porcentagem • 7º Ano",
+                imagem: "",
+                historia: "Tadeu, o tatu, ensina Silas que as frações estão profundamente conectadas às porcentagens, números decimais e posicionamento métrico na reta.",
+                historiaSlides: [
+                    { titulo: "A última aventura", tag: "Capítulo 5 — Parte 1", imagem: "", texto: "Na etapa final da aventura, Silas vai ao topo das montanhas rochosas encontrar Tadeu, o tatu explorador." },
+                    { titulo: "Representações conectadas", tag: "Capítulo 5 — Parte 2", imagem: "", texto: "Tadeu ensina que frações, números decimais e porcentagens são formas complementares de representar proporções do todo." },
+                    { titulo: "Frações e porcentagens avançadas", tag: "Capítulo 5 — Parte 3", imagem: "", texto: "Tadeu desafia Silas com conversões de frações complexas, porcentagens acima de 100% e cálculo de intervalos na reta métrica!" },
+                    { titulo: "Mestre das Frações", tag: "Capítulo 5 — Parte 4", imagem: "", texto: "Agora Silas domina frações em nível avançado, apto a solucionar qualquer desafio de engenharia da floresta!" }
+                ],
+                conteudos: ["Conversão de porcentagem decimal para fração", "Problemas compostos de porcentagem e fração", "Comparação entre frações, decimais e porcentagens", "Distância e posições na reta numérica"],
+                questoes: [
+                    {
+                        imagem: "",
+                        contexto: "Tadeu avaliou uma amostra mineral da montanha e constatou que exatamente 37,5% é composta de quartzo puro.",
+                        enunciado: "Qual fração irredutível representa rigorosamente a porcentagem de 37,5%?",
+                        opcoes: ["3/8", "37/100", "7/20", "5/12"],
+                        correta: 0,
+                        explicacao: "37,5% = 37,5/100 = 375/1000. Dividindo numerador e denominador por 125, obtemos a fração irredutível 3/8."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Uma galeria de 600 metros foi planejada por Tadeu. Na 1ª semana escavaram 40% do total, e na 2ª semana escavaram 5/12 do RESTANTE.",
+                        enunciado: "Quantos metros da galeria foram escavados especificamente na 2ª semana?",
+                        opcoes: ["150 metros", "240 metros", "200 metros", "180 metros"],
+                        correta: 0,
+                        explicacao: "1ª semana: 40% de 600 = 240 m. Restante: 600 - 240 = 360 m. 2ª semana: 5/12 de 360 = (360 ÷ 12) × 5 = 30 × 5 = 150 metros."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Tadeu organizou quatro medições para Silas comparar: A = 7/10; B = 68%; C = 0,72; D = 3/4.",
+                        enunciado: "Convertendo todas as medidas para a mesma unidade percentual, qual delas representa o MAIOR valor?",
+                        opcoes: ["D (3/4 = 75%)", "C (0,72 = 72%)", "A (7/10 = 70%)", "B (68%)"],
+                        correta: 0,
+                        explicacao: "Convertendo: A = 70%; B = 68%; C = 72%; D = 75%. O maior valor é D (3/4 = 75%)."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "A equipe de escavação superou as previsões e concluiu 1 3/5 da cota diária esperada do túnel.",
+                        enunciado: "A qual porcentagem corresponde o número misto 1 3/5 (ou fração imprópria 8/5)?",
+                        opcoes: ["160%", "135%", "150%", "180%"],
+                        correta: 0,
+                        explicacao: "1 3/5 = 1 + 3/5 = 1 + 0,60 = 1,60. Multiplicando por 100% obtemos 160%."
+                    },
+                    {
+                        imagem: "",
+                        contexto: "Na reta graduada de 0 a 2 km da montanha, a tenda Alfa fica no marco 1 3/8 km e a tenda Beta no marco 1,75 km.",
+                        enunciado: "Qual é a distância fracionária exata entre as duas tendas (1 3/4 - 1 3/8)?",
+                        opcoes: ["3/8 km", "1/4 km", "5/8 km", "1/2 km"],
+                        correta: 0,
+                        explicacao: "1,75 km = 1 3/4 km = 1 6/8 km. Subtraindo: 1 6/8 - 1 3/8 = 3/8 km."
+                    }
+                ]
+            }
+        ];
+
+        // VARIÁVEL DINÂMICA DA TRILHA
+        let DADOS_TRILHA = DADOS_TRILHA_6ANO;
         let capituloAtualIndex = 0;
         let questaoIndex = 0;
         let acertosCapitulo = 0;
@@ -1013,7 +1366,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 container.innerHTML = `
                     <div class="w-full py-5 rounded-2xl border-2 border-dashed border-slate-300 dark:border-darkborder bg-slate-50/60 dark:bg-darkbg/60 flex flex-col items-center justify-center p-4 text-center transition-all hover:border-brand-500/50">
                         <div class="w-10 h-10 rounded-full bg-brand-500/10 dark:bg-brand-500/20 text-brand-500 flex items-center justify-center text-lg mb-2">
-                            📷
+                            ${ICONS.camera}
                         </div>
                         <span class="text-xs font-bold text-slate-600 dark:text-slate-300">${placeholderHint}</span>
                         <span class="text-[10px] text-slate-400 dark:text-slate-500 mt-1 font-mono">Espaço para Imagem (informe o caminho da imagem)</span>
@@ -1035,7 +1388,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
 
             document.getElementById('introTag').textContent = slide.tag;
             document.getElementById('introTitulo').textContent = slide.titulo;
-            document.getElementById('introEmoji').textContent = slide.emoji;
+            document.getElementById('introEmoji').innerHTML = slide.icon;
             document.getElementById('introTexto').textContent = slide.texto;
 
             document.getElementById('introPassoCounter').textContent = `Passo ${slideIntroIndex + 1} de ${total}`;
@@ -1050,9 +1403,9 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
 
             const btnProximo = document.getElementById('btnIntroProximo');
             if (slideIntroIndex === total - 1) {
-                btnProximo.innerHTML = `<span>Entrar na Trilha! 🐾</span> <span>🚀</span>`;
+                btnProximo.innerHTML = `<span>Entrar na Trilha!</span> <svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>`;
             } else {
-                btnProximo.innerHTML = `<span>Próximo Passo</span> <span>→</span>`;
+                btnProximo.innerHTML = `<span>Próximo Passo</span> <svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>`;
             }
         }
 
@@ -1072,18 +1425,72 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             }
         }
 
+        function obterChaveProgresso() {
+            let u = null;
+            if (window.FractaDB) u = window.FractaDB.obterUsuarioLogado();
+            if (!u) {
+                try { u = JSON.parse(localStorage.getItem('usuario')) || {}; } catch { u = {}; }
+            }
+            const id = u.id || (u.email ? u.email.replace(/[^a-z0-9]/gi, '_') : 'padrao');
+            const ano = (u.turma && u.turma.includes('7')) ? '7ano' : '6ano';
+            return `silasProgresso_${id}_${ano}`;
+        }
+
         function carregarProgresso() {
             try {
-                const salvo = localStorage.getItem('silasCapitulosConcluidos');
-                return salvo ? JSON.parse(salvo) : [false, false, false, false, false];
+                const chave = obterChaveProgresso();
+                const salvo = localStorage.getItem(chave);
+                if (salvo) return JSON.parse(salvo);
+                const legado = localStorage.getItem('silasCapitulosConcluidos');
+                return legado ? JSON.parse(legado) : [false, false, false, false, false];
             } catch {
                 return [false, false, false, false, false];
             }
         }
 
         function salvarProgresso() {
+            const chave = obterChaveProgresso();
+            localStorage.setItem(chave, JSON.stringify(capitulosConcluidos));
             localStorage.setItem('silasCapitulosConcluidos', JSON.stringify(capitulosConcluidos));
             atualizarTopBar();
+        }
+
+        function configurarNivelPorTurma() {
+            let aluno = null;
+            if (window.FractaDB) {
+                aluno = window.FractaDB.obterUsuarioLogado();
+            }
+            if (!aluno) {
+                try {
+                    aluno = JSON.parse(localStorage.getItem('usuario')) || {};
+                } catch { aluno = {}; }
+            }
+
+            const turma = aluno.turma || "6º A";
+            const ano = (aluno.ano_escolar) || (turma.includes("7") ? "7º ano" : "6º ano");
+            const ehSetimoAno = ano === "7º ano" || turma.startsWith("7");
+
+            // Define automaticamente a dificuldade da trilha através da turma cadastrada (sem troca manual)
+            DADOS_TRILHA = ehSetimoAno ? DADOS_TRILHA_7ANO : DADOS_TRILHA_6ANO;
+
+            const labelTurma = document.getElementById('labelTurmaAno');
+            if (labelTurma) {
+                labelTurma.textContent = `Turma: ${turma} • Nível ${ano}`;
+            }
+
+            const badgeTrilha = document.getElementById('badgeTrilhaAno');
+            if (badgeTrilha) {
+                badgeTrilha.textContent = ehSetimoAno ? '7º ANO' : '6º ANO';
+            }
+
+            const subtituloTrilha = document.getElementById('trilhaSubtituloAno');
+            if (subtituloTrilha) {
+                subtituloTrilha.textContent = ehSetimoAno 
+                    ? "Trilha de Frações Avançadas — Desafios de 7º Ano" 
+                    : "Trilha Fundamental de Frações — Desafios de 6º Ano";
+            }
+
+            capitulosConcluidos = carregarProgresso();
         }
 
         function atualizarTopBar() {
@@ -1123,7 +1530,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             const capAtivo = DADOS_TRILHA[proximoNivelIndex];
             const speechText = document.getElementById('mascotSpeechText');
             if (capitulosConcluidos.every(Boolean)) {
-                speechText.textContent = '"Incrível! Você desbloqueou o Jantar de Comemoração! Clique no troféu final!"';
+                speechText.textContent = '"Incrível! Você desbloqueou a Conclusão Final! Clique no troféu para comemorar!"';
             } else {
                 speechText.textContent = `"Pronto para o ${capAtivo.titulo} com ${capAtivo.amigo}?"`;
             }
@@ -1134,10 +1541,10 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             introWrapper.innerHTML = `
                 <div class="relative">
                     <button onclick="abrirIntroducao()" class="duo-node duo-node-active w-16 h-16 sm:w-20 sm:h-20 rounded-full flex flex-col items-center justify-center font-extrabold text-2xl bg-amber-500 hover:bg-amber-600 shadow-[0_6px_0_#b45309]">
-                        <span>🌟</span>
+                        <span class="text-white">${ICONS.star}</span>
                     </button>
                     <span class="absolute -top-2 -right-2 text-xs bg-amber-400 text-slate-900 rounded-full w-6 h-6 flex items-center justify-center font-extrabold shadow-sm">
-                        📖
+                        ${ICONS.bookOpen}
                     </span>
                 </div>
                 <span class="text-xs font-bold text-amber-700 dark:text-amber-300 mt-1.5 bg-white/90 dark:bg-darkcard/90 px-3 py-0.5 rounded-full border border-amber-500/30 shadow-sm backdrop-blur-sm">
@@ -1154,26 +1561,26 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 wrapper.className = `relative z-10 flex flex-col items-center ${offsets[idx]}`;
 
                 let nodeClass = '';
-                let badgeText = '';
+                let badgeSvg = '';
 
                 if (concluido) {
-                    nodeClass = 'duo-node duo-node-completed w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold text-3xl';
-                    badgeText = '👑';
+                    nodeClass = 'duo-node duo-node-completed w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold';
+                    badgeSvg = ICONS.trophyBadge;
                 } else if (desbloqueado) {
-                    nodeClass = 'duo-node duo-node-active animate-duo-pulse w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold text-3xl';
-                    badgeText = '⭐';
+                    nodeClass = 'duo-node duo-node-active animate-duo-pulse w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold';
+                    badgeSvg = ICONS.starBadge;
                 } else {
-                    nodeClass = 'duo-node duo-node-locked w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold text-3xl';
-                    badgeText = '🔒';
+                    nodeClass = 'duo-node duo-node-locked w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold';
+                    badgeSvg = ICONS.lockBadge;
                 }
 
                 wrapper.innerHTML = `
                     <div class="relative">
                         <button onclick="clicarNoNo(${idx})" class="${nodeClass}">
-                            <span>${cap.emoji}</span>
+                            <span>${cap.icon}</span>
                         </button>
                         <span class="absolute -top-2 -right-2 text-sm bg-white dark:bg-darkcard border border-slate-200 dark:border-darkborder rounded-full w-7 h-7 flex items-center justify-center shadow-md">
-                            ${badgeText}
+                            ${badgeSvg}
                         </span>
                     </div>
                     <span class="text-xs font-bold text-slate-800 dark:text-slate-100 mt-2 bg-white/90 dark:bg-darkcard/90 px-3 py-1 rounded-full border border-slate-200 dark:border-darkborder shadow-md backdrop-blur-sm">
@@ -1184,7 +1591,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 container.appendChild(wrapper);
             });
 
-            // NÓ FINAL: TROFÉU & JANTAR DE COMEMORAÇÃO
+            // NÓ FINAL: TROFÉU & COMEMORAÇÃO
             const todosConcluidos = capitulosConcluidos.every(Boolean);
             const finalWrapper = document.createElement('div');
             finalWrapper.className = "relative z-10 flex flex-col items-center translate-x-0 mt-4";
@@ -1195,15 +1602,15 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
 
             finalWrapper.innerHTML = `
                 <div class="relative">
-                    <button onclick="${todosConcluidos ? 'mostrarTela(\'telaFinal\')' : 'alert(\'Conclua todos os 5 capítulos para desbloquear o Jantar de Comemoração!\')'}" class="${finalClass}">
-                        <span>🍽️</span>
+                    <button onclick="${todosConcluidos ? 'mostrarTela(\'telaFinal\')' : 'alert(\'Conclua todos os 5 capítulos para desbloquear a comemoração final!\')'}" class="${finalClass}">
+                        <span>${ICONS.trophy}</span>
                     </button>
                     <span class="absolute -top-3 -right-3 text-sm bg-amber-400 text-slate-900 rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md">
-                        🏆
+                        ${ICONS.starBadge}
                     </span>
                 </div>
                 <span class="text-xs font-extrabold text-amber-600 dark:text-amber-400 mt-2 bg-white/90 dark:bg-darkcard/90 px-3 py-1 rounded-full border border-amber-500/30 shadow-sm backdrop-blur-sm">
-                    Jantar Final
+                    Desafio Final
                 </span>
             `;
 
@@ -1220,7 +1627,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             capituloAtualIndex = idx;
             const cap = DADOS_TRILHA[idx];
 
-            document.getElementById('modalEmoji').textContent = cap.emoji;
+            document.getElementById('modalEmoji').innerHTML = `<div class="w-12 h-12 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center">${cap.icon}</div>`;
             document.getElementById('modalTag').textContent = cap.tag;
             document.getElementById('modalTitulo').textContent = cap.titulo;
             document.getElementById('modalHistoria').textContent = cap.historia;
@@ -1241,7 +1648,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             slideHistoriaIndex = 0;
             const cap = DADOS_TRILHA[idx];
 
-            document.getElementById('storyEmoji').textContent = cap.emoji;
+            document.getElementById('storyEmoji').innerHTML = cap.icon;
             document.getElementById('storyAmigoNome').textContent = cap.amigo;
             document.getElementById('storyMascotText').textContent = `"Avance pelas partes da história antes de responder aos 5 desafios do capítulo!"`;
 
@@ -1249,8 +1656,8 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             topicosContainer.innerHTML = '';
             cap.conteudos.forEach(t => {
                 const badge = document.createElement('span');
-                badge.className = 'text-xs font-bold bg-brand-500/10 text-brand-600 dark:text-brand-400 px-3 py-1 rounded-full border border-brand-500/20';
-                badge.textContent = `✓ ${t}`;
+                badge.className = 'text-xs font-bold bg-brand-500/10 text-brand-600 dark:text-brand-400 px-3 py-1 rounded-full border border-brand-500/20 flex items-center gap-1';
+                badge.innerHTML = `<svg class="w-3.5 h-3.5 inline text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> <span>${t}</span>`;
                 topicosContainer.appendChild(badge);
             });
 
@@ -1347,10 +1754,10 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             const cap = DADOS_TRILHA[capituloAtualIndex];
             const q = cap.questoes[questaoIndex];
 
-            document.getElementById('questaoCapituloBadge').textContent = `${cap.emoji} ${cap.titulo}`;
+            document.getElementById('questaoCapituloBadge').textContent = cap.titulo;
             document.getElementById('questaoLabel').textContent = `Etapa ${questaoIndex + 1} de ${cap.questoes.length}`;
             document.getElementById('acertosLabel').textContent = `Acertos: ${acertosCapitulo}/${cap.questoes.length}`;
-            document.getElementById('questaoHistoriaContexto').textContent = `📖 ${q.contexto}`;
+            document.getElementById('questaoContextoTexto').textContent = q.contexto;
             document.getElementById('enunciado').textContent = q.enunciado;
 
             renderizarImagem('questaoImagemBox', q.imagem, `Diagrama da Questão ${questaoIndex + 1}`, `Imagem / Diagrama da Questão (Etapa ${questaoIndex + 1})`);
@@ -1385,12 +1792,12 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 acertosCapitulo++;
                 botoes[opcaoSelecionada].classList.add('correct');
                 feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed mb-6 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800";
-                feedback.innerHTML = `✓ Excelente! Resposta Correta.<br><span class="text-xs font-normal opacity-90">${q.explicacao}</span>`;
+                feedback.innerHTML = `<span class="flex items-center gap-1.5">${ICONS.checkBadge} <span>Excelente! Resposta Correta.</span></span><span class="text-xs font-normal opacity-90 block mt-1">${q.explicacao}</span>`;
             } else {
                 botoes[opcaoSelecionada].classList.add('wrong');
                 botoes[q.correta].classList.add('correct');
                 feedback.className = "p-4 rounded-2xl text-sm font-bold leading-relaxed mb-6 bg-red-50 dark:bg-red-950/40 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800";
-                feedback.innerHTML = `✕ Que pena! A resposta correta era a indicada em verde.<br><span class="text-xs font-normal opacity-90">${q.explicacao}</span>`;
+                feedback.innerHTML = `<span class="flex items-center gap-1.5">${ICONS.xBadge} <span>Que pena! A resposta correta era a indicada em verde.</span></span><span class="text-xs font-normal opacity-90 block mt-1">${q.explicacao}</span>`;
             }
 
             document.getElementById('acertosLabel').textContent = `Acertos: ${acertosCapitulo}/${cap.questoes.length}`;
@@ -1427,29 +1834,45 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
 
             acertosEl.textContent = `${acertosCapitulo}/${totalQuestoes} (${pctAcertos}%)`;
 
+            // Persiste no banco de dados FractaDB (notas, tentativas, acertos, erros, turma e progresso)
+            if (window.FractaDB) {
+                try {
+                    window.FractaDB.salvarResultadoAtividade({
+                        idCapitulo: cap.id,
+                        tituloCapitulo: cap.titulo,
+                        acertos: acertosCapitulo,
+                        totalQuestoes: totalQuestoes
+                    });
+                } catch(errDb) {
+                    console.error("Erro ao registrar atividade no FractaDB:", errDb);
+                }
+            }
+
             if (passou) {
                 capitulosConcluidos[capituloAtualIndex] = true;
                 salvarProgresso();
 
-                emojiEl.textContent = cap.emoji || "🎉";
+                emojiEl.innerHTML = `<div class="w-16 h-16 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto mb-2">${ICONS.trophy}</div>`;
                 tituloEl.textContent = `Capítulo Concluído com Sucesso!`;
                 descEl.textContent = `Parabéns! Você alcançou ${pctAcertos}% de acertos (mínimo necessário: 85%)! Você dominou "${cap.titulo}" e ajudou Silas e ${cap.amigo}! O próximo capítulo foi liberado na trilha.`;
                 xpEl.textContent = `+150 XP`;
 
                 botoesContainer.innerHTML = `
-                    <button onclick="voltarParaTrilha()" class="w-full py-3.5 px-4 bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-sm rounded-2xl shadow-[0_4px_0_#8c4521] active:translate-y-1 active:shadow-none transition">
-                        CONTINUAR NA TRILHA &rarr;
+                    <button onclick="voltarParaTrilha()" class="w-full py-3.5 px-4 bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-sm rounded-2xl shadow-[0_4px_0_#8c4521] active:translate-y-1 active:shadow-none transition flex items-center justify-center gap-2">
+                        <span>CONTINUAR NA TRILHA</span>
+                        <svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
                     </button>
                 `;
             } else {
-                emojiEl.textContent = "📚";
+                emojiEl.innerHTML = `<div class="w-16 h-16 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mx-auto mb-2"><svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25"/></svg></div>`;
                 tituloEl.textContent = `Desempenho: ${pctAcertos}%`;
                 descEl.textContent = `Você precisa de no mínimo 85% de acertos para avançar para o próximo capítulo. Releia a história e tente novamente!`;
                 xpEl.textContent = `0 XP`;
 
                 botoesContainer.innerHTML = `
-                    <button onclick="começarDesafio()" class="w-full py-3.5 px-4 bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-sm rounded-2xl shadow-[0_4px_0_#8c4521] active:translate-y-1 active:shadow-none transition mb-2">
-                        TENTAR NOVAMENTE 🔄
+                    <button onclick="começarDesafio()" class="w-full py-3.5 px-4 bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-sm rounded-2xl shadow-[0_4px_0_#8c4521] active:translate-y-1 active:shadow-none transition mb-2 flex items-center justify-center gap-2">
+                        <span>TENTAR NOVAMENTE</span>
+                        ${ICONS.refresh}
                     </button>
                     <button onclick="voltarParaTrilha()" class="w-full py-3 px-4 bg-slate-100 dark:bg-darkbg hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-bold text-xs rounded-xl transition">
                         VOLTAR À TRILHA
@@ -1462,8 +1885,21 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
 
         // CARGA INICIAL
         document.addEventListener('DOMContentLoaded', () => {
-            renderizarTrilhaDuolingo();
-            mostrarTela('telaTrilha');
+            if (window.FractaDB) {
+                window.FractaDB.init().then(() => {
+                    configurarNivelPorTurma();
+                    renderizarTrilhaDuolingo();
+                    mostrarTela('telaTrilha');
+                }).catch(() => {
+                    configurarNivelPorTurma();
+                    renderizarTrilhaDuolingo();
+                    mostrarTela('telaTrilha');
+                });
+            } else {
+                configurarNivelPorTurma();
+                renderizarTrilhaDuolingo();
+                mostrarTela('telaTrilha');
+            }
         });
     </script>
 </body>

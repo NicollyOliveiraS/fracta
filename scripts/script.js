@@ -21,6 +21,9 @@ function aplicarTema() {
 aplicarTema();
 
 document.addEventListener("DOMContentLoaded", () => {
+    if (window.FractaDB) {
+        window.FractaDB.init().catch(console.error);
+    }
     aplicarTema();
     const btnTema = document.querySelectorAll("#themeToggle, .btnAlternarTema");
     btnTema.forEach((btn) => {
@@ -29,6 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("tema", ehDark ? "dark" : "light");
         });
     });
+
+    const mobileMenuBtn = document.querySelector("#mobileMenuBtn");
+    const mobileMenu = document.querySelector("#mobileMenu");
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    }
     const estaEmTemplates =
         window.location.pathname.includes("/templates/");
 
@@ -237,6 +248,20 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
                     }
 
+                    let usuarioFinal = dados.usuario;
+                    if (window.FractaDB) {
+                        try {
+                            const alunoDb = window.FractaDB.obterAlunos().find(a => 
+                                (a.email && a.email.toLowerCase().trim() === (usuarioFinal.email || email).toLowerCase().trim()) ||
+                                a.id === usuarioFinal.id
+                            );
+                            if (alunoDb) {
+                                usuarioFinal.turma = alunoDb.turma;
+                                usuarioFinal.ano_escolar = alunoDb.ano_escolar;
+                            }
+                        } catch(e) {}
+                    }
+
                     localStorage.setItem(
                         "token",
                         dados.token
@@ -245,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     localStorage.setItem(
                         "usuario",
                         JSON.stringify(
-                            dados.usuario
+                            usuarioFinal
                         )
                     );
 
@@ -273,6 +298,28 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("#cadastroForm");
 
     if (cadastroForm) {
+        const selectTipoUsuario = document.querySelector("#tipoUsuario");
+        const containerTurma = document.querySelector("#campoTurmaContainer");
+        const selectTurma = document.querySelector("#cadTurma");
+
+        function alternarCampoTurma() {
+            if (!selectTipoUsuario || !containerTurma || !selectTurma) return;
+            const ehAluno = selectTipoUsuario.value === "aluno";
+            if (ehAluno) {
+                containerTurma.classList.remove("hidden");
+                selectTurma.required = true;
+            } else {
+                containerTurma.classList.add("hidden");
+                selectTurma.required = false;
+                selectTurma.value = "";
+            }
+        }
+
+        if (selectTipoUsuario) {
+            selectTipoUsuario.addEventListener("change", alternarCampoTurma);
+            alternarCampoTurma();
+        }
+
         cadastroForm.addEventListener(
             "submit",
             async (evento) => {
@@ -292,6 +339,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     .querySelector("#tipoUsuario")
                     .value;
 
+                const turma = (tipoUsuario === "aluno" && selectTurma) 
+                    ? selectTurma.value 
+                    : null;
+
                 const senha = document
                     .querySelector("#cadSenha")
                     .value;
@@ -306,6 +357,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     document.querySelector(
                         "#btnCadastrar"
                     );
+
+                if (tipoUsuario === "aluno" && (!turma || turma === "")) {
+                    exibirMensagem(
+                        "#mensagemCadastro",
+                        "Por favor, selecione uma turma válida para o aluno (6º A, 6º B, 7º A ou 7º B)."
+                    );
+                    return;
+                }
 
                 if (senha.length < 6) {
                     exibirMensagem(
@@ -330,37 +389,60 @@ document.addEventListener("DOMContentLoaded", () => {
                     "Cadastrando...";
 
                 try {
-                    const resposta = await fetch(
-                        `${API_URL}/usuarios`,
-                        {
-                            method: "POST",
-                            headers: {
-                                "Content-Type":
-                                    "application/json"
-                            },
-                            body: JSON.stringify({
+                    // Salva no banco de dados FractaDB (persistência local e integridade de métricas)
+                    if (window.FractaDB) {
+                        try {
+                            window.FractaDB.cadastrarUsuario({
                                 nome,
                                 email,
                                 senha,
-                                tipo_usuario:
-                                    tipoUsuario
-                            })
+                                tipo_usuario: tipoUsuario,
+                                turma: turma
+                            });
+                        } catch(errDb) {
+                            // Se e-mail já existe no banco local
+                            throw new Error(errDb.message || "Erro ao salvar no banco de dados.");
                         }
-                    );
+                    }
 
-                    const dados =
-                        await resposta.json();
-
-                    if (!resposta.ok) {
-                        throw new Error(
-                            dados.erro ||
-                            "Não foi possível cadastrar"
+                    // Tenta enviar para o backend da API remota
+                    try {
+                        const resposta = await fetch(
+                            `${API_URL}/usuarios`,
+                            {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+                                body: JSON.stringify({
+                                    nome,
+                                    email,
+                                    senha,
+                                    tipo_usuario:
+                                        tipoUsuario,
+                                    turma: turma
+                                })
+                            }
                         );
+
+                        if (!resposta.ok) {
+                            const dados = await resposta.json().catch(() => ({}));
+                            // Se a API remota der erro específico de validação não-crítico, prossegue com o cadastro local
+                            if (dados.erro && dados.erro.includes("já cadastrado")) {
+                                throw new Error(dados.erro);
+                            }
+                        }
+                    } catch (apiErr) {
+                        if (apiErr.message && apiErr.message.includes("já cadastrado")) {
+                            throw apiErr;
+                        }
+                        console.warn("Aviso ao conectar API remota, registro mantido no banco local:", apiErr);
                     }
 
                     exibirMensagem(
                         "#mensagemCadastro",
-                        "Cadastro realizado! Redirecionando para o login...",
+                        "Cadastro realizado com sucesso! Redirecionando para o login...",
                         "sucesso"
                     );
 
