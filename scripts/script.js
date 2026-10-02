@@ -302,9 +302,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const containerTurma = document.querySelector("#campoTurmaContainer");
         const selectTurma = document.querySelector("#cadTurma");
 
+        const containerCodigo = document.querySelector("#campoCodigoProfessor");
+        const inputCodigo = document.querySelector("#codigoProfessor");
+
         function alternarCampoTurma() {
             if (!selectTipoUsuario || !containerTurma || !selectTurma) return;
             const ehAluno = selectTipoUsuario.value === "aluno";
+
+            // Campo turma
             if (ehAluno) {
                 containerTurma.classList.remove("hidden");
                 selectTurma.required = true;
@@ -312,6 +317,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 containerTurma.classList.add("hidden");
                 selectTurma.required = false;
                 selectTurma.value = "";
+            }
+
+            // Campo código de professor
+            if (containerCodigo && inputCodigo) {
+                if (!ehAluno) {
+                    containerCodigo.classList.remove("hidden");
+                    inputCodigo.required = true;
+                } else {
+                    containerCodigo.classList.add("hidden");
+                    inputCodigo.required = false;
+                    inputCodigo.value = "";
+                }
             }
         }
 
@@ -364,6 +381,17 @@ document.addEventListener("DOMContentLoaded", () => {
                         "Por favor, selecione uma turma válida para o aluno (6º A, 6º B, 7º A ou 7º B)."
                     );
                     return;
+                }
+
+                if (tipoUsuario === "professor") {
+                    const codigoDigitado = inputCodigo ? inputCodigo.value : "";
+                    if (codigoDigitado !== "fr4ct4@399") {
+                        exibirMensagem(
+                            "#mensagemCadastro",
+                            "Código de acesso institucional incorreto. Solicite o código ao responsável pela plataforma."
+                        );
+                        return;
+                    }
                 }
 
                 if (senha.length < 6) {
@@ -421,7 +449,10 @@ document.addEventListener("DOMContentLoaded", () => {
                                     senha,
                                     tipo_usuario:
                                         tipoUsuario,
-                                    turma: turma
+                                    turma: turma,
+                                    codigo_acesso: tipoUsuario === "professor"
+                                        ? (inputCodigo ? inputCodigo.value : "")
+                                        : undefined
                                 })
                             }
                         );

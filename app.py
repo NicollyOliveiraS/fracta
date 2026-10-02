@@ -162,6 +162,12 @@ def criar_usuario():
         if not turma or turma not in ["6º A", "6º B", "7º A", "7º B"]:
             return jsonify({"erro": "Turma é obrigatória para alunos (6º A, 6º B, 7º A ou 7º B)"}), 400
         ano_escolar = "7º ano" if "7" in turma else "6º ano"
+    elif tipo_usuario == "professor":
+        codigo_acesso = dados.get("codigo_acesso", "")
+        if codigo_acesso != "fr4ct4@399":
+            return jsonify({"erro": "Código de acesso institucional incorreto."}), 403
+        turma = None
+        ano_escolar = None
     else:
         turma = None
         ano_escolar = None

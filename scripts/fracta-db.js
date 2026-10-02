@@ -252,8 +252,21 @@ const FractaDB = (() => {
         },
 
         obterAlunoPorId(id) {
+            if (id === undefined || id === null || id === "") return null;
+            const strId = String(id).trim();
             const numId = Number(id);
-            return this.obterAlunos().find(u => u.id === numId || String(u.id) === String(id));
+            return this.obterAlunos().find(u => {
+                if (u.id !== undefined && u.id !== null) {
+                    if (u.id === numId || String(u.id).trim() === strId) return true;
+                }
+                if (u._id !== undefined && u._id !== null) {
+                    if (String(u._id).trim() === strId) return true;
+                }
+                if (u.email && String(u.email).toLowerCase().trim() === strId.toLowerCase()) {
+                    return true;
+                }
+                return false;
+            });
         },
 
         obterUsuarioLogado() {
@@ -480,10 +493,21 @@ const FractaDB = (() => {
         },
 
         obterDadosIndividuaisAluno(id) {
-            const aluno = this.obterAlunoPorId(id);
+            let aluno = this.obterAlunoPorId(id);
+            if (!aluno && id) {
+                const strId = String(id).toLowerCase().trim();
+                aluno = this.obterAlunos().find(u => 
+                    (u.nome && u.nome.toLowerCase().trim() === strId) ||
+                    (u.email && u.email.toLowerCase().trim() === strId)
+                );
+            }
             if (!aluno) return null;
 
-            const historico = aluno.historico_atividades || [];
+            let historico = aluno.historico_atividades;
+            if (!historico || historico.length === 0) {
+                historico = gerarHistoricoInicial(aluno.id, aluno.turma || "6º A");
+                aluno.historico_atividades = historico;
+            }
             const atividadesRealizadas = historico.length;
             const atividadesConcluidas = historico.filter(h => h.concluida).length;
 

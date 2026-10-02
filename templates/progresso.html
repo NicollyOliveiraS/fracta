@@ -201,6 +201,7 @@
         </div>
     </footer>
 
+    <script src="../scripts/fracta-db.js"></script>
     <script src="../scripts/script.js"></script>
     <script>
         const mobileMenuBtn = document.querySelector('#mobileMenuBtn');
@@ -209,43 +210,108 @@
             mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
         }
 
-        // Atualizar perfil do usuário logado no cabeçalho
-        const usuarioLogado = localStorage.getItem("usuario");
-        if (usuarioLogado) {
-            const inicial = usuarioLogado.charAt(0).toUpperCase();
-            const avatarEl = document.getElementById('avatarUsuario');
-            const nomeEl = document.getElementById('nomeUsuarioHeader');
-            if (avatarEl) avatarEl.innerText = inicial;
-            if (nomeEl) nomeEl.innerText = usuarioLogado;
+        // Função utilitária para extrair nome legível evitando exibir JSON
+        function extrairNomeLegivel(valor) {
+            if (!valor) return "Usuário";
+            if (typeof valor === "object") {
+                return valor.nome || valor.usuario || valor.email || "Usuário";
+            }
+            if (typeof valor === "string") {
+                const trimmed = valor.trim();
+                if (trimmed.startsWith("{") && trimmed.endsWith("}")) {
+                    try {
+                        const parsed = JSON.parse(trimmed);
+                        return parsed.nome || parsed.usuario || parsed.email || "Usuário";
+                    } catch (e) {
+                        return trimmed;
+                    }
+                }
+                return trimmed;
+            }
+            return String(valor);
         }
+
+        // Atualizar perfil do usuário logado no cabeçalho
+        let usuarioSessao = null;
+        try {
+            const rawUser = localStorage.getItem("usuario");
+            usuarioSessao = rawUser ? JSON.parse(rawUser) : null;
+        } catch (e) {
+            usuarioSessao = null;
+        }
+
+        const nomeUsuarioLogado = extrairNomeLegivel(usuarioSessao);
+        const emailUsuarioLogado = (usuarioSessao && usuarioSessao.email) ? usuarioSessao.email.toLowerCase().trim() : "";
+        const idUsuarioLogado = usuarioSessao ? (usuarioSessao.id || usuarioSessao._id) : null;
+        const tipoUsuarioLogado = (usuarioSessao && (usuarioSessao.tipo_usuario || usuarioSessao.role || usuarioSessao.tipo)) || "aluno";
+        const ehProfessor = tipoUsuarioLogado === "professor" || tipoUsuarioLogado === "adm" || tipoUsuarioLogado === "admin";
+
+        const inicialHeader = (nomeUsuarioLogado || "U").charAt(0).toUpperCase();
+        const avatarEl = document.getElementById('avatarUsuario');
+        const nomeEl = document.getElementById('nomeUsuarioHeader');
+        if (avatarEl) avatarEl.innerText = inicialHeader;
+        if (nomeEl) nomeEl.innerText = nomeUsuarioLogado;
 
         // Lógica do Ranking
         const URL_BACKEND = "https://backend-tcc-tv2u.vercel.app";
 
         async function carregarRanking() {
             try {
-                const res = await fetch(URL_BACKEND + '/usuarios');
-                if (!res.ok) throw new Error('API Falhou');
-                let users = await res.json();
-                
-                // Filtra alunos
-                users = users.filter(u => u.tipo_usuario !== 'professor');
-                
-                let userSelf = users.find(u => u.email === usuarioLogado || u.nome === usuarioLogado);
-                if (!userSelf && usuarioLogado) {
-                    userSelf = { nome: usuarioLogado, email: usuarioLogado, isSelf: true };
-                    users.unshift(userSelf);
-                } else if (userSelf) {
-                    userSelf.isSelf = true;
+                let users = [];
+                try {
+                    const res = await fetch(URL_BACKEND + '/usuarios');
+                    if (res.ok) {
+                        users = await res.json();
+                    }
+                } catch(errApi) {
+                    console.warn("API remota offline no ranking, utilizando base local.");
+                }
+
+                if (!users || users.length === 0) {
+                    if (window.FractaDB) {
+                        users = window.FractaDB.obterUsuarios();
+                    }
+                }
+
+                // Filtra apenas alunos (professores NÃO entram no ranking de estudantes)
+                users = users.filter(u => {
+                    const t = (u.tipo_usuario || u.role || u.tipo || "").toLowerCase();
+                    return t !== 'professor' && t !== 'adm' && t !== 'admin';
+                });
+
+                // Normaliza nomes de todos os usuários
+                users = users.map(u => ({
+                    ...u,
+                    nome: extrairNomeLegivel(u.nome || u.usuario || u)
+                }));
+
+                // Se o usuário logado for ALUNO, destaca ou adiciona ao ranking
+                if (!ehProfessor && usuarioSessao) {
+                    let userSelf = users.find(u => 
+                        (emailUsuarioLogado && u.email && u.email.toLowerCase().trim() === emailUsuarioLogado) ||
+                        (idUsuarioLogado && (u.id === idUsuarioLogado || u._id === idUsuarioLogado)) ||
+                        (nomeUsuarioLogado && u.nome && u.nome.toLowerCase().trim() === nomeUsuarioLogado.toLowerCase().trim())
+                    );
+
+                    if (!userSelf) {
+                        userSelf = {
+                            nome: nomeUsuarioLogado,
+                            email: emailUsuarioLogado,
+                            isSelf: true
+                        };
+                        users.unshift(userSelf);
+                    } else {
+                        userSelf.isSelf = true;
+                    }
                 }
 
                 let topUsers = users.slice(0, 5);
                 const mockNotas = [9.5, 8.8, 8.2, 7.5, 7.1];
-                
+
                 topUsers = topUsers.map((u, i) => {
                     return {
-                        nome: u.nome || u.email || 'Aluno',
-                        nota: mockNotas[i] || 7.0,
+                        nome: extrairNomeLegivel(u.nome || u.email || 'Aluno'),
+                        nota: u.media || mockNotas[i] || 7.0,
                         isSelf: !!u.isSelf
                     };
                 });
