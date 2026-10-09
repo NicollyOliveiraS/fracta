@@ -203,6 +203,20 @@ def criar_usuario():
         }
     }), 201
 
+@app.route("/usuarios/limpar-sem-turma", methods=["DELETE"])
+def limpar_alunos_sem_turma():
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("""
+        DELETE FROM usuarios
+        WHERE tipo_usuario = 'aluno'
+        AND (turma IS NULL OR turma = '')
+    """)
+    deletados = cursor.rowcount
+    conn.commit()
+    conn.close()
+    return jsonify({"mensagem": f"{deletados} aluno(s) sem turma removido(s).", "deletados": deletados}), 200
+
 @app.route("/usuarios/<int:id_usuario>", methods=["DELETE"])
 def deletar_usuario(id_usuario):
     conn = get_db()
@@ -291,6 +305,39 @@ def registrar_atividade():
         "concluida": bool(concluida),
         "tentativas": tentativas
     }), 201
+
+@app.route("/ranking/<turma>", methods=["GET"])
+def ranking_turma(turma):
+    conn = get_db()
+    cursor = conn.cursor()
+
+    # Busca alunos da turma
+    cursor.execute("""
+        SELECT id, nome, turma FROM usuarios
+        WHERE tipo_usuario = 'aluno' AND turma = ?
+    """, (turma,))
+    alunos = [dict(row) for row in cursor.fetchall()]
+
+    resultado = []
+    for aluno in alunos:
+        cursor.execute("""
+            SELECT nota FROM atividades_desempenho
+            WHERE id_aluno = ?
+        """, (aluno["id"],))
+        notas = [row["nota"] for row in cursor.fetchall()]
+        media = round(sum(notas) / len(notas), 1) if notas else 0.0
+        resultado.append({
+            "id": aluno["id"],
+            "nome": aluno["nome"],
+            "turma": aluno["turma"],
+            "media": media,
+            "total_atividades": len(notas)
+        })
+
+    conn.close()
+
+    resultado.sort(key=lambda x: x["media"], reverse=True)
+    return jsonify(resultado)
 
 @app.route("/desempenho", methods=["GET"])
 def obter_desempenho():

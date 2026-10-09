@@ -249,13 +249,33 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                     let usuarioFinal = dados.usuario;
-                    if (window.FractaDB) {
+
+                    // Busca turma do aluno na API (auth.py Supabase não retorna turma)
+                    if (!usuarioFinal.turma) {
                         try {
-                            const alunoDb = window.FractaDB.obterAlunos().find(a => 
+                            const resUsers = await fetch(`${API_URL}/usuarios`);
+                            if (resUsers.ok) {
+                                const listaUsuarios = await resUsers.json();
+                                const emailLogin = (usuarioFinal.email || email || "").toLowerCase().trim();
+                                const encontrado = listaUsuarios.find(u =>
+                                    u.email && u.email.toLowerCase().trim() === emailLogin
+                                );
+                                if (encontrado && encontrado.turma) {
+                                    usuarioFinal.turma = encontrado.turma;
+                                    usuarioFinal.ano_escolar = encontrado.ano_escolar;
+                                }
+                            }
+                        } catch(e) {}
+                    }
+
+                    // Fallback: tenta via FractaDB local
+                    if (!usuarioFinal.turma && window.FractaDB) {
+                        try {
+                            const alunoDb = window.FractaDB.obterAlunos().find(a =>
                                 (a.email && a.email.toLowerCase().trim() === (usuarioFinal.email || email).toLowerCase().trim()) ||
                                 a.id === usuarioFinal.id
                             );
-                            if (alunoDb) {
+                            if (alunoDb && alunoDb.turma) {
                                 usuarioFinal.turma = alunoDb.turma;
                                 usuarioFinal.ano_escolar = alunoDb.ano_escolar;
                             }

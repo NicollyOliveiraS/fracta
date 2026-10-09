@@ -248,7 +248,10 @@ const FractaDB = (() => {
         },
 
         obterAlunos() {
-            return this.obterUsuarios().filter(u => u.tipo_usuario === "aluno");
+            // Aluno sem turma é cadastro inválido — não entra em nenhuma lista
+            return this.obterUsuarios().filter(u =>
+                u.tipo_usuario === "aluno" && u.turma && u.turma.trim() !== ""
+            );
         },
 
         obterAlunoPorId(id) {
