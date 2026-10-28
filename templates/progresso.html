@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -253,8 +253,10 @@
                 var ring   = self ? ' ring-2 ring-[#C56E33]' : '';
                 var pts    = u.pts > 0 ? u.pts.toFixed(1) : '\u2014';
                 var star   = self ? ' \u2605' : '';
+                var avImg  = u.avatar ? '<img src="../img/avatares/' + u.avatar + (u.avatar.endsWith('.svg') ? '' : '.svg') + '" class="w-full h-full object-cover rounded-xl" onerror="this.outerHTML=\'' + ini + '\'">' : ini;
+
                 return '<div class="flex flex-col items-center gap-2 max-w-[30%]">'
-                    + '<div class="w-10 h-10 rounded-xl ' + bgAv + ring + ' flex items-center justify-center text-base font-bold ' + txAv + '">' + ini + '</div>'
+                    + '<div class="w-10 h-10 rounded-xl ' + bgAv + ring + ' flex items-center justify-center text-base font-bold ' + txAv + ' overflow-hidden">' + avImg + '</div>'
                     + '<div class="w-24 sm:w-28 ' + boxCl + ' rounded-t-xl flex flex-col items-center justify-center pt-3 pb-2" style="height:' + h + 'px">'
                     + '<div class="w-6 h-6 rounded-full ' + medal + ' flex items-center justify-center text-xs font-bold text-white shadow-sm ring-2 ring-white dark:ring-slate-800 mb-1">' + pos + '</div>'
                     + '<span class="text-[10px] font-bold ' + nmCl + ' mt-1 w-full text-center truncate px-1">' + u.nome + star + '</span>'
@@ -273,9 +275,12 @@
                 var avBg  = self ? 'bg-[#C56E33]'   : 'bg-gray-200 dark:bg-slate-700';
                 var avTx  = self ? 'text-white'      : 'text-gray-600 dark:text-slate-300';
                 var voce  = self ? '<span class="text-[10px] text-[#C56E33] font-medium bg-[#C56E33]/10 px-2 py-0.5 rounded-full hidden sm:inline-block">Voc\u00ea</span>' : '';
+                var ini   = u.nome ? u.nome.charAt(0).toUpperCase() : '?';
+                var avImg = u.avatar ? '<img src="../img/avatares/' + u.avatar + (u.avatar.endsWith('.svg') ? '' : '.svg') + '" class="w-full h-full object-cover rounded-lg" onerror="this.outerHTML=\'' + ini + '\'">' : ini;
+
                 return '<div class="flex items-center gap-2 sm:gap-4 rounded-xl px-2 sm:px-4 py-3 ' + bg + '">'
                     + '<span class="text-sm font-extrabold ' + rc + ' w-4 text-center">' + pos + '</span>'
-                    + '<div class="w-8 h-8 rounded-lg ' + avBg + ' flex items-center justify-center ' + avTx + ' font-bold text-xs flex-shrink-0">' + u.nome.charAt(0).toUpperCase() + '</div>'
+                    + '<div class="w-8 h-8 rounded-lg ' + avBg + ' flex items-center justify-center ' + avTx + ' font-bold text-xs flex-shrink-0 overflow-hidden">' + avImg + '</div>'
                     + '<span class="flex-1 text-xs sm:text-sm font-medium text-gray-900 dark:text-white truncate">' + u.nome + '</span>'
                     + '<span class="text-sm font-bold ' + (self ? 'text-[#C56E33]' : 'text-gray-600 dark:text-slate-300') + '">' + pts + '</span>'
                     + voce
@@ -465,6 +470,7 @@
                 return {
                     nome:   primeiroNome(aluno.nome),
                     pts:    mediaDasNotas(hist),
+                    avatar: aluno.avatar || (local && local.avatar) || 'avatar-1',
                     isSelf: ehMesmoUsuario(aluno)
                 };
             });

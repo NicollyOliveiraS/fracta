@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C56E33"/>
+      <stop offset="100%" stop-color="#8C4521"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg1)" stroke="#FFF" stroke-width="3"/>
+  <!-- Silas a toupeira exploradora com óculos e capacete -->
+  <circle cx="60" cy="68" r="32" fill="#5A3825"/>
+  <circle cx="60" cy="74" r="22" fill="#8C5838"/>
+  <ellipse cx="60" cy="70" rx="14" ry="10" fill="#E8B896"/>
+  <ellipse cx="60" cy="67" rx="7" ry="4.5" fill="#2C1A11"/>
+  <!-- Olhos simpáticos -->
+  <circle cx="48" cy="58" r="4.5" fill="#2C1A11"/>
+  <circle cx="72" cy="58" r="4.5" fill="#2C1A11"/>
+  <circle cx="49.5" cy="56.5" r="1.5" fill="#FFF"/>
+  <circle cx="73.5" cy="56.5" r="1.5" fill="#FFF"/>
+  <!-- Capacete de explorador/mineiro de frações -->
+  <path d="M30 48 Q60 20 90 48 Z" fill="#F59E0B"/>
+  <path d="M26 48 L94 48 L90 52 L30 52 Z" fill="#D97706"/>
+  <circle cx="60" cy="40" r="7" fill="#FEF3C7"/>
+  <circle cx="60" cy="40" r="4" fill="#FBBF24"/>
+  <!-- Sorriso -->
+  <path d="M54 74 Q60 80 66 74" stroke="#2C1A11" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>

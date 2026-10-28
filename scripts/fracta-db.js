@@ -5,6 +5,7 @@
  */
 
 const FractaDB = (() => {
+    // Utiliza exclusivamente a API e o banco de dados da Vercel
     const API_URL = "https://backend-tcc-tv2u.vercel.app";
     const STORAGE_KEY_USUARIOS = "fracta_db_usuarios_v2";
     const STORAGE_KEY_ATIVIDADES = "fracta_db_atividades_v2";
@@ -16,10 +17,8 @@ const FractaDB = (() => {
         return turma.includes("7") ? "7º ano" : "6º ano";
     }
 
-    // Inicializa o banco local com base no cache e sincroniza com a API remota
+    // Inicializa e sincroniza diretamente com o banco de dados da Vercel
     async function sincronizarComAPI() {
-        let usuariosLocais = carregarUsuariosLocais();
-
         try {
             const resp = await fetch(`${API_URL}/usuarios`, {
                 headers: { "Content-Type": "application/json" }
@@ -28,53 +27,29 @@ const FractaDB = (() => {
             if (resp.ok) {
                 const usuariosRemotos = await resp.json();
                 if (Array.isArray(usuariosRemotos)) {
-                    // Mescla usuários remotos preservando metadados locais (turma, histórico, notas)
-                    const mapaPorEmailOuId = new Map();
-                    usuariosLocais.forEach(u => {
-                        const chave = (u.email || "").toLowerCase().trim() || String(u.id);
-                        mapaPorEmailOuId.set(chave, u);
-                    });
-
-                    // Lista de turmas para distribuição equilibrada dos alunos antigos sem turma
-                    const turmasPadrao = ["6º A", "6º B", "7º A", "7º B"];
-                    let idxTurma = 0;
-
                     const usuariosAtualizados = usuariosRemotos.map((remoto, i) => {
-                        const chave = (remoto.email || "").toLowerCase().trim() || String(remoto.id);
-                        const local = mapaPorEmailOuId.get(chave) || {};
+                        const ehAluno = (remoto.tipo_usuario || "aluno") === "aluno";
+                        let turma = remoto.turma || null;
 
-                        const ehAluno = (remoto.tipo_usuario || local.tipo_usuario || "aluno") === "aluno";
-                        let turma = local.turma || remoto.turma || null;
-
-                        // Se é aluno e ainda não tem turma atribuída, atribui deterministicamente para compatibilidade
                         if (ehAluno && !turma) {
+                            const turmasPadrao = ["6º A", "6º B", "7º A", "7º B"];
                             turma = turmasPadrao[(remoto.id || i) % turmasPadrao.length];
                         }
 
                         const anoEscolar = ehAluno ? extrairAno(turma) : null;
 
                         return {
-                            id: remoto.id || local.id || (100 + i),
-                            nome: remoto.nome || local.nome || "Usuário",
-                            email: remoto.email || local.email || "",
-                            tipo_usuario: remoto.tipo_usuario || local.tipo_usuario || "aluno",
+                            id: remoto.id || (100 + i),
+                            nome: remoto.nome || "Usuário",
+                            email: (remoto.email || "").toLowerCase().trim(),
+                            tipo_usuario: remoto.tipo_usuario || "aluno",
                             turma: turma,
-                            ano_escolar: anoEscolar,
-                            data_cadastro: remoto.data_cadastro || local.data_cadastro || new Date().toISOString(),
-                            historico_atividades: local.historico_atividades || gerarHistoricoInicial(remoto.id, turma),
-                            progresso: local.progresso || [false, false, false, false, false]
+                            ano_escolar: remoto.ano_escolar || anoEscolar,
+                            avatar: remoto.avatar || "avatar-1",
+                            data_cadastro: remoto.data_cadastro || new Date().toISOString(),
+                            historico_atividades: remoto.historico_atividades || gerarHistoricoInicial(remoto.id, turma),
+                            progresso: remoto.progresso || [false, false, false, false, false]
                         };
-                    });
-
-                    // Adiciona também usuários criados localmente que ainda não estejam na lista remota
-                    usuariosLocais.forEach(uLocal => {
-                        const chave = (uLocal.email || "").toLowerCase().trim() || String(uLocal.id);
-                        const existe = usuariosAtualizados.some(u => 
-                            ((u.email || "").toLowerCase().trim() || String(u.id)) === chave
-                        );
-                        if (!existe) {
-                            usuariosAtualizados.push(uLocal);
-                        }
                     });
 
                     salvarUsuariosLocais(usuariosAtualizados);
@@ -82,15 +57,10 @@ const FractaDB = (() => {
                 }
             }
         } catch (e) {
-            console.warn("FractaDB: API remota indisponível, utilizando dados locais persistidos.", e);
+            console.warn("FractaDB: Aviso ao consultar banco de dados da Vercel:", e);
         }
 
-        if (usuariosLocais.length === 0) {
-            usuariosLocais = carregarBasePadrao();
-            salvarUsuariosLocais(usuariosLocais);
-        }
-
-        return usuariosLocais;
+        return carregarUsuariosLocais();
     }
 
     let _memoryStorage = {};
@@ -169,66 +139,6 @@ const FractaDB = (() => {
         return historico;
     }
 
-    function carregarBasePadrao() {
-        return [
-            {
-                id: 2,
-                nome: "Pedro",
-                email: "pedro@gmail.com",
-                tipo_usuario: "professor",
-                turma: null,
-                ano_escolar: null,
-                data_cadastro: "2026-05-29T18:24:01.306Z",
-                historico_atividades: [],
-                progresso: [true, true, true, true, true]
-            },
-            {
-                id: 10,
-                nome: "Beatriz Sousa de Andrade",
-                email: "beatriz.hater@yahoo.com",
-                tipo_usuario: "aluno",
-                turma: "6º A",
-                ano_escolar: "6º ano",
-                data_cadastro: "2026-08-28T18:41:12.524Z",
-                historico_atividades: gerarHistoricoInicial(10, "6º A"),
-                progresso: [true, true, false, false, false]
-            },
-            {
-                id: 11,
-                nome: "Nicolly",
-                email: "nicolly.oliveira@gmail.com",
-                tipo_usuario: "aluno",
-                turma: "6º B",
-                ano_escolar: "6º ano",
-                data_cadastro: "2026-09-05T18:29:31.182Z",
-                historico_atividades: gerarHistoricoInicial(11, "6º B"),
-                progresso: [true, true, true, false, false]
-            },
-            {
-                id: 12,
-                nome: "Nicolly Oliveira",
-                email: "nicolly.oliveira.senai1@gmail.com",
-                tipo_usuario: "aluno",
-                turma: "7º A",
-                ano_escolar: "7º ano",
-                data_cadastro: "2026-09-18T16:43:31.648Z",
-                historico_atividades: gerarHistoricoInicial(12, "7º A"),
-                progresso: [true, true, true, true, false]
-            },
-            {
-                id: 14,
-                nome: "Nicolly Oliveira Santos",
-                email: "nicolly.santos8@portalsesisp.org",
-                tipo_usuario: "aluno",
-                turma: "7º B",
-                ano_escolar: "7º ano",
-                data_cadastro: "2026-09-18T18:04:43.210Z",
-                historico_atividades: gerarHistoricoInicial(14, "7º B"),
-                progresso: [true, true, false, false, false]
-            }
-        ];
-    }
-
     return {
         TURMAS: TURMAS_DISPONIVEIS,
 
@@ -240,11 +150,7 @@ const FractaDB = (() => {
 
         obterUsuarios() {
             let u = carregarUsuariosLocais();
-            if (!u || u.length === 0) {
-                u = carregarBasePadrao();
-                salvarUsuariosLocais(u);
-            }
-            return u;
+            return u || [];
         },
 
         obterAlunos() {
@@ -297,37 +203,72 @@ const FractaDB = (() => {
             }
         },
 
-        cadastrarUsuario({ nome, email, senha, tipo_usuario, turma }) {
-            const usuarios = this.obterUsuarios();
-            const emailLimpo = (email || "").toLowerCase().trim();
-
-            const jaExiste = usuarios.some(u => (u.email || "").toLowerCase().trim() === emailLimpo);
-            if (jaExiste) {
-                throw new Error("Este e-mail já está cadastrado.");
+        async cadastrarUsuario({ nome, email, senha, tipo_usuario, turma, avatar, codigo_acesso }) {
+            const resp = await fetch(`${API_URL}/usuarios`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    nome,
+                    email,
+                    senha,
+                    tipo_usuario,
+                    turma,
+                    avatar: avatar || "avatar-1",
+                    codigo_acesso
+                })
+            });
+            const dados = await resp.json().catch(() => ({}));
+            if (!resp.ok) {
+                throw new Error(dados.erro || dados.mensagem || "Erro ao cadastrar usuário no banco de dados da Vercel.");
             }
+            await sincronizarComAPI();
+            return dados;
+        },
 
-            const ehAluno = tipo_usuario === "aluno";
-            if (ehAluno && (!turma || !TURMAS_DISPONIVEIS.includes(turma))) {
-                throw new Error("Por favor, selecione uma turma válida (6º A, 6º B, 7º A ou 7º B).");
+        async autenticarUsuario(email, senha) {
+            const resp = await fetch(`${API_URL}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, senha })
+            });
+            const dados = await resp.json().catch(() => ({}));
+            if (!resp.ok) {
+                return { sucesso: false, erro: dados.erro || dados.mensagem || "Credenciais inválidas no banco da Vercel." };
             }
-
-            const novoId = Date.now();
-            const novoUsuario = {
-                id: novoId,
-                nome: nome.trim(),
-                email: emailLimpo,
-                tipo_usuario: tipo_usuario,
-                turma: ehAluno ? turma : null,
-                ano_escolar: ehAluno ? extrairAno(turma) : null,
-                data_cadastro: new Date().toISOString(),
-                historico_atividades: [],
-                progresso: [false, false, false, false, false]
+            await sincronizarComAPI();
+            return {
+                sucesso: true,
+                token: dados.token,
+                usuario: dados.usuario
             };
+        },
 
-            usuarios.push(novoUsuario);
-            salvarUsuariosLocais(usuarios);
+        atualizarAvatarAluno(id, novoAvatar) {
+            const usuarios = this.obterUsuarios();
+            const idx = usuarios.findIndex(u => u.id === Number(id) || String(u.id) === String(id));
+            if (idx !== -1) {
+                usuarios[idx].avatar = novoAvatar;
+                salvarUsuariosLocais(usuarios);
 
-            return novoUsuario;
+                // Atualiza sessão no localStorage
+                try {
+                    const sessao = JSON.parse(localStorage.getItem("usuario")) || {};
+                    if (sessao.id === usuarios[idx].id || sessao.email === usuarios[idx].email) {
+                        sessao.avatar = novoAvatar;
+                        localStorage.setItem("usuario", JSON.stringify(sessao));
+                    }
+                } catch (e) {}
+
+                // Envia para o backend se disponível
+                fetch(`${API_URL}/usuarios/${usuarios[idx].id}/avatar`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ avatar: novoAvatar })
+                }).catch(() => {});
+
+                return usuarios[idx];
+            }
+            return null;
         },
 
         atualizarTurmaAluno(id, novaTurma) {
@@ -337,6 +278,24 @@ const FractaDB = (() => {
                 usuarios[idx].turma = novaTurma;
                 usuarios[idx].ano_escolar = extrairAno(novaTurma);
                 salvarUsuariosLocais(usuarios);
+
+                // Sincroniza sessão
+                try {
+                    const sessao = JSON.parse(localStorage.getItem("usuario")) || {};
+                    if (sessao.id === usuarios[idx].id || sessao.email === usuarios[idx].email) {
+                        sessao.turma = novaTurma;
+                        sessao.ano_escolar = usuarios[idx].ano_escolar;
+                        localStorage.setItem("usuario", JSON.stringify(sessao));
+                    }
+                } catch (e) {}
+
+                // Envia para o backend se disponível
+                fetch(`${API_URL}/usuarios/${usuarios[idx].id}/turma`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ turma: novaTurma })
+                }).catch(() => {});
+
                 return usuarios[idx];
             }
             return null;
@@ -374,7 +333,12 @@ const FractaDB = (() => {
             const nota = params.nota !== undefined ? Number(params.nota) : Number(((acertos / totalQuestoes) * 10).toFixed(1));
             const porcentagem = params.porcentagem !== undefined ? Number(params.porcentagem) : Math.round((acertos / totalQuestoes) * 100);
             const erros = params.erros !== undefined ? Number(params.erros) : (totalQuestoes - acertos);
-            const concluida = params.concluida !== undefined ? Boolean(params.concluida) : (porcentagem >= 85);
+            
+            // Regra de aprovação: >= 70% de aproveitamento (ex: 7 em 10, 4 em 5)
+            const aprovadoNestaTentativa = porcentagem >= 70;
+            const concluida = params.concluida !== undefined 
+                ? Boolean(params.concluida) 
+                : aprovadoNestaTentativa;
 
             if (!aluno.historico_atividades) aluno.historico_atividades = [];
             if (!aluno.progresso) aluno.progresso = [false, false, false, false, false];
@@ -399,7 +363,8 @@ const FractaDB = (() => {
 
             aluno.historico_atividades.push(registro);
 
-            if (concluida && capIdx >= 0 && capIdx < 5) {
+            // Se aprovado nesta tentativa ou já aprovado antes, mantém desbloqueado
+            if ((concluida || aluno.progresso[capIdx]) && capIdx >= 0 && capIdx < 5) {
                 aluno.progresso[capIdx] = true;
             }
 
@@ -412,8 +377,24 @@ const FractaDB = (() => {
                 s.historico_atividades = aluno.historico_atividades;
                 s.turma = aluno.turma;
                 s.ano_escolar = aluno.ano_escolar;
+                s.avatar = aluno.avatar || s.avatar || "avatar-1";
                 localStorage.setItem("usuario", JSON.stringify(s));
             } catch (e) {}
+
+            // Persiste no backend via API assíncrona
+            if (aluno.id) {
+                fetch(`${API_URL}/atividades`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        id_aluno: aluno.id,
+                        id_capitulo: idCapitulo,
+                        titulo_capitulo: tituloCapitulo,
+                        acertos: acertos,
+                        total_questoes: totalQuestoes
+                    })
+                }).catch(errApi => console.warn("FractaDB: Notificação ao backend pendente:", errApi));
+            }
 
             return registro;
         },
@@ -514,21 +495,28 @@ const FractaDB = (() => {
             const atividadesRealizadas = historico.length;
             const atividadesConcluidas = historico.filter(h => h.concluida).length;
 
-            let somaNotas = 0;
+            // Regra consistente para notas: considera a melhor nota válida alcançada em cada capítulo
+            const melhoresPorCapitulo = {};
+            historico.forEach(h => {
+                const cId = h.id_atividade || 1;
+                if (!melhoresPorCapitulo[cId] || Number(h.nota || 0) > Number(melhoresPorCapitulo[cId].nota || 0)) {
+                    melhoresPorCapitulo[cId] = h;
+                }
+            });
+
+            const notasValidas = Object.values(melhoresPorCapitulo).map(m => Number(m.nota || 0));
+            const mediaGeral = notasValidas.length > 0 
+                ? (notasValidas.reduce((a, b) => a + b, 0) / notasValidas.length).toFixed(1)
+                : "0.0";
+
             let somaAcertos = 0;
             let somaQuestoes = 0;
             let somaErros = 0;
-
-            historico.forEach(h => {
-                somaNotas += Number(h.nota || 0);
-                somaAcertos += Number(h.acertos || 0);
-                somaQuestoes += Number(h.total_questoes || 5);
-                somaErros += Number(h.erros || (h.total_questoes - h.acertos) || 0);
+            Object.values(melhoresPorCapitulo).forEach(m => {
+                somaAcertos += Number(m.acertos || 0);
+                somaQuestoes += Number(m.total_questoes || 5);
+                somaErros += Number(m.erros || (m.total_questoes - m.acertos) || 0);
             });
-
-            const mediaGeral = atividadesRealizadas > 0 
-                ? (somaNotas / atividadesRealizadas).toFixed(1) 
-                : "0.0";
 
             const porcentagemAcertos = somaQuestoes > 0 
                 ? Math.round((somaAcertos / somaQuestoes) * 100) 
@@ -537,13 +525,51 @@ const FractaDB = (() => {
             const capitulosConcluidos = (aluno.progresso || []).filter(Boolean).length;
             const progressoTrilhaPorcentagem = Math.round((capitulosConcluidos / 5) * 100);
 
-            // Conquistas
-            const conquistas = [];
-            if (atividadesRealizadas >= 1) conquistas.push({ nome: "Primeiro Passo", desc: "Realizou a primeira atividade na plataforma" });
-            if (historico.some(h => h.nota === 10)) conquistas.push({ nome: "Gênio das Frações", desc: "Obteve nota máxima (10) em um desafio" });
-            if (capitulosConcluidos >= 3) conquistas.push({ nome: "Explorador Dedicado", desc: "Concluiu mais de 50% da trilha de Silas" });
-            if (capitulosConcluidos === 5) conquistas.push({ nome: "Mestre Supremo das Frações", desc: "Completou todos os 5 capítulos da trilha" });
-            if (porcentagemAcertos >= 90 && atividadesRealizadas >= 2) conquistas.push({ nome: "Precisão Cirúrgica", desc: "Taxa de acertos superior a 90%" });
+            // Conquistas com critérios precisos sincronizados com o backend
+            const conquistas = [
+                {
+                    id: "primeiro_passo",
+                    nome: "Primeiros Passos",
+                    desc: "Realizou sua primeira atividade na plataforma",
+                    icone: "flag",
+                    desbloqueada: atividadesRealizadas >= 1
+                },
+                {
+                    id: "nota_maxima",
+                    nome: "Nota Máxima",
+                    desc: "Obteve nota 10 em um desafio de frações",
+                    icone: "star",
+                    desbloqueada: historico.some(h => Number(h.nota) >= 10.0)
+                },
+                {
+                    id: "cem_porcento",
+                    nome: "100% Acertos",
+                    desc: "Acertou todas as questões de um capítulo",
+                    icone: "check-badge",
+                    desbloqueada: historico.some(h => Number(h.porcentagem) === 100)
+                },
+                {
+                    id: "explorador_dedicado",
+                    nome: "Explorador da Trilha",
+                    desc: "Concluiu mais de 50% da trilha de frações",
+                    icone: "map",
+                    desbloqueada: capitulosConcluidos >= 3
+                },
+                {
+                    id: "mestre_supremo",
+                    nome: "Mestre das Frações",
+                    desc: "Completou todos os 5 capítulos da trilha de Silas",
+                    icone: "trophy",
+                    desbloqueada: capitulosConcluidos >= 5
+                },
+                {
+                    id: "estudante_focado",
+                    nome: "Estudante Focado",
+                    desc: "Realizou 3 ou mais atividades de estudo",
+                    icone: "sparkles",
+                    desbloqueada: atividadesRealizadas >= 3
+                }
+            ];
 
             const ultimaAtividade = historico.length > 0 
                 ? historico[historico.length - 1] 

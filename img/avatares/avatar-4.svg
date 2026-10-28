@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#5B21B6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg4)" stroke="#FFF" stroke-width="3"/>
+  <!-- Martim o texugo com faixas pretas e brancas marcantes -->
+  <circle cx="60" cy="68" r="32" fill="#E2E8F0"/>
+  <!-- Faixas pretas características do texugo -->
+  <path d="M40 38 Q46 58 44 80 L32 78 Q30 54 36 38 Z" fill="#1E293B"/>
+  <path d="M80 38 Q74 58 76 80 L88 78 Q90 54 84 38 Z" fill="#1E293B"/>
+  <circle cx="38" cy="58" r="4.5" fill="#FFF"/>
+  <circle cx="82" cy="58" r="4.5" fill="#FFF"/>
+  <circle cx="39" cy="58" r="3" fill="#0F172A"/>
+  <circle cx="81" cy="58" r="3" fill="#0F172A"/>
+  <ellipse cx="60" cy="74" rx="7" ry="5" fill="#0F172A"/>
+  <!-- Boina de detetive / professor -->
+  <path d="M30 40 Q60 18 90 40 Q60 32 30 40 Z" fill="#78350F"/>
+  <circle cx="60" cy="24" r="3" fill="#92400E"/>
+  <path d="M54 82 Q60 86 66 82" stroke="#0F172A" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>

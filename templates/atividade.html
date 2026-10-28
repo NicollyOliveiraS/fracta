@@ -302,7 +302,7 @@
     </div>
 
     <!-- CONTEÚDO PRINCIPAL -->
-    <main class="flex-1 max-w-xl mx-auto px-4 py-8 w-full flex flex-col items-center justify-start">
+    <main class="flex-1 max-w-xl mx-auto px-4 py-3 sm:py-5 w-full flex flex-col items-center justify-start">
 
         <!-- TELA 0: INTRODUÇÃO INTERATIVA PASSO A PASSO (HISTÓRIA INICIAL DE SILAS) -->
         <div id="telaIntroducao" class="hidden w-full max-w-xl fade-in space-y-6">
@@ -496,41 +496,60 @@
 
         <!-- TELA 2: QUESTÃO INTERATIVA -->
         <div id="telaQuestao" class="hidden w-full max-w-xl fade-in">
-            <div class="bg-white dark:bg-darkcard border border-slate-200 dark:border-darkborder rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-                <div class="flex items-center justify-between mb-4 border-b border-slate-100 dark:border-darkborder pb-4 gap-3">
+            <div class="bg-white dark:bg-darkcard border border-slate-200 dark:border-darkborder rounded-3xl p-4 sm:p-6 shadow-xl relative overflow-hidden">
+                <div class="flex items-center justify-between mb-2 sm:mb-3 border-b border-slate-100 dark:border-darkborder pb-2.5 sm:pb-3 gap-3">
                     <div class="text-left">
-                        <span id="questaoCapituloBadge" class="text-xs font-bold text-brand-500 uppercase tracking-wider block"></span>
-                        <span id="questaoLabel" class="text-xs text-slate-400 dark:text-slate-400 font-medium"></span>
+                        <span id="questaoCapituloBadge" class="text-[11px] font-bold text-brand-500 uppercase tracking-wider block"></span>
+                        <span id="questaoLabel" class="text-[11px] text-slate-400 dark:text-slate-400 font-medium"></span>
                     </div>
-                    <div id="acertosLabel" class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800 shrink-0"></div>
+                    <div class="flex items-center gap-2">
+                        <button id="btnDica" onclick="alternarDica()" type="button" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 transition shadow-sm active:scale-95" title="Ver dica para resolver a questão">
+                            <svg class="w-3.5 h-3.5 text-amber-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-4.5 6 6 0 10-10.5 4.5 6 6 0 001.5 4.5m7.5 0h-7.5" /></svg>
+                            <span>Dica</span>
+                        </button>
+                        <div id="acertosLabel" class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800 shrink-0"></div>
+                    </div>
                 </div>
 
                 <!-- BADGE DE REVISÃO / REPETIÇÃO DE QUESTÃO ERRADA -->
-                <div id="questaoRevisaoBadge" class="hidden mb-4 bg-purple-500/10 border-2 border-purple-500/30 text-purple-800 dark:text-purple-300 p-3.5 rounded-2xl text-xs font-semibold leading-relaxed flex items-center gap-2.5">
-                    <div class="w-7 h-7 rounded-xl bg-purple-500/20 text-purple-600 dark:text-purple-300 flex items-center justify-center shrink-0">
-                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
+                <div id="questaoRevisaoBadge" class="hidden mb-2.5 bg-purple-500/10 border border-purple-500/30 text-purple-800 dark:text-purple-300 p-2.5 rounded-xl text-xs font-semibold leading-relaxed flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-lg bg-purple-500/20 text-purple-600 dark:text-purple-300 flex items-center justify-center shrink-0">
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
                     </div>
                     <div>
-                        <strong class="block font-bold text-purple-900 dark:text-purple-200">Revisão de Aprendizado!</strong>
-                        <span>Você errou esta questão anteriormente. Tente resolver novamente agora com calma!</span>
+                        <strong class="block font-bold text-purple-900 dark:text-purple-200 text-xs">Revisão de Aprendizado!</strong>
+                        <span class="text-[11px]">Você errou esta questão anteriormente. Tente resolver novamente agora!</span>
                     </div>
                 </div>
 
-                <div id="questaoHistoriaContexto" class="mb-4 bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-300 p-4 rounded-2xl text-xs sm:text-sm font-medium leading-relaxed flex items-start gap-2">
+                <div id="questaoHistoriaContexto" class="mb-2.5 bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-300 p-2.5 sm:p-3 rounded-xl text-xs font-medium leading-relaxed flex items-start gap-2">
                     <svg class="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25"/></svg>
                     <span id="questaoContextoTexto"></span>
                 </div>
 
                 <!-- ESPAÇO DEDICADO PARA ADICIONAR IMAGEM/DIAGRAMA DA QUESTÃO -->
-                <div id="questaoImagemBox" class="mb-4"></div>
+                <div id="questaoImagemBox" class="mb-2.5"></div>
 
-                <h2 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-6 leading-relaxed" id="enunciado"></h2>
+                <h2 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white mb-3 leading-snug" id="enunciado"></h2>
 
-                <div class="grid grid-cols-1 gap-3 mb-6" id="opcoesGrid"></div>
+                <!-- CONTAINER DE DICA EXPANSÍVEL -->
+                <div id="dicaBox" class="hidden mb-3 bg-gradient-to-r from-amber-500/10 via-amber-400/5 to-transparent border-l-4 border-amber-500 p-3 rounded-r-xl text-xs text-amber-900 dark:text-amber-200 transition-all duration-300 animate-pop-success">
+                    <div class="flex items-start gap-2">
+                        <div class="w-5 h-5 rounded-md bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-4.5 6 6 0 10-10.5 4.5 6 6 0 001.5 4.5m7.5 0h-7.5" /></svg>
+                        </div>
+                        <div class="flex-1">
+                            <strong class="block font-bold text-amber-900 dark:text-amber-300 text-[11px] mb-0.5">💡 Dica do Silas:</strong>
+                            <span id="dicaTexto" class="leading-relaxed font-medium block text-xs"></span>
+                        </div>
+                    </div>
+                </div>
 
-                <div id="feedbackBox" class="hidden rounded-2xl mb-6 transition-all duration-300"></div>
+                <div class="grid grid-cols-1 gap-2 mb-3" id="opcoesGrid"></div>
 
-                <button id="btnProxima" onclick="proximaQuestao()" class="hidden w-full py-4 bg-slate-900 dark:bg-brand-500 text-white font-extrabold text-sm rounded-2xl hover:bg-slate-800 dark:hover:bg-brand-600 active:scale-[0.99] transition shadow-lg flex items-center justify-center gap-2">
+                <div id="feedbackBox" class="hidden rounded-xl mb-3 transition-all duration-300"></div>
+
+                <button id="btnProxima" onclick="proximaQuestao()" class="hidden w-full py-3 bg-slate-900 dark:bg-brand-500 text-white font-extrabold text-sm rounded-xl hover:bg-slate-800 dark:hover:bg-brand-600 active:scale-[0.99] transition shadow-md flex items-center justify-center gap-2">
                     <span>Continuar Aventura</span>
                     <svg class="w-4 h-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
                 </button>
@@ -635,6 +654,7 @@
     </footer>
 
     <!-- SCRIPT DUOLINGO & HISTÓRIA INTERATIVA -->
+    <script src="../scripts/fracoes.js"></script>
     <script src="../scripts/fracta-db.js"></script>
     <script src="../scripts/script.js"></script>
     <script>
@@ -706,7 +726,7 @@
                 titulo: "Capítulo 1 — A origem das frações",
                 amigo: "Clarice, a doninha",
                 tag: "Egito Antigo",
-                imagem: "../img/trilha/capitulo1.png",
+                imagem: "../img/trilha/capas/egitocapa.jfif",
                 historia: "Silas viaja até o Egito para encontrar Clarice. Clarice ensina que uma fração representa partes de um todo e como comparar e localizar frações na reta numérica.",
                 historiaSlides: [
                     {
@@ -790,10 +810,10 @@
                 titulo: "Capítulo 2 — A barragem de Bento",
                 amigo: "Bento, o castor",
                 tag: "Rio Nilo",
-                imagem: "",
+                imagem: "../img/trilha/capas/rionilocapa.jfif",
                 historia: "Bento, o castor, precisa de ajuda na barragem. Ele ensina Silas a somar frações com denominadores iguais e usar o MMC para frações com denominadores diferentes.",
                 historiaSlides: [
-                    { titulo: "Um mestre das barragens", tag: "Capítulo 2 — Parte 1", imagem: "", texto: "Seguindo sua jornada ao longo do Rio Nilo, Silas encontra Bento, um castor muito dedicado que é mestre em construir barragens de madeira e pedra." },
+                    { titulo: "Um mestre das barragens", tag: "Capítulo 2 — Parte 1", imagem: "../img/trilha/capas/rionilocapa.jfif", texto: "Seguindo sua jornada ao longo do Rio Nilo, Silas encontra Bento, um castor muito dedicado que é mestre em construir barragens de madeira e pedra." },
                     { titulo: "Materiais diferentes", tag: "Capítulo 2 — Parte 2", imagem: "", texto: "Bento está organizando a montagem da barragem, mas percebe que precisa somar porções de troncos e pedras representadas por frações com denominadores diferentes." },
                     { titulo: "A regra da adição", tag: "Capítulo 2 — Parte 3", imagem: "", texto: "Bento explica: quando os denominadores são iguais, somamos apenas os numeradores e mantemos o denominador. Quando são diferentes, primeiro encontramos frações equivalentes com o mesmo denominador usando o MMC." },
                     { titulo: "Barragem protegida", tag: "Capítulo 2 — Parte 4", imagem: "", texto: "Silas aprende a calcular o MMC e a transformar frações para somá-las com precisão. Com o novo conhecimento, ele ajuda Bento a reforçar a barragem antes que a água suba!" }
@@ -859,10 +879,10 @@ Silas aprende a calcular o MMC e a transformar frações para somá-las com prec
                 titulo: "Capítulo 3 — Construindo os túneis de Silas",
                 amigo: "Silas a toupeira",
                 tag: "Galerias Subterrâneas",
-                imagem: "",
+                imagem: "../img/trilha/capas/galeriacapa.jfif",
                 historia: "Silas volta para casa e precisa calcular frações de terrenos. Bento ensina a multiplicar frações e calcular fração de uma quantidade sem regra de três.",
                 historiaSlides: [
-                    { titulo: "De volta aos túneis", tag: "Capítulo 3 — Parte 1", imagem: "", texto: "De volta ao seu lar nas galerias subterrâneas, Silas está animado para escavar a maior rede de túneis de toda a floresta!" },
+                    { titulo: "De volta aos túneis", tag: "Capítulo 3 — Parte 1", imagem: "../img/trilha/capas/galeriacapa.jfif", texto: "De volta ao seu lar nas galerias subterrâneas, Silas está animado para escavar a maior rede de túneis de toda a floresta!" },
                     { titulo: "Um novo cálculo", tag: "Capítulo 3 — Parte 2", imagem: "", texto: "Silas precisa calcular a fração de um número inteiro, como 3/5 de 20 ferramentas, e multiplicar frações para determinar a área de novos compartimentos." },
                     { titulo: "Multiplicando frações", tag: "Capítulo 3 — Parte 3", imagem: "", texto: "Para multiplicar duas frações, Silas aprende a multiplicar numerador por numerador e denominador por denominador. Por exemplo: 1/2 × 3/4 = 3/8." },
                     { titulo: "Fração de uma quantidade", tag: "Capítulo 3 — Parte 4", imagem: "", texto: "Para calcular a fração de uma quantidade, ele divide o valor total pelo denominador e multiplica o resultado pelo numerador. Assim, Silas calcula o material necessário para que nenhum túnel desmorone!" }
@@ -1075,7 +1095,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 titulo: "Capítulo 1 — A origem das frações (Nível 7º Ano)",
                 amigo: "Clarice, a doninha",
                 tag: "Egito Antigo • 7º Ano",
-                imagem: "../img/trilha/capitulo1.png",
+                imagem: "../img/trilha/capas/egitocapa.jfif",
                 historia: "Silas viaja até o Egito para encontrar Clarice. Clarice ensina que uma fração representa partes de um todo, aprofundando em frações equivalentes, simplificação irredutível e localização na reta.",
                 historiaSlides: [
                     {
@@ -1159,10 +1179,10 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 titulo: "Capítulo 2 — A barragem de Bento (Nível 7º Ano)",
                 amigo: "Bento, o castor",
                 tag: "Rio Nilo • 7º Ano",
-                imagem: "",
+                imagem: "../img/trilha/capas/rionilocapa.jfif",
                 historia: "Bento, o castor, precisa de ajuda na barragem. Ele ensina Silas a somar e subtrair frações com denominadores diferentes usando o MMC e a resolver problemas de várias etapas.",
                 historiaSlides: [
-                    { titulo: "Um mestre das barragens", tag: "Capítulo 2 — Parte 1", imagem: "", texto: "Seguindo sua jornada ao longo do Rio Nilo, Silas encontra Bento, um castor muito dedicado que é mestre em construir barragens de madeira e pedra." },
+                    { titulo: "Um mestre das barragens", tag: "Capítulo 2 — Parte 1", imagem: "../img/trilha/capas/rionilocapa.jfif", texto: "Seguindo sua jornada ao longo do Rio Nilo, Silas encontra Bento, um castor muito dedicado que é mestre em construir barragens de madeira e pedra." },
                     { titulo: "Materiais diferentes", tag: "Capítulo 2 — Parte 2", imagem: "", texto: "Bento está organizando a montagem da barragem, mas percebe que precisa somar porções de troncos e pedras representadas por frações com denominadores diferentes." },
                     { titulo: "A regra da adição", tag: "Capítulo 2 — Parte 3", imagem: "", texto: "Bento explica: quando os denominadores são diferentes, encontramos frações equivalentes com o mesmo denominador usando o MMC e calculamos com precisão!" },
                     { titulo: "Barragem protegida", tag: "Capítulo 2 — Parte 4", imagem: "", texto: "Silas aprende a calcular o MMC de múltiplos termos e a subtrair partes restantes, garantindo a proteção da barragem contra cheias!" }
@@ -1217,10 +1237,10 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 titulo: "Capítulo 3 — Construindo os túneis de Silas (Nível 7º Ano)",
                 amigo: "Silas a toupeira",
                 tag: "Galerias Subterrâneas • 7º Ano",
-                imagem: "",
+                imagem: "../img/trilha/capas/galeriacapa.jfif",
                 historia: "Silas volta para casa e precisa calcular frações de terrenos. Ele desenvolve métodos de multiplicação com simplificação prévia, produto de frações mistas e problemas em etapas.",
                 historiaSlides: [
-                    { titulo: "De volta aos túneis", tag: "Capítulo 3 — Parte 1", imagem: "", texto: "De volta ao seu lar nas galerias subterrâneas, Silas está animado para escavar a maior rede de túneis de toda a floresta!" },
+                    { titulo: "De volta aos túneis", tag: "Capítulo 3 — Parte 1", imagem: "../img/trilha/capas/galeriacapa.jfif", texto: "De volta ao seu lar nas galerias subterrâneas, Silas está animado para escavar a maior rede de túneis de toda a floresta!" },
                     { titulo: "Um novo cálculo", tag: "Capítulo 3 — Parte 2", imagem: "", texto: "Silas precisa calcular a fração de um número inteiro, multiplicar frações e calcular áreas de compartimentos subterrâneos." },
                     { titulo: "Multiplicando com simplificação", tag: "Capítulo 3 — Parte 3", imagem: "", texto: "Silas descobre o poder da simplificação cruzada antes de multiplicar numeradores e denominadores, agilizando cálculos complexos!" },
                     { titulo: "Fração de quantidade composta", tag: "Capítulo 3 — Parte 4", imagem: "", texto: "Ele aprende a calcular frações sucessivas de quantidades totais para garantir suprimentos perfeitos para a escavação." }
@@ -1404,7 +1424,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             if (imagePath && imagePath.trim() !== '') {
                 container.innerHTML = `
                     <div class="relative group">
-                        <img src="${imagePath}" alt="${defaultAlt}" class="w-full max-h-56 object-cover rounded-2xl border border-slate-200 dark:border-darkborder shadow-sm">
+                        <img src="${imagePath}" alt="${defaultAlt}" class="w-full max-h-36 sm:max-h-44 object-cover rounded-xl border border-slate-200 dark:border-darkborder shadow-sm">
                     </div>
                 `;
             } else {
@@ -1553,20 +1573,42 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             }
         }
 
-        // RENDERIZAÇÃO DA TRILHA EM ZIG-ZAG ESTILO DUOLINGO
+        // RENDERIZAÇÃO DA TRILHA CONTÍNUA E GAMIFICADA ESTILO CAMINHO DE AVENTURA
         function renderizarTrilhaDuolingo() {
             atualizarTopBar();
             const container = document.getElementById('duoTrailContainer');
-            container.innerHTML = '<div class="absolute top-12 bottom-12 left-1/2 -translate-x-1/2 w-1 border-r-4 border-dashed border-amber-600/50 dark:border-amber-400/50 -z-0"></div>';
-
-            // Deslocamentos em Zig-Zag para os nós
-            const offsets = [
-                'translate-x-0',
-                'translate-x-8 sm:translate-x-14',
-                'translate-x-0',
-                '-translate-x-8 sm:-translate-x-14',
-                'translate-x-0'
+            
+            // Posições X em porcentagem relativa ao centro para traçar a estrada contínua
+            const nodeOffsets = [
+                { x: -50, class: '-translate-x-12 sm:-translate-x-20' }, // Introdução
+                { x: 0,   class: 'translate-x-0' },                      // Cap 1
+                { x: 50,  class: 'translate-x-12 sm:translate-x-20' },   // Cap 2
+                { x: 0,   class: 'translate-x-0' },                      // Cap 3
+                { x: -50, class: '-translate-x-12 sm:-translate-x-20' }, // Cap 4
+                { x: 0,   class: 'translate-x-0' },                      // Cap 5
+                { x: 0,   class: 'translate-x-0' }                       // Desafio Final
             ];
+
+            // Renderiza estrada contínua sinuosa em SVG de fundo
+            container.innerHTML = `
+                <svg class="absolute inset-0 w-full h-full pointer-events-none -z-0 overflow-visible" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="roadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#C56E33" stop-opacity="0.35"/>
+                            <stop offset="50%" stop-color="#C56E33" stop-opacity="0.5"/>
+                            <stop offset="100%" stop-color="#10B981" stop-opacity="0.4"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Leito da estrada contínua com curvas suaves conectando todas as etapas -->
+                    <path d="M 50% 40 C 40% 120, 50% 160, 50% 210 C 50% 270, 62% 310, 62% 370 C 62% 430, 50% 480, 50% 530 C 50% 590, 38% 640, 38% 700 C 38% 760, 50% 810, 50% 860 C 50% 920, 50% 970, 50% 1020"
+                          fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"
+                          class="text-amber-200/70 dark:text-slate-800/80 transition-colors" />
+                    <!-- Linha central pontilhada da trilha gamificada -->
+                    <path d="M 50% 40 C 40% 120, 50% 160, 50% 210 C 50% 270, 62% 310, 62% 370 C 62% 430, 50% 480, 50% 530 C 50% 590, 38% 640, 38% 700 C 38% 760, 50% 810, 50% 860 C 50% 920, 50% 970, 50% 1020"
+                          fill="none" stroke="#C56E33" stroke-width="4" stroke-dasharray="8 8" stroke-linecap="round"
+                          class="opacity-70 dark:opacity-90" />
+                </svg>
+            `;
 
             let proximoNivelIndex = capitulosConcluidos.findIndex(c => c === false);
             if (proximoNivelIndex === -1) proximoNivelIndex = 4;
@@ -1575,14 +1617,14 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             const capAtivo = DADOS_TRILHA[proximoNivelIndex];
             const speechText = document.getElementById('mascotSpeechText');
             if (capitulosConcluidos.every(Boolean)) {
-                speechText.textContent = '"Incrível! Você desbloqueou a Conclusão Final! Clique no troféu para comemorar!"';
+                speechText.textContent = '"Incrível! Você concluiu todos os 5 capítulos com mais de 70% de aproveitamento! Clique no troféu para comemorar!"';
             } else {
                 speechText.textContent = `"Pronto para o ${capAtivo.titulo} com ${capAtivo.amigo}?"`;
             }
 
             // NÓ INICIAL DE INTRODUÇÃO (PRÓLOGO)
             const introWrapper = document.createElement('div');
-            introWrapper.className = "relative z-10 flex flex-col items-center -translate-x-8 sm:-translate-x-14 mb-2";
+            introWrapper.className = `relative z-10 flex flex-col items-center ${nodeOffsets[0].class} mb-2`;
             introWrapper.innerHTML = `
                 <div class="relative">
                     <button onclick="abrirIntroducao()" class="duo-node duo-node-active w-16 h-16 sm:w-20 sm:h-20 rounded-full flex flex-col items-center justify-center font-extrabold text-2xl bg-amber-500 hover:bg-amber-600 shadow-[0_6px_0_#b45309]">
@@ -1592,8 +1634,8 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                         ${ICONS.bookOpen}
                     </span>
                 </div>
-                <span class="text-xs font-bold text-amber-700 dark:text-amber-300 mt-1.5 bg-white/90 dark:bg-darkcard/90 px-3 py-0.5 rounded-full border border-amber-500/30 shadow-sm backdrop-blur-sm">
-                    Introdução
+                <span class="text-xs font-bold text-amber-700 dark:text-amber-300 mt-1.5 bg-white/95 dark:bg-darkcard/95 px-3 py-0.5 rounded-full border border-amber-500/30 shadow-sm backdrop-blur-sm">
+                    Início: Prólogo
                 </span>
             `;
             container.appendChild(introWrapper);
@@ -1603,34 +1645,52 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 const concluido = capitulosConcluidos[idx];
 
                 const wrapper = document.createElement('div');
-                wrapper.className = `relative z-10 flex flex-col items-center ${offsets[idx]}`;
+                wrapper.className = `relative z-10 flex flex-col items-center ${nodeOffsets[idx + 1].class}`;
 
                 let nodeClass = '';
                 let badgeSvg = '';
+                let statusLabel = '';
 
                 if (concluido) {
-                    nodeClass = 'duo-node duo-node-completed w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold';
+                    nodeClass = 'duo-node duo-node-completed w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold relative overflow-hidden group shadow-lg';
                     badgeSvg = ICONS.trophyBadge;
+                    statusLabel = 'Concluído (≥70%)';
                 } else if (desbloqueado) {
-                    nodeClass = 'duo-node duo-node-active animate-duo-pulse w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold';
+                    nodeClass = 'duo-node duo-node-active animate-duo-pulse w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold relative overflow-hidden group shadow-lg';
                     badgeSvg = ICONS.starBadge;
+                    statusLabel = 'Disponível Agora';
                 } else {
-                    nodeClass = 'duo-node duo-node-locked w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold';
+                    nodeClass = 'duo-node duo-node-locked w-20 h-20 sm:w-24 sm:h-24 rounded-full flex flex-col items-center justify-center font-extrabold relative overflow-hidden group shadow-md';
                     badgeSvg = ICONS.lockBadge;
+                    statusLabel = 'Bloqueado';
                 }
+
+                const temCapa = cap.imagem && cap.imagem.trim() !== '';
+                const conteudoBotao = temCapa ? `
+                    <img src="${cap.imagem}" alt="${cap.titulo}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${!desbloqueado ? 'grayscale contrast-75 brightness-75' : ''}">
+                ` : `<span>${cap.icon}</span>`;
 
                 wrapper.innerHTML = `
                     <div class="relative">
-                        <button onclick="clicarNoNo(${idx})" class="${nodeClass}">
-                            <span>${cap.icon}</span>
+                        <button onclick="clicarNoNo(${idx})" class="${nodeClass}" title="${cap.titulo}">
+                            ${conteudoBotao}
                         </button>
-                        <span class="absolute -top-2 -right-2 text-sm bg-white dark:bg-darkcard border border-slate-200 dark:border-darkborder rounded-full w-7 h-7 flex items-center justify-center shadow-md">
+                        <span class="absolute -top-2 -right-2 text-sm bg-white dark:bg-darkcard border border-slate-200 dark:border-darkborder rounded-full w-7 h-7 flex items-center justify-center shadow-md z-10">
                             ${badgeSvg}
                         </span>
+                        <!-- Indicador de Fase -->
+                        <span class="absolute -bottom-1 -left-1 text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-black/70 text-white shadow-sm z-10">
+                            Fase ${idx + 1}
+                        </span>
                     </div>
-                    <span class="text-xs font-bold text-slate-800 dark:text-slate-100 mt-2 bg-white/90 dark:bg-darkcard/90 px-3 py-1 rounded-full border border-slate-200 dark:border-darkborder shadow-md backdrop-blur-sm">
-                        ${cap.tag}
-                    </span>
+                    <div class="flex flex-col items-center mt-2">
+                        <span class="text-xs font-bold text-slate-800 dark:text-slate-100 bg-white/95 dark:bg-darkcard/95 px-3 py-1 rounded-full border border-slate-200 dark:border-darkborder shadow-md backdrop-blur-sm max-w-[170px] truncate text-center">
+                            ${cap.tag}
+                        </span>
+                        <span class="text-[9px] font-semibold mt-0.5 ${concluido ? 'text-emerald-600 dark:text-emerald-400' : desbloqueado ? 'text-brand-600 dark:text-brand-400' : 'text-slate-400 dark:text-slate-500'}">
+                            ${statusLabel}
+                        </span>
+                    </div>
                 `;
 
                 container.appendChild(wrapper);
@@ -1639,7 +1699,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             // NÓ FINAL: TROFÉU & COMEMORAÇÃO
             const todosConcluidos = capitulosConcluidos.every(Boolean);
             const finalWrapper = document.createElement('div');
-            finalWrapper.className = "relative z-10 flex flex-col items-center translate-x-0 mt-4";
+            finalWrapper.className = `relative z-10 flex flex-col items-center ${nodeOffsets[6].class} mt-4`;
             
             let finalClass = todosConcluidos
                 ? 'duo-node duo-node-completed w-24 h-24 sm:w-28 sm:h-28 rounded-3xl flex flex-col items-center justify-center text-4xl shadow-xl'
@@ -1647,14 +1707,14 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
 
             finalWrapper.innerHTML = `
                 <div class="relative">
-                    <button onclick="${todosConcluidos ? 'mostrarTela(\'telaFinal\')' : 'alert(\'Conclua todos os 5 capítulos para desbloquear a comemoração final!\')'}" class="${finalClass}">
+                    <button onclick="${todosConcluidos ? 'mostrarTela(\'telaFinal\')' : 'alert(\'Conclua todos os 5 capítulos com pelo menos 70% para desbloquear a comemoração final!\')'}" class="${finalClass}">
                         <span>${ICONS.trophy}</span>
                     </button>
                     <span class="absolute -top-3 -right-3 text-sm bg-amber-400 text-slate-900 rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md">
                         ${ICONS.starBadge}
                     </span>
                 </div>
-                <span class="text-xs font-extrabold text-amber-600 dark:text-amber-400 mt-2 bg-white/90 dark:bg-darkcard/90 px-3 py-1 rounded-full border border-amber-500/30 shadow-sm backdrop-blur-sm">
+                <span class="text-xs font-extrabold text-amber-600 dark:text-amber-400 mt-2 bg-white/95 dark:bg-darkcard/95 px-3 py-1 rounded-full border border-amber-500/30 shadow-sm backdrop-blur-sm">
                     Desafio Final
                 </span>
             `;
@@ -1666,7 +1726,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
         function clicarNoNo(idx) {
             const desbloqueado = (idx === 0) || capitulosConcluidos[idx - 1];
             if (!desbloqueado) {
-                alert("Você precisa alcançar pelo menos 85% de acertos no capítulo anterior para desbloquear esta etapa!");
+                alert("Você precisa alcançar pelo menos 70% de aproveitamento no capítulo anterior para desbloquear esta etapa!");
                 return;
             }
             capituloAtualIndex = idx;
@@ -2008,8 +2068,22 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             document.getElementById('acertosLabel').textContent = `Acertos (1ª tentativa): ${acertosPrimeiraTentativa}/${totalQuestoesOriginais}`;
             document.getElementById('questaoContextoTexto').textContent = q.contexto;
             document.getElementById('enunciado').textContent = q.enunciado;
+            renderizarFracoes(document.getElementById('questaoContextoTexto'));
+            renderizarFracoes(document.getElementById('enunciado'));
 
             renderizarImagem('questaoImagemBox', q.imagem, `Diagrama da Questão ${q.indiceOriginal + 1}`, `Imagem / Diagrama da Questão (Etapa ${q.indiceOriginal + 1})`);
+
+            // Reseta e esconde o painel de dica a cada nova questão
+            const dicaBox = document.getElementById('dicaBox');
+            if (dicaBox) dicaBox.classList.add('hidden');
+            const btnDica = document.getElementById('btnDica');
+            if (btnDica) {
+                btnDica.classList.remove('opacity-50');
+                btnDica.innerHTML = `
+                    <svg class="w-4 h-4 text-amber-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-4.5 6 6 0 10-10.5 4.5 6 6 0 001.5 4.5m7.5 0h-7.5" /></svg>
+                    <span>Dica</span>
+                `;
+            }
 
             const feedback = document.getElementById('feedbackBox');
             feedback.className = "hidden rounded-2xl mb-6 transition-all duration-300";
@@ -2024,14 +2098,54 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             const letras = ['A', 'B', 'C', 'D', 'E'];
             q.opcoesEmbaralhadas.forEach((op, i) => {
                 const btn = document.createElement('button');
-                btn.className = 'btn-option p-4 bg-white dark:bg-darkcard border border-slate-200 dark:border-darkborder rounded-2xl text-left text-sm font-bold text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-500 flex items-center gap-3 w-full';
+                btn.className = 'btn-option px-3.5 py-2.5 sm:py-3 bg-white dark:bg-darkcard border border-slate-200 dark:border-darkborder rounded-xl text-left text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 shadow-sm hover:border-brand-500 flex items-center gap-3 w-full';
                 btn.innerHTML = `
-                    <span class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-darkbg text-slate-600 dark:text-slate-300 flex items-center justify-center text-xs font-extrabold shrink-0 border border-slate-200 dark:border-darkborder font-mono">${letras[i] || (i + 1)}</span>
-                    <span class="flex-1">${escapeHtml(op)}</span>
+                    <span class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-darkbg text-slate-600 dark:text-slate-300 flex items-center justify-center text-xs font-extrabold shrink-0 border border-slate-200 dark:border-darkborder font-mono">${letras[i] || (i + 1)}</span>
+                    <span class="flex-1 leading-snug">${escapeHtml(op)}</span>
                 `;
                 btn.onclick = () => responder(i);
                 grid.appendChild(btn);
+                renderizarFracoes(btn.querySelector('.flex-1'));
             });
+        }
+
+        // ALTERNAR VISIBILIDADE DA DICA PARA O ALUNO
+        function alternarDica() {
+            const dicaBox = document.getElementById('dicaBox');
+            const dicaTexto = document.getElementById('dicaTexto');
+            const btnDica = document.getElementById('btnDica');
+            if (!dicaBox || !questaoAtualItem) return;
+
+            const estaOculta = dicaBox.classList.contains('hidden');
+
+            if (estaOculta) {
+                // Monta texto inteligente da dica
+                let textoDica = questaoAtualItem.dica;
+                if (!textoDica && questaoAtualItem.explicacao) {
+                    // Extrai a essência da explicação matemática sem entregar a resposta completa
+                    const frases = questaoAtualItem.explicacao.split('.');
+                    textoDica = frases[0] ? (frases[0].trim() + '.') : questaoAtualItem.explicacao;
+                }
+                if (!textoDica) {
+                    textoDica = "Preste bastante atenção no total de partes (denominador) e nas partes consideradas (numerador)!";
+                }
+
+                dicaTexto.textContent = textoDica;
+                renderizarFracoes(dicaTexto);
+                dicaBox.classList.remove('hidden');
+                btnDica.classList.add('bg-amber-500/25', 'border-amber-500/50');
+                btnDica.innerHTML = `
+                    <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14H8a4 4 0 01-.8-7.92A4.002 4.002 0 0112 6a4.002 4.002 0 013.8 2.08 4 4 0 01-.8 5.92H12z"/></svg>
+                    <span>Ocultar Dica</span>
+                `;
+            } else {
+                dicaBox.classList.add('hidden');
+                btnDica.classList.remove('bg-amber-500/25', 'border-amber-500/50');
+                btnDica.innerHTML = `
+                    <svg class="w-4 h-4 text-amber-500 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-4.5 6 6 0 10-10.5 4.5 6 6 0 001.5 4.5m7.5 0h-7.5" /></svg>
+                    <span>Dica</span>
+                `;
+            }
         }
 
         // PROCESSAR RESPOSTA DO USUÁRIO
@@ -2130,6 +2244,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 btnProxima.querySelector('span').textContent = 'Entendido! Próxima Questão';
             }
 
+            renderizarFracoes(feedback);
             document.getElementById('acertosLabel').textContent = `Acertos (1ª tentativa): ${acertosPrimeiraTentativa}/${totalQuestoesOriginais}`;
             feedback.classList.remove('hidden');
             btnProxima.classList.remove('hidden');
@@ -2148,8 +2263,8 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
             const cap = DADOS_TRILHA[capituloAtualIndex];
             const totalQuestoes = totalQuestoesOriginais || cap.questoes.length;
             const pctAcertos = Math.round((acertosPrimeiraTentativa / totalQuestoes) * 100);
-            const MINIMO_APROVACAO = 80;
-            const passou = pctAcertos >= MINIMO_APROVACAO || acertosPrimeiraTentativa >= 4;
+            const MINIMO_APROVACAO = 70;
+            const passou = pctAcertos >= MINIMO_APROVACAO;
 
             document.getElementById('progressBar').style.width = '100%';
 
@@ -2169,7 +2284,9 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                         idCapitulo: cap.id,
                         tituloCapitulo: cap.titulo,
                         acertos: acertosPrimeiraTentativa,
-                        totalQuestoes: totalQuestoes
+                        totalQuestoes: totalQuestoes,
+                        porcentagem: pctAcertos,
+                        concluida: passou
                     });
                 } catch(errDb) {
                     console.error("Erro ao registrar atividade no FractaDB:", errDb);
@@ -2185,7 +2302,7 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
 
                 emojiEl.innerHTML = `<div class="w-16 h-16 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center mx-auto mb-2 animate-bounce">${ICONS.trophy}</div>`;
                 tituloEl.textContent = `Capítulo Concluído com Sucesso!`;
-                descEl.textContent = `Parabéns! Você alcançou ${pctAcertos}% de acertos de primeira tentativa e revisou todas as etapas com Silas e ${cap.amigo}! O próximo capítulo foi liberado na trilha.`;
+                descEl.textContent = `Parabéns! Você alcançou ${pctAcertos}% de aproveitamento (mínimo de 70% atingido!) e explorou todas as frações com Silas e ${cap.amigo}! O próximo capítulo foi liberado na trilha.`;
                 xpEl.textContent = `+150 XP`;
 
                 botoesContainer.innerHTML = `
@@ -2198,13 +2315,13 @@ Agora, Silas sabe como interpretar mapas de exploração, porcentagens de escava
                 tocarSomErro();
 
                 emojiEl.innerHTML = `<div class="w-16 h-16 rounded-2xl bg-brand-500/10 text-brand-500 flex items-center justify-center mx-auto mb-2"><svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18c-2.305 0-4.408.867-6 2.292m0-14.25v14.25"/></svg></div>`;
-                tituloEl.textContent = `Desempenho Inicial: ${pctAcertos}%`;
-                descEl.textContent = `Você precisa de pelo menos 80% de acertos de primeira para desbloquear o próximo capítulo. Releia as partes da história e tente novamente!`;
+                tituloEl.textContent = `Desempenho: ${pctAcertos}% (Mínimo: 70%)`;
+                descEl.textContent = `Você precisa de pelo menos 70% de aproveitamento para desbloquear o próximo capítulo. Você pode refazer as questões quantas vezes quiser!`;
                 xpEl.textContent = `+50 XP`;
 
                 botoesContainer.innerHTML = `
                     <button onclick="começarDesafio()" class="w-full py-3.5 px-4 bg-brand-500 hover:bg-brand-600 text-white font-extrabold text-sm rounded-2xl shadow-[0_4px_0_#8c4521] active:translate-y-1 active:shadow-none transition mb-2 flex items-center justify-center gap-2">
-                        <span>TENTAR NOVAMENTE</span>
+                        <span>REFAZER ATIVIDADE</span>
                         ${ICONS.refresh}
                     </button>
                     <button onclick="voltarParaTrilha()" class="w-full py-3 px-4 bg-slate-100 dark:bg-darkbg hover:bg-slate-200 text-slate-700 dark:text-slate-300 font-bold text-xs rounded-xl transition">

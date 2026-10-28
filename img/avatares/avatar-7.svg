@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg7)" stroke="#FFF" stroke-width="3"/>
+  <!-- Corpo / Moletom -->
+  <path d="M28 112 Q60 88 92 112 Z" fill="#1E293B"/>
+  <rect x="54" y="76" width="12" height="12" fill="#D97706"/>
+  <!-- Cabeça pele morena -->
+  <circle cx="60" cy="62" r="26" fill="#D97706"/>
+  <!-- Cabelo cacheado volumoso escuro -->
+  <circle cx="42" cy="42" r="9" fill="#1C1917"/>
+  <circle cx="54" cy="38" r="9" fill="#1C1917"/>
+  <circle cx="66" cy="38" r="9" fill="#1C1917"/>
+  <circle cx="78" cy="42" r="9" fill="#1C1917"/>
+  <circle cx="36" cy="50" r="8" fill="#1C1917"/>
+  <circle cx="84" cy="50" r="8" fill="#1C1917"/>
+  <!-- Olhos expressivos -->
+  <circle cx="50" cy="62" r="3.5" fill="#1C1917"/>
+  <circle cx="70" cy="62" r="3.5" fill="#1C1917"/>
+  <circle cx="51.5" cy="60.5" r="1.2" fill="#FFF"/>
+  <circle cx="71.5" cy="60.5" r="1.2" fill="#FFF"/>
+  <!-- Sorriso largo -->
+  <path d="M52 74 Q60 82 68 74 Z" fill="#FFF"/>
+  <path d="M52 74 Q60 82 68 74" stroke="#1C1917" stroke-width="2" fill="none"/>
+</svg>

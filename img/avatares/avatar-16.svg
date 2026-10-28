@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#4C1D95"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg16)" stroke="#FFF" stroke-width="3"/>
+  <!-- Manto místico -->
+  <path d="M28 112 Q60 88 92 112 Z" fill="#4C1D95"/>
+  <circle cx="60" cy="68" r="24" fill="#FED7AA"/>
+  <!-- Barba estilizada de sábio / mago -->
+  <path d="M46 72 Q60 92 74 72 Q60 84 46 72 Z" fill="#F8FAFC"/>
+  <!-- Olhos sábios -->
+  <circle cx="50" cy="64" r="3.5" fill="#1E293B"/>
+  <circle cx="70" cy="64" r="3.5" fill="#1E293B"/>
+  <circle cx="51.5" cy="62.5" r="1.2" fill="#FFF"/>
+  <circle cx="71.5" cy="62.5" r="1.2" fill="#FFF"/>
+  <!-- Chapéu de Mago roxo com estrelas douradas -->
+  <path d="M30 52 L60 14 L90 52 Q60 46 30 52 Z" fill="#6D28D9"/>
+  <ellipse cx="60" cy="52" rx="36" ry="7" fill="#5B21B6"/>
+  <!-- Estrelas no chapéu -->
+  <polygon points="60,26 62,31 67,31 63,34 65,39 60,36 55,39 57,34 53,31 58,31" fill="#FDE047"/>
+  <polygon points="50,42 51,45 54,45 52,47 53,50 50,48 47,50 48,47 46,45 49,45" fill="#FDE047"/>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14B8A6"/>
+      <stop offset="100%" stop-color="#0F766E"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg9)" stroke="#FFF" stroke-width="3"/>
+  <!-- Corpo / Moletom com capuz -->
+  <path d="M28 112 Q60 86 92 112 Z" fill="#3B82F6"/>
+  <rect x="54" y="78" width="12" height="12" fill="#FED7AA"/>
+  <circle cx="60" cy="62" r="26" fill="#FED7AA"/>
+  <!-- Cabelo castanho moderno -->
+  <path d="M36 50 Q60 30 84 50 Q75 36 58 36 Q42 36 36 50 Z" fill="#78350F"/>
+  <path d="M42 46 Q54 48 58 40 Q50 36 42 46 Z" fill="#78350F"/>
+  <!-- Headset gamer verde-neon e preto -->
+  <path d="M30 62 Q30 26 60 26 Q90 26 90 62" stroke="#1E293B" stroke-width="4.5" fill="none"/>
+  <rect x="26" y="52" width="9" height="18" rx="4" fill="#22C55E"/>
+  <rect x="85" y="52" width="9" height="18" rx="4" fill="#22C55E"/>
+  <!-- Olhos -->
+  <circle cx="50" cy="62" r="3.5" fill="#1E293B"/>
+  <circle cx="70" cy="62" r="3.5" fill="#1E293B"/>
+  <!-- Microfone do headset -->
+  <path d="M30 68 Q40 76 52 74" stroke="#1E293B" stroke-width="2" fill="none"/>
+  <circle cx="52" cy="74" r="2.5" fill="#22C55E"/>
+  <path d="M54 74 Q60 78 66 74" stroke="#1E293B" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>

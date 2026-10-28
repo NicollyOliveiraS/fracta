@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#BE123C"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="58" fill="url(#bg10)" stroke="#FFF" stroke-width="3"/>
+  <!-- Corpo -->
+  <path d="M30 110 Q60 85 90 110 Z" fill="#8B5CF6"/>
+  <circle cx="60" cy="62" r="26" fill="#FED7AA"/>
+  <!-- Cabelo ruivo brilhante com coque -->
+  <circle cx="60" cy="32" r="14" fill="#EA580C"/>
+  <path d="M34 54 Q60 36 86 54 Q75 42 60 42 Q42 42 34 54 Z" fill="#EA580C"/>
+  <path d="M36 54 Q32 78 40 85 Q42 70 38 54 Z" fill="#EA580C"/>
+  <path d="M84 54 Q88 78 80 85 Q78 70 82 54 Z" fill="#EA580C"/>
+  <!-- Olhos verdes -->
+  <circle cx="49" cy="62" r="4" fill="#15803D"/>
+  <circle cx="71" cy="62" r="4" fill="#15803D"/>
+  <circle cx="50" cy="60.5" r="1.5" fill="#FFF"/>
+  <circle cx="72" cy="60.5" r="1.5" fill="#FFF"/>
+  <!-- Sardas delicadas -->
+  <circle cx="44" cy="67" r="1" fill="#C2410C"/>
+  <circle cx="47" cy="68" r="1" fill="#C2410C"/>
+  <circle cx="73" cy="68" r="1" fill="#C2410C"/>
+  <circle cx="76" cy="67" r="1" fill="#C2410C"/>
+  <!-- Sorriso -->
+  <path d="M54 74 Q60 79 66 74" stroke="#BE123C" stroke-width="2" fill="none" stroke-linecap="round"/>
+</svg>

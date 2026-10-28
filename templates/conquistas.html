@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="FRACTA - Galeria de conquistas e medalhas. Desbloqueie troféus resolvendo problemas.">
-    <title>FRACTA - Conquistas</title>
+    <title>FRACTA - Conquistas e Medalhas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -38,8 +38,8 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
-        .animate-fade-in-up { animation: fadeInUp 0.5s ease-out both; }
-        .animate-fade-in-scale { animation: fadeInScale 0.4s ease-out both; }
+        .animate-fade-in-up { animation: fadeInUp 0.4s ease-out both; }
+        .animate-fade-in-scale { animation: fadeInScale 0.35s ease-out both; }
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-darkbg text-gray-800 dark:text-slate-100 min-h-screen antialiased flex flex-col transition-colors duration-200">
@@ -53,10 +53,11 @@
 
                 <nav class="hidden md:flex items-center gap-1.5 text-sm font-medium">
                     <a href="../index.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Início</a>
+                    <a href="atividade.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Trilha</a>
+                    <a href="jogos.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Jogos</a>
                     <a href="progresso.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Progresso</a>
                     <a href="conquistas.html" class="px-4 py-2 text-[#C56E33] bg-[#C56E33]/10 rounded-lg transition font-semibold">Conquistas</a>
                     <a href="configuracao.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Configuração</a>
-                    <a href="ajuda.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Ajuda</a>
                 </nav>
             </div>
 
@@ -76,7 +77,7 @@
 
                 <div class="flex items-center gap-4">
                     <a href="conta.html" class="flex items-center gap-3 group">
-                        <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-slate-800 dark:bg-slate-700 flex items-center justify-center text-white font-semibold text-sm transition-transform group-hover:scale-105">U</div>
+                        <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-slate-800 dark:bg-slate-700 flex items-center justify-center text-white font-semibold text-sm transition-transform group-hover:scale-105 overflow-hidden">U</div>
                         <div class="hidden sm:block text-left">
                             <p id="nomeUsuarioHeader" class="text-sm font-semibold text-gray-800 dark:text-slate-100 leading-none mb-0.5 truncate max-w-[100px]">Usuário</p>
                             <p class="text-xs text-gray-400 dark:text-slate-400 leading-none">Estudante</p>
@@ -96,10 +97,11 @@
         <!-- Mobile nav -->
         <nav id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-darkborder bg-white dark:bg-darkcard px-6 py-4 space-y-1">
             <a href="../index.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg">Início</a>
+            <a href="atividade.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Trilha</a>
+            <a href="jogos.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Jogos</a>
             <a href="progresso.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Progresso</a>
             <a href="conquistas.html" class="block px-4 py-2.5 text-sm font-medium text-[#C56E33] bg-[#C56E33]/10 rounded-lg transition font-semibold">Conquistas</a>
             <a href="configuracao.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Configuração</a>
-            <a href="ajuda.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Ajuda</a>
             <hr class="my-2 border-gray-100 dark:border-darkborder">
             <a href="login.html" class="block px-4 py-2.5 text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-lg transition">Sair</a>
         </nav>
@@ -107,42 +109,33 @@
 
     <main class="flex-1 max-w-7xl mx-auto px-6 py-10 w-full">
         <div class="mb-6 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-400 animate-fade-in-up">
-            <span>Área do Aluno</span> • <span class="text-[#C56E33]">Conquistas</span>
+            <span>Área do Aluno</span> • <span class="text-[#C56E33]">Conquistas e Medalhas</span>
         </div>
 
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 animate-fade-in-up">Galeria de Medalhas</h1>
-        <p class="text-gray-500 dark:text-slate-400 mb-8 animate-fade-in-up">Desbloqueie conquistas resolvendo problemas e completando módulos.</p>
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 animate-fade-in-up">Galeria de Conquistas</h1>
+                <p class="text-gray-500 dark:text-slate-400 animate-fade-in-up text-sm">
+                    Desbloqueie troféus e medalhas resolvendo desafios matemáticos com pelo menos 70% de aproveitamento.
+                </p>
+            </div>
+            <div class="bg-white dark:bg-darkcard border border-gray-200 dark:border-darkborder px-5 py-3 rounded-2xl flex items-center gap-4 shadow-sm">
+                <div>
+                    <span class="text-[10px] font-bold text-gray-400 dark:text-slate-400 uppercase tracking-wider block">Desbloqueadas</span>
+                    <span id="contadorConquistas" class="text-xl font-extrabold text-[#C56E33]">0 / 6</span>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl">
+                    🏆
+                </div>
+            </div>
+        </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-            <div class="bg-white dark:bg-darkcard p-6 rounded-2xl border-2 border-[#C56E33] shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300 animate-fade-in-scale" style="animation-delay: 0.05s">
-                <div class="text-4xl mb-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mx-auto text-[#C56E33] mb-2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.499 4.499 0 00-1.757 4.306 4.438 4.438 0 002.946-2.946 4.5 4.5 0 004.306-1.758c-1.336-.363-2.583-1.018-3.64-1.89-1.05-.88-1.85-2.008-2.31-3.25z" /></svg></div>
-                <span class="text-xs font-bold text-gray-900 dark:text-white">Primeiros Passos</span>
-                <span class="text-[10px] text-[#C56E33] font-medium mt-1">Desbloqueado!</span>
-            </div>
-            <div class="bg-white dark:bg-darkcard p-6 rounded-2xl border-2 border-amber-300 dark:border-amber-500/50 shadow-sm flex flex-col items-center justify-center text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300 animate-fade-in-scale" style="animation-delay: 0.1s">
-                <div class="text-4xl mb-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mx-auto text-amber-500 mb-2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" /></svg></div>
-                <span class="text-xs font-bold text-gray-900 dark:text-white">Mestre da Divisão</span>
-                <span class="text-[10px] text-amber-600 dark:text-amber-400 font-medium mt-1">Desbloqueado!</span>
-            </div>
-            <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-200 dark:border-darkborder flex flex-col items-center justify-center text-center select-none animate-fade-in-scale" style="animation-delay: 0.15s">
-                <div class="text-4xl mb-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mx-auto text-gray-400 dark:text-slate-500 mb-2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18v2H3v-2zm18-11.5l-4.5 4.5L12 7l-4.5 6L3 8.5V18h18V8.5z" /></svg></div>
-                <span class="text-xs font-medium text-gray-400 dark:text-slate-400">Rei das Frações</span>
-                <span class="text-[10px] text-gray-400 dark:text-slate-500 mt-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 inline text-gray-400 dark:text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg> Bloqueado</span>
-            </div>
-            <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-200 dark:border-darkborder flex flex-col items-center justify-center text-center select-none animate-fade-in-scale" style="animation-delay: 0.2s">
-                <div class="text-4xl mb-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 mx-auto text-gray-400 dark:text-slate-500 mb-2"><path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152-.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248z" clip-rule="evenodd" /></svg></div>
-                <span class="text-xs font-medium text-gray-400 dark:text-slate-400">7 Dias Seguidos</span>
-                <span class="text-[10px] text-gray-400 dark:text-slate-500 mt-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 inline text-gray-400 dark:text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg> Bloqueado</span>
-            </div>
-            <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-200 dark:border-darkborder flex flex-col items-center justify-center text-center select-none animate-fade-in-scale" style="animation-delay: 0.25s">
-                <div class="text-4xl mb-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mx-auto text-gray-400 dark:text-slate-500 mb-2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg></div>
-                <span class="text-xs font-medium text-gray-400 dark:text-slate-400">Nota Máxima</span>
-                <span class="text-[10px] text-gray-400 dark:text-slate-500 mt-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 inline text-gray-400 dark:text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg> Bloqueado</span>
-            </div>
-            <div class="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-2xl border border-gray-200 dark:border-darkborder flex flex-col items-center justify-center text-center select-none animate-fade-in-scale" style="animation-delay: 0.3s">
-                <div class="text-4xl mb-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mx-auto text-gray-400 dark:text-slate-500 mb-2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zm-7.518-.267A8.25 8.25 0 1120.25 10.5M8.288 14.212A5.25 5.25 0 1117.25 10.5" /></svg></div>
-                <span class="text-xs font-medium text-gray-400 dark:text-slate-400">100% Acertos</span>
-                <span class="text-[10px] text-gray-400 dark:text-slate-500 mt-1"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 inline text-gray-400 dark:text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg> Bloqueado</span>
+        <!-- Grade Dinâmica de Conquistas -->
+        <div id="gridConquistas" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Carregado via JavaScript dinamicamente -->
+            <div class="col-span-full py-16 text-center text-gray-400 dark:text-slate-500">
+                <div class="w-8 h-8 border-4 border-[#C56E33] border-t-transparent rounded-full animate-spin mx-auto mb-3"></div>
+                Carregando conquistas do servidor...
             </div>
         </div>
 
@@ -160,11 +153,11 @@
                 
                 <div class="flex items-center gap-4 text-xs font-medium text-gray-500 dark:text-slate-400">
                     <a href="ajuda.html" class="hover:text-[#C56E33] dark:hover:text-[#C56E33] transition flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
                         Suporte
                     </a>
                     <a href="configuracao.html" class="hover:text-[#C56E33] dark:hover:text-[#C56E33] transition flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         Configurações
                     </a>
                 </div>
@@ -179,13 +172,104 @@
         </div>
     </footer>
 
+    <script src="../scripts/fracta-db.js"></script>
     <script src="../scripts/script.js"></script>
     <script>
-        const mobileMenuBtn = document.querySelector('#mobileMenuBtn');
-        const mobileMenu = document.querySelector('#mobileMenu');
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        // Conexão exclusiva com a API e o banco de dados da Vercel
+        const API_URL = "https://backend-tcc-tv2u.vercel.app";
+
+        async function carregarConquistas() {
+            const grid = document.getElementById('gridConquistas');
+            const contador = document.getElementById('contadorConquistas');
+
+            let usuario = null;
+            if (window.FractaDB) {
+                try {
+                    await window.FractaDB.init();
+                    usuario = window.FractaDB.obterUsuarioLogado();
+                } catch(e) {}
+            }
+
+            if (!usuario) {
+                try {
+                    usuario = JSON.parse(localStorage.getItem('usuario'));
+                } catch(e) {}
+            }
+
+            const usuarioId = usuario ? usuario.id : 1;
+            let listaConquistas = [];
+
+            // Tenta buscar diretamente da API do backend
+            try {
+                const res = await fetch(`${API_URL}/usuarios/${usuarioId}/conquistas`);
+                if (res.ok) {
+                    listaConquistas = await res.json();
+                }
+            } catch (err) {
+                console.warn("API indisponível, usando FractaDB local:", err);
+            }
+
+            // Fallback caso a API offline
+            if (!listaConquistas || listaConquistas.length === 0) {
+                if (window.FractaDB) {
+                    const dados = window.FractaDB.obterDadosIndividuaisAluno(usuarioId);
+                    if (dados && dados.conquistas) {
+                        listaConquistas = dados.conquistas;
+                    }
+                }
+            }
+
+            if (!listaConquistas || listaConquistas.length === 0) {
+                // Lista padrão fallback estruturada
+                listaConquistas = [
+                    { id: "primeiros_passos", titulo: "Primeiros Passos", descricao: "Conclua o primeiro capítulo da trilha", icone: "🚀", desbloqueada: false },
+                    { id: "mestre_divisao", titulo: "Mestre da Divisão", descricao: "Conclua 3 capítulos com aproveitamento superior a 70%", icone: "🎓", desbloqueada: false },
+                    { id: "rei_fracoes", titulo: "Rei das Frações", descricao: "Conclua todos os 5 capítulos da trilha", icone: "👑", desbloqueada: false },
+                    { id: "nota_maxima", titulo: "Nota Máxima", descricao: "Acerte 100% das questões de um capítulo de primeira tentativa", icone: "⭐", desbloqueada: false },
+                    { id: "sequencia_ouro", titulo: "Sequência de Ouro", descricao: "Pratique atividades por 7 dias seguidos", icone: "🔥", desbloqueada: false },
+                    { id: "persistente", titulo: "Estudante Persistente", descricao: "Refaça uma atividade e alcance a aprovação de 70%", icone: "🔁", desbloqueada: false }
+                ];
+            }
+
+            const desbloqueadasCount = listaConquistas.filter(c => c.desbloqueada).length;
+            contador.textContent = `${desbloqueadasCount} / ${listaConquistas.length}`;
+
+            grid.innerHTML = listaConquistas.map(c => {
+                if (c.desbloqueada) {
+                    const dataFmt = c.data_desbloqueio ? new Date(c.data_desbloqueio).toLocaleDateString('pt-BR') : 'Recentemente';
+                    return `
+                        <div class="bg-white dark:bg-darkcard p-6 rounded-2xl border-2 border-[#C56E33] shadow-md flex flex-col items-center text-center hover:-translate-y-1 transition duration-300 relative overflow-hidden animate-fade-in-scale">
+                            <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#C56E33]/15 to-transparent rounded-full pointer-events-none"></div>
+                            <div class="w-16 h-16 rounded-2xl bg-[#C56E33]/10 text-4xl flex items-center justify-center mb-3 shadow-inner">
+                                ${c.icone || '🏆'}
+                            </div>
+                            <span class="text-base font-bold text-gray-900 dark:text-white">${c.titulo}</span>
+                            <p class="text-xs text-gray-500 dark:text-slate-400 mt-2 mb-4 leading-relaxed">${c.descricao}</p>
+                            <div class="mt-auto flex items-center gap-1.5 text-xs font-bold text-[#C56E33] bg-[#C56E33]/10 px-3 py-1 rounded-full border border-[#C56E33]/30">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                <span>Desbloqueada em ${dataFmt}</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="bg-gray-50 dark:bg-slate-800/40 p-6 rounded-2xl border border-gray-200 dark:border-darkborder flex flex-col items-center text-center opacity-70 select-none animate-fade-in-scale">
+                            <div class="w-16 h-16 rounded-2xl bg-gray-200/50 dark:bg-slate-700/50 text-3xl flex items-center justify-center mb-3 grayscale">
+                                ${c.icone || '🔒'}
+                            </div>
+                            <span class="text-base font-semibold text-gray-500 dark:text-slate-400">${c.titulo}</span>
+                            <p class="text-xs text-gray-400 dark:text-slate-500 mt-2 mb-4 leading-relaxed">${c.descricao}</p>
+                            <div class="mt-auto flex items-center gap-1.5 text-xs font-medium text-gray-400 dark:text-slate-500 bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-gray-200 dark:border-darkborder">
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+                                <span>Bloqueada</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            }).join('');
         }
+
+        document.addEventListener('DOMContentLoaded', carregarConquistas);
     </script>
 </body>
 </html>

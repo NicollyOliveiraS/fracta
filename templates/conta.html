@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FRACTA - Perfil do usuário e galeria de troféus.">
-    <title>FRACTA - Perfil</title>
+    <meta name="description" content="FRACTA - Perfil do usuário e galeria de fotos de perfil.">
+    <title>FRACTA - Perfil e Avatar</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -35,14 +35,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9); }
+            from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
-        .animate-fade-in-up { animation: fadeInUp 0.5s ease-out both; }
-        .animate-fade-in-scale { animation: fadeInScale 0.4s ease-out both; }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
+        .animate-fade-in-up { animation: fadeInUp 0.4s ease-out both; }
+        .animate-fade-in-scale { animation: fadeInScale 0.35s ease-out both; }
+        .avatar-card.selected {
+            border-color: #C56E33 !important;
+            box-shadow: 0 0 0 3px rgba(197, 110, 51, 0.35);
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body class="bg-gray-100 dark:bg-darkbg text-gray-800 dark:text-slate-100 min-h-screen antialiased flex flex-col transition-colors duration-200">
@@ -56,10 +58,11 @@
 
                 <nav class="hidden md:flex items-center gap-1.5 text-sm font-medium">
                     <a href="../index.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Início</a>
+                    <a href="atividade.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Trilha</a>
+                    <a href="jogos.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Jogos</a>
                     <a href="progresso.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Progresso</a>
                     <a href="conquistas.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Conquistas</a>
                     <a href="configuracao.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Configuração</a>
-                    <a href="ajuda.html" class="px-4 py-2 text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Ajuda</a>
                 </nav>
             </div>
 
@@ -79,10 +82,10 @@
 
                 <div class="flex items-center gap-4">
                     <a href="conta.html" class="flex items-center gap-3 group">
-                        <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-slate-800 dark:bg-slate-700 flex items-center justify-center text-white font-semibold text-sm transition-transform group-hover:scale-105">U</div>
+                        <div id="avatarUsuario" class="w-9 h-9 rounded-xl bg-slate-800 dark:bg-slate-700 flex items-center justify-center text-white font-semibold text-sm transition-transform group-hover:scale-105 overflow-hidden">U</div>
                         <div class="hidden sm:block text-left">
                             <p id="nomeUsuarioHeader" class="text-sm font-semibold text-gray-800 dark:text-slate-100 leading-none mb-0.5 truncate max-w-[100px]">Usuário</p>
-                            <p class="text-xs text-gray-400 dark:text-slate-400 leading-none">Estudante</p>
+                            <p id="roleUsuarioHeader" class="text-xs text-gray-400 dark:text-slate-400 leading-none">Estudante</p>
                         </div>
                     </a>
                     <a href="login.html">
@@ -99,62 +102,113 @@
         <!-- Mobile nav -->
         <nav id="mobileMenu" class="hidden md:hidden border-t border-gray-200 dark:border-darkborder bg-white dark:bg-darkcard px-6 py-4 space-y-1">
             <a href="../index.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg">Início</a>
+            <a href="atividade.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Trilha</a>
+            <a href="jogos.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Jogos</a>
             <a href="progresso.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Progresso</a>
             <a href="conquistas.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Conquistas</a>
             <a href="configuracao.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Configuração</a>
-            <a href="ajuda.html" class="block px-4 py-2.5 text-sm font-medium text-gray-500 dark:text-slate-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-lg transition">Ajuda</a>
             <hr class="my-2 border-gray-100 dark:border-darkborder">
             <a href="login.html" class="block px-4 py-2.5 text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-lg transition">Sair</a>
         </nav>
     </header>
 
-    <main class="flex-1 max-w-4xl mx-auto px-6 py-12 w-full">
+    <main class="flex-1 max-w-4xl mx-auto px-6 py-10 w-full">
+        <!-- Toast de Notificação -->
+        <div id="toastMensagem" class="hidden fixed bottom-6 right-6 z-50 bg-emerald-600 text-white px-5 py-3 rounded-xl shadow-xl flex items-center gap-3 transition-all transform duration-300">
+            <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span id="toastTexto" class="text-sm font-bold">Avatar salvo com sucesso!</span>
+        </div>
+
         <div class="mb-6 text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-slate-400 animate-fade-in-up">
             <span>Área do Aluno</span> • <span class="text-[#C56E33]">Meu Perfil</span>
         </div>
 
-        <!-- Card de perfil -->
+        <!-- Card de perfil principal -->
         <div class="bg-white dark:bg-darkcard border border-gray-200 dark:border-darkborder rounded-2xl p-8 shadow-sm flex flex-col items-center text-center mb-8 relative overflow-hidden animate-fade-in-up">
-            <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#C56E33]/10 to-transparent rounded-full pointer-events-none"></div>
-            <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-[#2C1A11]/5 to-transparent rounded-full pointer-events-none"></div>
+            <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#C56E33]/15 to-transparent rounded-full pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-[#2C1A11]/10 to-transparent rounded-full pointer-events-none"></div>
 
-            <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-[#2C1A11] to-[#45291B] text-white flex items-center justify-center text-3xl font-bold mb-4 shadow-lg z-10" id="avatarUsuario">U</div>
+            <div class="relative mb-4 z-10 group">
+                <div id="previewAvatarGrande" class="w-28 h-28 rounded-2xl bg-gradient-to-br from-[#2C1A11] to-[#45291B] text-white flex items-center justify-center text-4xl font-bold shadow-xl border-4 border-white dark:border-darkborder overflow-hidden ring-4 ring-[#C56E33]/20">
+                    U
+                </div>
+                <a href="#galeriaAvatares" class="absolute -bottom-2 -right-2 bg-[#C56E33] hover:bg-[#a95a26] text-white p-2 rounded-xl shadow-md transition transform hover:scale-110" title="Escolher avatar da galeria">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"/>
+                    </svg>
+                </a>
+            </div>
+
             <h2 class="text-2xl font-bold text-gray-900 dark:text-white z-10" id="nomeUsuario">Nome do Usuário</h2>
-            <p class="text-xs text-gray-400 dark:text-slate-400 mt-1 uppercase font-semibold tracking-wider z-10">Estudante Oficial</p>
+            <div class="flex items-center gap-2 mt-1.5 z-10">
+                <span id="badgeTurmaPerfil" class="text-xs font-bold text-[#C56E33] bg-[#C56E33]/10 px-3 py-1 rounded-full border border-[#C56E33]/20">Turma: 6º A</span>
+                <span id="badgeAnoPerfil" class="text-xs font-semibold text-gray-600 dark:text-slate-300 bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full border border-gray-200 dark:border-darkborder">6º Ano</span>
+            </div>
+            <p id="emailUsuarioPerfil" class="text-xs text-gray-400 dark:text-slate-400 mt-2 z-10">aluno@fracta.com</p>
 
-            <!-- Stats rápidos -->
-            <div class="flex items-center gap-6 mt-6 pt-6 border-t border-gray-200 dark:border-darkborder z-10">
+            <!-- Stats reais calculados pelo FractaDB -->
+            <div class="grid grid-cols-3 gap-6 sm:gap-10 mt-6 pt-6 border-t border-gray-200 dark:border-darkborder z-10 w-full max-w-md">
                 <div class="text-center">
-                    <div class="text-xl font-extrabold text-[#C56E33]">7</div>
-                    <div class="text-[10px] text-gray-400 dark:text-slate-400 font-medium uppercase tracking-wider">Dias Ativos</div>
+                    <div id="statSequencia" class="text-2xl font-extrabold text-[#C56E33]">1</div>
+                    <div class="text-[10px] text-gray-400 dark:text-slate-400 font-medium uppercase tracking-wider mt-0.5">Dias Ativos</div>
                 </div>
-                <div class="w-px h-8 bg-gray-100 dark:bg-slate-700"></div>
-                <div class="text-center">
-                    <div class="text-xl font-extrabold text-gray-900 dark:text-white">2</div>
-                    <div class="text-[10px] text-gray-400 dark:text-slate-400 font-medium uppercase tracking-wider">Medalhas</div>
+                <div class="text-center border-x border-gray-100 dark:border-darkborder px-2">
+                    <div id="statMedalhas" class="text-2xl font-extrabold text-amber-500">0</div>
+                    <div class="text-[10px] text-gray-400 dark:text-slate-400 font-medium uppercase tracking-wider mt-0.5">Medalhas</div>
                 </div>
-                <div class="w-px h-8 bg-gray-100 dark:bg-slate-700"></div>
                 <div class="text-center">
-                    <div class="text-xl font-extrabold text-amber-600 dark:text-amber-400">8.5</div>
-                    <div class="text-[10px] text-gray-400 dark:text-slate-400 font-medium uppercase tracking-wider">Média</div>
+                    <div id="statMediaGeral" class="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">0.0</div>
+                    <div class="text-[10px] text-gray-400 dark:text-slate-400 font-medium uppercase tracking-wider mt-0.5">Média Geral</div>
                 </div>
             </div>
         </div>
 
-        <!-- Galeria de troféus -->
-        <h3 class="font-bold text-sm text-gray-900 dark:text-white mb-4 animate-fade-in-up delay-100">Galeria de Troféus Adquiridos</h3>
-        <div class="grid grid-cols-3 gap-4">
-            <div class="bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-darkborder rounded-xl h-32 flex flex-col items-center justify-center text-3xl opacity-50 hover:opacity-70 transition-opacity animate-fade-in-scale delay-100">
-                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline text-gray-400 dark:text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg></span>
-                <span class="text-[10px] text-gray-400 dark:text-slate-400 font-medium mt-2">Em breve</span>
+        <!-- Seção: Galeria de Fotos de Perfil (Avatares da Plataforma) -->
+        <div id="galeriaAvatares" class="bg-white dark:bg-darkcard border border-gray-200 dark:border-darkborder rounded-2xl p-6 sm:p-8 shadow-sm mb-8 animate-fade-in-up">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-gray-100 dark:border-darkborder">
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                        <svg class="w-5 h-5 text-[#C56E33]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg>
+                        Galeria de Avatares da Plataforma
+                    </h3>
+                    <p class="text-xs text-gray-500 dark:text-slate-400 mt-1">
+                        Escolha uma foto oficial para o seu perfil. Não é necessário enviar nenhum arquivo do seu dispositivo.
+                    </p>
+                </div>
+                <button id="btnSalvarAvatar" onclick="salvarFotoPerfil()" class="px-5 py-2.5 bg-[#C56E33] hover:bg-[#a95a26] text-white text-xs font-bold rounded-xl shadow-md transition flex items-center gap-2 shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                    <span>Salvar Foto de Perfil</span>
+                </button>
             </div>
-            <div class="bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-darkborder rounded-xl h-32 flex flex-col items-center justify-center text-3xl opacity-50 hover:opacity-70 transition-opacity animate-fade-in-scale delay-200">
-                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline text-gray-400 dark:text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg></span>
-                <span class="text-[10px] text-gray-400 dark:text-slate-400 font-medium mt-2">Em breve</span>
+
+            <!-- Grid de 16 Avatares da Plataforma -->
+            <div id="gridAvatares" class="grid grid-cols-4 sm:grid-cols-8 gap-3 sm:gap-4">
+                <!-- Preenchido via JavaScript -->
             </div>
-            <div class="bg-gray-50 dark:bg-slate-800/50 border border-gray-200 dark:border-darkborder rounded-xl h-32 flex flex-col items-center justify-center text-3xl opacity-50 hover:opacity-70 transition-opacity animate-fade-in-scale delay-300">
-                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 inline text-gray-400 dark:text-slate-500"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg></span>
-                <span class="text-[10px] text-gray-400 dark:text-slate-400 font-medium mt-2">Em breve</span>
+            <p class="text-[11px] text-gray-400 dark:text-slate-500 mt-4 text-center">
+                Clique em um dos avatares para selecionar e clique em <strong>Salvar Foto de Perfil</strong> para persistir a alteração.
+            </p>
+        </div>
+
+        <!-- Galeria de troféus adquiridos -->
+        <div class="bg-white dark:bg-darkcard border border-gray-200 dark:border-darkborder rounded-2xl p-6 sm:p-8 shadow-sm animate-fade-in-up">
+            <div class="flex items-center justify-between mb-6 pb-4 border-b border-gray-100 dark:border-darkborder">
+                <div>
+                    <h3 class="font-bold text-base text-gray-900 dark:text-white flex items-center gap-2">
+                        <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"/></svg>
+                        Troféus e Conquistas
+                    </h3>
+                    <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Medalhas desbloqueadas com o seu desempenho na trilha.</p>
+                </div>
+                <a href="conquistas.html" class="text-xs font-bold text-[#C56E33] hover:underline flex items-center gap-1">
+                    Ver todas as medalhas
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                </a>
+            </div>
+
+            <div id="containerTrofeusPerfil" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <!-- Inserido dinamicamente via JS -->
             </div>
         </div>
     </main>
@@ -171,11 +225,11 @@
                 
                 <div class="flex items-center gap-4 text-xs font-medium text-gray-500 dark:text-slate-400">
                     <a href="ajuda.html" class="hover:text-[#C56E33] dark:hover:text-[#C56E33] transition flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
                         Suporte
                     </a>
                     <a href="configuracao.html" class="hover:text-[#C56E33] dark:hover:text-[#C56E33] transition flex items-center gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                         Configurações
                     </a>
                 </div>
@@ -190,13 +244,182 @@
         </div>
     </footer>
 
+    <script src="../scripts/fracta-db.js"></script>
     <script src="../scripts/script.js"></script>
     <script>
-        const mobileMenuBtn = document.querySelector('#mobileMenuBtn');
-        const mobileMenu = document.querySelector('#mobileMenu');
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        // Total de 16 avatares oficiais fornecidos pela plataforma
+        const TOTAL_AVATARES = 16;
+        let avatarSelecionadoAtual = 'avatar-1.svg';
+        let usuarioAtivo = null;
+
+        function mostrarToast(mensagem) {
+            const toast = document.getElementById('toastMensagem');
+            const texto = document.getElementById('toastTexto');
+            texto.textContent = mensagem;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3500);
         }
+
+        function renderizarGaleria(avatarAtual) {
+            const grid = document.getElementById('gridAvatares');
+            grid.innerHTML = '';
+
+            for (let i = 1; i <= TOTAL_AVATARES; i++) {
+                const nomeArquivo = `avatar-${i}.svg`;
+                const isSelected = (nomeArquivo === avatarAtual);
+
+                const card = document.createElement('div');
+                card.className = `avatar-card relative p-2 bg-gray-50 dark:bg-slate-800/60 rounded-xl border-2 transition-all cursor-pointer flex flex-col items-center justify-center hover:border-[#C56E33]/70 hover:-translate-y-0.5 ${isSelected ? 'selected border-[#C56E33]' : 'border-gray-200 dark:border-darkborder'}`;
+                card.onclick = () => selecionarAvatar(nomeArquivo);
+
+                card.innerHTML = `
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden flex items-center justify-center">
+                        <img src="../img/avatares/${nomeArquivo}" alt="Avatar ${i}" class="w-full h-full object-contain">
+                    </div>
+                    <span class="text-[9px] font-bold text-gray-500 dark:text-slate-400 mt-1.5 uppercase tracking-wider">#${i}</span>
+                    ${isSelected ? `
+                        <span class="badge-check absolute -top-1.5 -right-1.5 bg-[#C56E33] text-white rounded-full p-0.5 shadow-sm">
+                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        </span>
+                    ` : ''}
+                `;
+                grid.appendChild(card);
+            }
+        }
+
+        function selecionarAvatar(nomeArquivo) {
+            avatarSelecionadoAtual = nomeArquivo;
+            renderizarGaleria(nomeArquivo);
+
+            // Atualiza preview grande
+            const preview = document.getElementById('previewAvatarGrande');
+            preview.innerHTML = `<img src="../img/avatares/${nomeArquivo}" alt="Avatar Selecionado" class="w-full h-full object-cover">`;
+        }
+
+        async function salvarFotoPerfil() {
+            if (!usuarioAtivo || !usuarioAtivo.id) {
+                mostrarToast("Faça login para salvar a foto de perfil.");
+                return;
+            }
+
+            try {
+                if (window.FractaDB) {
+                    await window.FractaDB.atualizarAvatarAluno(usuarioAtivo.id, avatarSelecionadoAtual);
+                }
+
+                // Atualiza sessão no localStorage
+                usuarioAtivo.avatar = avatarSelecionadoAtual;
+                localStorage.setItem('usuario', JSON.stringify(usuarioAtivo));
+
+                // Atualiza cabeçalho imediatamente
+                if (typeof window.renderizarAvatarUsuario === 'function') {
+                    window.renderizarAvatarUsuario(avatarSelecionadoAtual, usuarioAtivo.nome);
+                }
+
+                mostrarToast("Foto de perfil atualizada e persistida com sucesso!");
+            } catch (err) {
+                console.error("Erro ao salvar foto de perfil:", err);
+                mostrarToast("Erro ao sincronizar avatar com o servidor.");
+            }
+        }
+
+        async function carregarPerfil() {
+            if (window.FractaDB) {
+                try {
+                    await window.FractaDB.init();
+                } catch(e) {}
+                usuarioAtivo = window.FractaDB.obterUsuarioLogado();
+            }
+
+            if (!usuarioAtivo) {
+                try {
+                    usuarioAtivo = JSON.parse(localStorage.getItem('usuario'));
+                } catch(e) {}
+            }
+
+            if (!usuarioAtivo) {
+                usuarioAtivo = {
+                    id: 1,
+                    nome: "Aluno Demonstrativo",
+                    email: "aluno@fracta.com",
+                    turma: "6º A",
+                    ano_escolar: "6º Ano",
+                    avatar: "avatar-1.svg"
+                };
+            }
+
+            avatarSelecionadoAtual = usuarioAtivo.avatar || 'avatar-1.svg';
+
+            // Preenche dados visuais
+            document.getElementById('nomeUsuario').textContent = usuarioAtivo.nome || 'Aluno';
+            document.getElementById('emailUsuarioPerfil').textContent = usuarioAtivo.email || 'aluno@fracta.com';
+            document.getElementById('badgeTurmaPerfil').textContent = `Turma: ${usuarioAtivo.turma || '6º A'}`;
+            document.getElementById('badgeAnoPerfil').textContent = `${usuarioAtivo.ano_escolar || '6º Ano'}`;
+
+            // Atualiza preview do avatar
+            const preview = document.getElementById('previewAvatarGrande');
+            if (usuarioAtivo.avatar && usuarioAtivo.avatar.startsWith('avatar-')) {
+                preview.innerHTML = `<img src="../img/avatares/${usuarioAtivo.avatar}" alt="Avatar" class="w-full h-full object-cover">`;
+            } else {
+                preview.textContent = (usuarioAtivo.nome || 'U').charAt(0).toUpperCase();
+            }
+
+            renderizarGaleria(avatarSelecionadoAtual);
+
+            // Carrega métricas reais (GPA da melhor tentativa por capítulo)
+            let dadosCompletos = null;
+            if (window.FractaDB) {
+                dadosCompletos = window.FractaDB.obterDadosIndividuaisAluno(usuarioAtivo.id);
+            }
+
+            const mediaGeral = dadosCompletos ? dadosCompletos.media_geral : '0.0';
+            const conquistas = dadosCompletos ? dadosCompletos.conquistas : [];
+            const conquistasDesbloqueadas = conquistas.filter(c => c.desbloqueada);
+
+            document.getElementById('statMediaGeral').textContent = mediaGeral;
+            document.getElementById('statMedalhas').textContent = conquistasDesbloqueadas.length;
+
+            // Renderiza seção de troféus adquiridos no perfil
+            renderizarTrofeusPerfil(conquistas);
+        }
+
+        function renderizarTrofeusPerfil(conquistas) {
+            const container = document.getElementById('containerTrofeusPerfil');
+            if (!container) return;
+
+            if (!conquistas || conquistas.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-6 text-center text-xs text-gray-400 dark:text-slate-400">
+                        Nenhuma conquista registrada no momento. Comece a trilha para conquistar medalhas!
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = conquistas.map(c => {
+                if (c.desbloqueada) {
+                    return `
+                        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 flex flex-col items-center text-center animate-fade-in-scale">
+                            <span class="text-3xl mb-1">${c.icone || '🏆'}</span>
+                            <span class="text-xs font-bold text-gray-900 dark:text-white mt-1">${c.titulo}</span>
+                            <span class="text-[10px] text-amber-700 dark:text-amber-300 font-medium">${c.data_desbloqueio ? new Date(c.data_desbloqueio).toLocaleDateString('pt-BR') : 'Desbloqueado'}</span>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="bg-gray-50 dark:bg-slate-800/40 border border-gray-200 dark:border-darkborder rounded-xl p-4 flex flex-col items-center text-center opacity-60">
+                            <span class="text-2xl mb-1 text-gray-400 dark:text-slate-500">🔒</span>
+                            <span class="text-xs font-semibold text-gray-500 dark:text-slate-400 mt-1">${c.titulo}</span>
+                            <span class="text-[10px] text-gray-400 dark:text-slate-500">Bloqueado</span>
+                        </div>
+                    `;
+                }
+            }).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarPerfil);
     </script>
 </body>
 </html>
